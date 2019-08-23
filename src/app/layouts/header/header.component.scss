@@ -1,0 +1,76 @@
+@import "../../../assets/scss/color.scss";
+@import "../../../assets/scss/font.scss";
+@import "../../../assets/scss/size.scss";
+
+:host {}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $headerHeight;
+  padding-right: 10px;
+  background-color: $principal-white;
+
+  &-title {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.title {
+  &-logo {
+    height: $headerHeight;
+  }
+
+  &-text {
+    font-size: $size3;
+    font-weight: 800;
+    color: $principal-blue;
+  }
+}
+
+.menu {
+  font-size: $size3;
+}
+
+#dropdown {
+  cursor: pointer;
+
+  &::after {
+    content: none;
+  }
+}
+
+.dropdown-item {
+  height: 40px;
+  cursor: pointer;
+}
+
+.nav-link {
+  color: $primary-dark-blue;
+
+  &:hover {
+    color: $primary-blue;
+  }
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: $primary-blue;
+  background-color: transparent;
+}
+
+.active {
+  background-color: $primary-dark-blue !important;
+  color: $principal-white !important;
+}

@@ -1,0 +1,77 @@
+// -------------------- COULEURS --------------------
+
+$principal-blue: #00A6D9;
+$principal-white: #FFFFFF;
+
+$primary-light-blue: #38B6BC;
+$primary-blue: #00A6D9;
+$primary-dark-blue: #00518B;
+$primary-red: #DC0059;
+$primary-orange: #EC775C;
+$primary-grey: #574C52;
+
+$secondary-dark-purple: #11215B;
+$secondary-light-blue: #97D2FF;
+$secondary-light-skyblue: #74D1D6;
+$secondary-green: #83C081;
+$secondary-light-green: #BDDEBC;
+$secondary-yellow: #FFE500;
+$secondary-orange: #F6BDB0;
+$secondary-red: #E85252;
+$secondary-purple: #931965;
+$secondary-light-purple: #6C2D78;
+$secondary-light-grey: #E2EFF6;
+$secondary-light-beige: #F4EFF4;
+$secondary-beige: #ECEAE5;
+$secondary-kakadoi: #E4EEE8;
+$secondary-light-brown: #B3A1AA;
+$secondary-blue-grey: #7A9AAD;
+
+// -------------------- COULEURS CUSTOMS --------------------
+
+$content-background: #F7F9FD;
+$menu-background: #F2F6FD;
+$footerColor: #3b3c3d;
+
+$white: #ffffff;
+$black: #4A4A4A;
+$green: #83C081;
+$grey:#CFCFCF;
+$light-grey: #E4E6E9;
+$light-grey2: #D0D7E2;
+$border-grey: #CCCCCC;
+$dark-grey: rgb(109, 105, 107);
+
+$grey-background: #F2F2F2;
+$blue-background: #F2F6FD;
+$dark-blue-background: #DAE1EE;
+$light-primary-dark-blue: rgba(0, 81, 139, 0.582);
+$grey-border-tableau: #0000001F;
+$grey-hover-tableau: #EEE;
+$button-green: #4EB249;
+
+.grey-text {
+  color: $grey;
+}
+
+.font {
+  &-red {
+    color: $primary-red;
+  }
+
+  &-green {
+    color: $green;
+  }
+
+  &-grey {
+    color: $primary-grey;
+  }
+}
+
+.primary-dark-blue {
+  color: $primary-dark-blue;
+}
+
+.secondary-green {
+  color: $secondary-green;
+}

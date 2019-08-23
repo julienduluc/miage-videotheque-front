@@ -1,0 +1,47 @@
+@import "../assets/scss/color.scss";
+@import "../assets/scss/font.scss";
+@import "../assets/scss/size.scss";
+
+/*.content {
+  position: relative;
+  min-height: calc(100% - #{$headerHeight} - #{$footerHeight});
+  width: 100%;
+  padding: 0 $marginContent $marginContent;
+  margin-bottom: -$footerHeight;
+
+  &:after {
+    height: $footerHeight;
+    content: "";
+    display: block;
+  }
+}*/
+
+.content {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - #{$headerHeight});
+  padding: 0;
+  margin: 0;
+  background-color: $content-background;
+
+  &:before {
+    content: " ";
+    position: relative;
+    display: block;
+    width: 100%;
+    height: $headerHeight;
+  }
+
+  &-container {
+    width: 100%;
+    min-height: 100%;
+    padding: $marginContent;
+    margin-bottom: -$footerHeight;
+
+    &:after {
+      height: $footerHeight;
+      content: "";
+      display: block;
+    }
+  }
+}

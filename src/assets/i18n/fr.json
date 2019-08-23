@@ -1,0 +1,41 @@
+{
+  "APP": {
+    "NAME": "MyApp"
+  },
+  "ERRORS": {
+    "HTTP": {
+      "DEFAULT": {
+        "content": "Merci de réessayer ultérieurement ou de contacter le support.",
+        "title": "Une erreur est survenue"
+      },
+      "UNAUTHORIZED": {
+        "content": "Veuillez vous connecter.",
+        "title": "Vous n'êtes pas autorisé à effectuer cette action."
+      },
+      "UNAVAILABLE": {
+        "content": "Merci de réessayer ultérieurement ou de contacter le support.",
+        "title": "Serveur indisponible"
+      }
+    }
+  },
+  "HOME": {
+    "PAGE_TITLE": "Accueil"
+  },
+  "LOGIN": {
+    "FORM": {
+      "LOGIN_PLACEHOLDER": "Votre nom d'utilisateur *",
+      "PASSWORD_PLACEHOLDER": "Votre mot de passe *",
+      "REMEMBER_ME_PLACEHOLDER": "Se souvenir de moi",
+      "LOGIN_BUTTON": "Se connecter",
+      "ERROR": {
+        "LOGIN_REQUIRED": "Le nom d'utilisateur est requis",
+        "PASSWORD_REQUIRED": "Le mot de passe est requis"
+      }
+    },
+    "PAGE_TITLE": "Connexion"
+  },
+  "MENU": {
+    "HOME": "Accueil",
+    "LOGOUT": "Déconnexion"
+  }
+}

@@ -1,0 +1,27 @@
+@import "../../../../assets/scss/color.scss";
+@import "../../../../assets/scss/font.scss";
+
+$marginSize1: 30px;
+$marginSize2: 10px;
+
+.dialog-confirmation {
+
+  width: 450px;
+
+  &-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: $marginSize1;
+    font-size: $size3;
+  }
+
+
+  &-footer {
+    margin-top: $marginSize1;
+    text-align: center;
+
+    myApp-button {
+      margin: 0 $marginSize2 0 $marginSize2;
+    }
+  }
+}

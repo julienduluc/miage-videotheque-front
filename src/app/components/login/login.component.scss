@@ -1,0 +1,39 @@
+@import "../../../assets/scss/color.scss";
+@import "../../../assets/scss/font.scss";
+@import "../../../assets/scss/components.scss";
+@import "../../../assets/scss/size.scss";
+
+.login {
+  &-card {
+    width: 400px;
+    min-height: 300px;
+    max-height: 360px;
+    position: fixed;
+    /*it can be fixed too*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &-form {
+    height: 100%;
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  &-actions {
+    text-align: center;
+  }
+}
+
+.mat-card-content {
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}

@@ -1,0 +1,13 @@
+@import "../../../assets/scss/color.scss";
+@import "../../../assets/scss/font.scss";
+@import "../../../assets/scss/size.scss";
+
+.footer {
+  &-container {
+    height: $footerHeight;
+    position: relative;
+    width: 100%;
+    background: $footerColor;
+    color: $white;
+  }
+}

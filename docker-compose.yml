@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+ scalio-front:
+  image: myApp
+  container_name : myApp-front
+  environment:
+    - URL_BACK=
+  ports:
+    - "8080:80"
+  command: /bin/bash -c "envsubst '\$URL_BACK' < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"

@@ -1,0 +1,17 @@
+<div class="header">
+  <a routerLink="/">
+    <div class="header-title">
+      <img class="title-logo" alt="Logo RTE" src="../../../assets/images/logo_df.png" />
+    </div>
+  </a>
+  <div *ngIf="isAuthenticated()">
+    <ul class="nav nav-pills menu">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active">{{ 'MENU.HOME' | translate }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">{{ 'MENU.LOGOUT' | translate }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+@import "font.scss";
+@import "color.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $fontText !important;
+  font-size: $size0;
+  font-weight: 600;
+  color: $black !important;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-color: $content-background !important;
+}

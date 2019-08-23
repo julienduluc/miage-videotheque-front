@@ -1,0 +1,7 @@
+<div [class]="errorClass">
+  <span *ngIf="message">
+    <fa-icon [icon]="icon_warning"></fa-icon>
+    {{message | translate}}
+  </span>
+  <ng-content></ng-content>
+</div>

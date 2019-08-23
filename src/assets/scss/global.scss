@@ -1,0 +1,134 @@
+@import 'base.scss';
+@import 'components.scss';
+@import 'vendor.scss';
+@import 'color.scss';
+
+/* ==========================================================================
+Custom class
+========================================================================== */
+
+.input {
+  &-error {
+    border: 2px solid $primary-red !important;
+  }
+
+  &-modified {
+    border: 2px solid $green !important;
+  }
+}
+
+/* ==========================================================================
+Override
+========================================================================== */
+
+a {
+  color: $primary-blue;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+Mixins
+========================================================================== */
+
+@mixin border-hole($color: black, $width: 1px, $size: 10%) {
+  background-image:
+    linear-gradient($color $width, transparent 0),
+    linear-gradient($color $width, transparent 0),
+    linear-gradient(to left, $color $width, transparent 0),
+    linear-gradient(to right, $color $width, transparent 0),
+    linear-gradient(to top, $color $width, transparent 0);
+  background-position: 0 0, 100% 0, 0 0;
+  background-size: $size, $size, 100%, 100%, 100%;
+}
+
+/* ==========================================================================
+Utils
+========================================================================== */
+
+.pointer {
+  cursor: pointer;
+}
+
+.h100 {
+  height: 100% !important;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.margin {
+  &-top10 {
+    margin-top: 10px;
+  }
+
+  &-right10 {
+    margin-right: 10px;
+  }
+
+  &-right20 {
+    margin-right: 20px;
+  }
+
+  &-left10 {
+    margin-left: 10px;
+  }
+
+  &-left20 {
+    margin-left: 20px;
+  }
+
+  &-bottom20 {
+    margin-bottom: 20px;
+  }
+}
+
+.center {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  &-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.disabled_permission {
+  pointer-events: none;
+  opacity: 0.5;
+  background: $grey;
+}
+
+.flex {
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-right {
+    align-items: flex-end;
+  }
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.relative {
+  position: relative;
+}
+
+.hover {
+  &:hover {
+    color: $primary-dark-blue;
+  }
+}

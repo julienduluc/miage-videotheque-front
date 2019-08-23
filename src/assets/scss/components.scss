@@ -1,0 +1,142 @@
+@import "color.scss";
+
+/* ===========================================================================
+* Inputs
+ =========================================================================== */
+
+input:not(.mat-input-element):not([type="checkbox"]),
+textarea {
+  border: 1px solid $grey;
+  border-radius: 4px;
+  padding-left: 5px;
+  height: 30px;
+}
+
+/* ===========================================================================
+* Selects
+ =========================================================================== */
+select:disabled {
+  background-color: $grey;
+}
+
+// IE
+::ng-deep select:focus::-ms-value {
+  background-color: transparent;
+  color: $black;
+}
+
+#select-page {
+  width: 80px;
+  height: 25px;
+}
+
+select {
+  background-color: white;
+  cursor: pointer !important;
+  border-radius: 4px;
+  padding-left: 5px;
+  height: 30px;
+  display: inline-block;
+  border: 1px solid $grey;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* ===========================================================================
+* BUTTONS
+ =========================================================================== */
+
+.btn-activite-green {
+  button {
+    background-color: $green !important;
+    color: $black !important;
+
+    &:hover {
+      background-color: $button-green !important;
+    }
+  }
+}
+
+/* ===========================================================================
+* ng-select
+ =========================================================================== */
+
+::ng-deep .ng-select {
+  display: inline-block !important;
+
+  .ng-select-container {
+    min-height: 0 !important;
+    height: 30px !important;
+    padding-left: 3px !important;
+  }
+
+  .ng-input {
+    top: 0 !important;
+    left: -8px !important;
+  }
+}
+
+::ng-deep .ng-value-container {
+  padding-left: 3px !important;
+}
+
+::ng-deep .ng-option-selected {
+  background-color: $primary-blue !important;
+  color: $principal-white !important;
+}
+
+::ng-deep .row {
+  &-add {
+    background: $menu-background;
+  }
+}
+
+::ng-deep .ng-clear-wrapper {
+  display: none;
+}
+
+::ng-deep .ng-select .ng-arrow {
+  border-color: $black transparent transparent !important;
+  border-width: 7px 3px 1.5px !important;
+}
+
+/* ===========================================================================
+* OVERRIDE NG-SELECT / NG-MULTI-SELECT
+ =========================================================================== */
+
+.ng-select-container,
+.multiselect-dropdown {
+  background-color: white;
+  cursor: pointer !important;
+  border-radius: 4px;
+  height: 30px;
+  display: inline-block;
+  border: 1px solid $grey;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* ===========================================================================
+* MatToolTip
+ =========================================================================== */
+
+::ng-deep .tooltip {
+  color: $principal-white;
+  background-color: $dark-grey;
+  font-size: $size0;
+  font-weight: bold;
+}
+
+/* ===========================================================================
+* Datatable
+ =========================================================================== */
+
+::ng-deep .ngx-datatable .datatable-body .datatable-row-wrapper {
+  width: 100%;
+}
+
+::ng-deep .ngx-datatable .datatable-body .datatable-body-row>.datatable-row-center {
+  width: 100% !important;
+}

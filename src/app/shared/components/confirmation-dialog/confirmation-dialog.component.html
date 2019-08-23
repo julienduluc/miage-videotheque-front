@@ -1,0 +1,22 @@
+<div class="dialog-confirmation">
+  <div class="dialog-confirmation-title">
+    {{ title | translate }}
+  </div>
+
+  <div class="dialog-confirmation-body">
+    {{ body | translate }}
+  </div>
+  <div class="dialog-confirmation-body" *ngIf="body1">
+    {{ body1 | translate }}
+  </div>
+  <div class="dialog-confirmation-footer">
+
+    <myApp-button color="primary-dark-blue" (action)="onClickCancel()">{{'GENERAL.ANNULER' | translate}}
+    </myApp-button>
+
+    <myApp-button color="primary-dark-blue" (action)="onClickValidate()">{{'GENERAL.CONFIRMER' | translate}}
+    </myApp-button>
+
+  </div>
+
+</div>
