@@ -7,9 +7,9 @@ import { ErrorComponent } from './components/error/error.component';
 import { ExpansionComponent } from './components/expansion/expansion.component';
 import { FormErrorComponent } from './components/form-error/form-error.component';
 import { ImportComponent } from './components/import/import.component';
+import { ImportService } from './components/import/import.service';
 import { FormErrorDirective } from './directives/form-error.directive';
 import { PermissionDirective } from './directives/permission.directive';
-import { ActiviteService } from './services/activite.service';
 import { FileDownloadService } from './services/file-download.service';
 import { UtilsService } from './services/utils.service';
 import { SharedCommonModule } from './shared-common.module';
@@ -28,8 +28,8 @@ import { SharedLibsModule } from './shared-libs.module';
     ImportComponent
   ],
   providers: [
-    ActiviteService,
     FileDownloadService,
+    ImportService,
     UtilsService
   ],
   entryComponents: [
@@ -53,7 +53,6 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        ActiviteService
       ]
     };
   }

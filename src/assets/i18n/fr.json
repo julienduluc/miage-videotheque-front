@@ -21,6 +21,9 @@
   "HOME": {
     "PAGE_TITLE": "Accueil"
   },
+  "IMPORT": {
+    "BUTTON": "Importer"
+  },
   "LOGIN": {
     "FORM": {
       "LOGIN_PLACEHOLDER": "Votre nom d'utilisateur *",

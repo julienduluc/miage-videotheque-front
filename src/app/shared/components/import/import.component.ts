@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+import { ImportService } from './import.service';
 
 @Component({
-  selector: 'df-import',
+  selector: 'myApp-import',
   templateUrl: 'import.component.html',
+  styleUrls: ['./import.component.scss']
 })
 export class ImportComponent implements OnInit {
 
-  typeFileAccepted: '.csv';
+  @Input() url: string;
+  @Input() typesFileAccepted: string;
+
+  @Output() importSuccess = new EventEmitter();
 
   selectedFiles: Array<File>;
 
-  constructor() { }
+  constructor(
+    private importService: ImportService
+  ) { }
 
   ngOnInit() { }
 
@@ -21,27 +29,15 @@ export class ImportComponent implements OnInit {
   }
 
   importFile() {
-    /*const file = this.selectedFiles;
+    const file = this.selectedFiles;
 
     if (file && file.length > 0) {
-      this.sasImportService.importer(this.selectedFiles[0], null, null, null, null)
-        .pipe(first()).subscribe(
-          (result) => {
-            this.isLoading = false;
-          },
-          (err) => {
-            this.isLoading = false;
+      this.importService.importFile(this.selectedFiles[0], this.url)
+        .subscribe(
+          (res) => {
+            this.importSuccess.emit(res);
           }
         );
-    }*/
+    }
   }
-
-  /*importer(file: File): Observable<any> {
-    let url = '';
-
-    const formData: FormData = new FormData();
-    formData.append('fichier', file, file.name);
-
-    return this.http.post<any>(url, formData);
-  }*/
 }

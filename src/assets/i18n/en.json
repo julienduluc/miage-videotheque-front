@@ -21,6 +21,9 @@
   "HOME": {
     "PAGE_TITLE": "Home"
   },
+  "IMPORT": {
+    "BUTTON": "Import"
+  },
   "LOGIN": {
     "FORM": {
       "LOGIN_PLACEHOLDER": "Your username *",

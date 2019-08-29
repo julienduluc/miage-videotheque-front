@@ -45,3 +45,18 @@
     }
   }
 }
+
+::ng-deep ngx-ui-loader {
+
+  .ngx-overlay {
+    top: $headerHeight !important;
+
+    &:before {
+      content: " ";
+      position: relative;
+      display: block;
+      width: 100%;
+      height: $headerHeight;
+    }
+  }
+}
