@@ -39,6 +39,7 @@
   },
   "MENU": {
     "HOME": "Home",
+    "LANGUAGE": "Language",
     "LOGOUT": "Logout"
   }
 }

@@ -4,11 +4,13 @@ import { LanguageHelper } from 'src/app/core/language/language.helper';
 import { LanguageService } from 'src/app/core/language/language.service';
 
 import { SharedModule } from '../../shared/shared.module';
+import { CoreModule } from './../../core/core.module';
 import { HomeComponent } from './home.component';
 import { homeRouting } from './home.routing';
 
 @NgModule({
   imports: [
+    CoreModule,
     SharedModule,
     NgxPermissionsModule.forChild(),
     homeRouting

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 import { LanguageService } from './language.service';
 
@@ -38,7 +39,10 @@ export class LanguageModule {
         {
           provide: LanguageService,
           useClass: LanguageService,
-          deps: [TranslateService]
+          deps: [
+            TranslateService,
+            NgxUiLoaderService
+          ]
         },
       ]
     };

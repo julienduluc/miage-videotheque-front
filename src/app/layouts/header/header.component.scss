@@ -24,6 +24,11 @@
 
   a {
     text-decoration: none !important;
+
+    &:hover {
+      color: $primary-blue;
+      cursor: pointer;
+    }
   }
 }
 

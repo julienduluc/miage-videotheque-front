@@ -39,6 +39,7 @@
   },
   "MENU": {
     "HOME": "Accueil",
+    "LANGUAGE": "Langue",
     "LOGOUT": "Déconnexion"
   }
 }

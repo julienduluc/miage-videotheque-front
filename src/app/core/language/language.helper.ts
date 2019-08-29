@@ -4,6 +4,8 @@ import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { LANGUAGES } from './language.constants';
+
 @Injectable({ providedIn: 'root' })
 export class LanguageHelper {
   renderer: Renderer2 = null;
@@ -21,7 +23,7 @@ export class LanguageHelper {
   }
 
   getAll(): Promise<any> {
-    return Promise.resolve(['fr']);
+    return Promise.resolve(LANGUAGES);
   }
 
   get language(): Observable<string> {
