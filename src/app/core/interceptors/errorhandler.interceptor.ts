@@ -4,6 +4,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { ErrorService } from '../errors/error.service';
 import { MessagesService } from '../messages/messages.service';
 
 /**
@@ -13,7 +14,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 
   constructor(
     private readonly messageService: MessagesService,
-    private ngxLoadingService: NgxUiLoaderService
+    private ngxLoadingService: NgxUiLoaderService,
+    private errorService: ErrorService
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -43,13 +45,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   }
 
   handleServerErrors(err: any) {
-    if (err.error.message
-      && (!err.error.message.toLowerCase().includes('failed')
-        && !err.error.message.toLowerCase().includes('error')
-        && !err.error.message.toLowerCase().includes('exception')
-        && !err.error.message.toLowerCase().includes('java')
-        && !err.error.message.toLowerCase().includes('required')
-        && !err.error.message.toLowerCase().includes('spring'))) {
+    if (err && err.error && this.errorService.isErrorToDisplay(err.error.message)) {
       this.messageService.showErrorNoTranslate(err.error.message);
     } else {
       this.messageService.showError('ERRORS.HTTP.DEFAULT');

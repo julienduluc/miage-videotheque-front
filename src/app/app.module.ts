@@ -7,6 +7,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { ErrorService } from './core/errors/error.service';
 import { AuthInterceptor } from './core/interceptors/auth-interceptor.service';
 import { ErrorHandlerInterceptor } from './core/interceptors/errorhandler.interceptor';
 import { LanguageModule } from './core/language/language.module';
@@ -41,7 +42,8 @@ import { SharedModule } from './shared/shared.module';
       multi: true,
       deps: [
         MessagesService,
-        NgxUiLoaderService
+        NgxUiLoaderService,
+        ErrorService
       ]
     },
   ],

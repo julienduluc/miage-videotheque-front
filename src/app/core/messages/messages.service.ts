@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
 /**
- * Service d'erreur permettant d'afficher des toasts
+ * Message service allowing to display toasts
  */
 @Injectable({ providedIn: 'root' })
 export class MessagesService {
@@ -13,8 +13,8 @@ export class MessagesService {
   constructor(private readonly toastrService: ToastrService, private injector: Injector) { }
 
   /**
-   * Toast vert
-   * Prend en paramètre un string i18n au format
+   * Green toast
+   * Take one parameter that is an i18n string on this format :
    * {
    *  title: '',
    *  content: ''
@@ -28,22 +28,20 @@ export class MessagesService {
   }
 
   /**
-   * Toast vert
-   * @param title : Titre du toast
-   * @param content : Contenu dynamique du toast
+   * Green toast
    */
   showSuccessParam(title: string, content: string) {
     this.toastrService.success(content, title, { closeButton: true, timeOut: 0 });
   }
 
   /**
-  * Toast rouge
-  * Prend en paramètre un string i18n au format
-  * {
-  *  content: '',
-  *  title: ''
-  * }
-  */
+   * Red Toast
+   * Take one parameter that is an i18n string on this format :
+   * {
+   *  content: '',
+   *  title: ''
+   * }
+   */
   showError(msg: string) {
     this.translateService = this.injector.get(TranslateService);
     this.translateService.get(msg).subscribe((translation) => {
@@ -52,9 +50,7 @@ export class MessagesService {
   }
 
   /**
-   * Toast rouge
-   * @param title : Titre du toast
-   * @param content : Contenu dynamique du toast
+   * Red toast
    */
   showErrorParam(title: string, content: string) {
     this.toastrService.error(content, title, { closeButton: true, timeOut: 0 });

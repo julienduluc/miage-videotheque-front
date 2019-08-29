@@ -5,10 +5,16 @@ import { Observable } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
 import { MessagesService } from 'src/app/core/messages/messages.service';
 
+import { ErrorService } from '../../core/errors/error.service';
+
 @Injectable()
 export class FileDownloadService {
 
-  constructor(private http: HttpClient, private messageService: MessagesService) { }
+  constructor(
+    private http: HttpClient,
+    private messageService: MessagesService,
+    private errorService: ErrorService
+  ) { }
 
   /**
    * Saves a file by opening file-save-as dialog in the browser
@@ -58,20 +64,15 @@ export class FileDownloadService {
 
   parseErrorBlob(err: HttpErrorResponse): Observable<any> {
     const reader: FileReader = new FileReader();
-    const obs = Observable.create((observer: any) => {
+    // Observable.create before v
+    const obs = new Observable((observer: any) => {
       reader.onloadend = (e) => {
         observer.error(JSON.parse(reader.result + ''));
         observer.complete();
 
         const error = JSON.parse(reader.result + '');
 
-        if (error.message
-          && (!error.message.toLowerCase().includes('failed')
-            && !error.message.toLowerCase().includes('error')
-            && !error.message.toLowerCase().includes('exception')
-            && !error.message.toLowerCase().includes('java')
-            && !error.message.toLowerCase().includes('required')
-            && !error.message.toLowerCase().includes('spring'))) {
+        if (error && this.errorService.isErrorToDisplay(error.message)) {
           this.messageService.showErrorNoTranslate(error.message);
         }
       };

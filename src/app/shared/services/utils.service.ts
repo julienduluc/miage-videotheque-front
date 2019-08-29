@@ -32,9 +32,8 @@ export class UtilsService {
   }
 
   /**
- * Gère le timeout pour lancer un event permettant de rafraîchir
- * le tableau pour l'adapater à la taille de l'écran au moment
- * de l'ouverture/fermeture du panel des filtres
+ * Handle timeout to trigger an event allowing to refresheh
+ * an ngx-datatable to adapt it to the window size
  */
   timeout(timeout: number) {
     setTimeout(() => {

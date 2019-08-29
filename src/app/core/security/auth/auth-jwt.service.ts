@@ -5,6 +5,8 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { SERVER_API } from './../../constants/server-api.constant';
+
 @Injectable({ providedIn: 'root' })
 export class AuthServerProvider {
 
@@ -25,7 +27,7 @@ export class AuthServerProvider {
       password: credentials.password,
       rememberMe: credentials.rememberMe
     };
-    return this.http.post('/api/authenticate', data, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
+    return this.http.post(SERVER_API + '/authenticate', data, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
 
     function authenticateSuccess(resp) {
       const bearerToken = resp.headers.get('Authorization');

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { MessagesService } from 'src/app/core/messages/messages.service';
 import { LoginService } from 'src/app/core/security/auth/login.service';
 
+import { ErrorService } from './../../core/errors/error.service';
+
 @Component({
   selector: 'myApp-login',
   templateUrl: './login.component.html',
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit {
     private readonly loginService: LoginService,
     private readonly router: Router,
     private fb: FormBuilder,
-    private messageService: MessagesService
+    private messageService: MessagesService,
+    private errorService: ErrorService
   ) { }
 
   ngOnInit() {
@@ -47,7 +50,9 @@ export class LoginComponent implements OnInit {
       }).then(() => {
         this.router.navigate(['']);
       }).catch((err) => {
-        this.messageService.showErrorNoTranslate(err.error.detail);
+        if (err && this.errorService.isErrorToDisplay(err.error.detail)) {
+          this.messageService.showErrorNoTranslate(err.error.detail);
+        }
       });
     }
   }
