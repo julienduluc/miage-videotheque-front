@@ -47,17 +47,6 @@ select {
 * BUTTONS
  =========================================================================== */
 
-.btn-activite-green {
-  button {
-    background-color: $green !important;
-    color: $black !important;
-
-    &:hover {
-      background-color: $button-green !important;
-    }
-  }
-}
-
 /* ===========================================================================
 * ng-select
  =========================================================================== */
