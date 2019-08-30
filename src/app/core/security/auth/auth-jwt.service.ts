@@ -5,7 +5,7 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { SERVER_API } from './../../constants/server-api.constant';
+import { SERVER_API } from '../../constants/app.constant';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServerProvider {

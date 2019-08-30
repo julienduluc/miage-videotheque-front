@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MessagesService } from 'src/app/core/messages/messages.service';
 import { LoginService } from 'src/app/core/security/auth/login.service';
 
+import { BACK_ERROR_MESSAGE_ATTRIBUT } from './../../core/constants/app.constant';
 import { ErrorService } from './../../core/errors/error.service';
 
 @Component({
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
       }).then(() => {
         this.router.navigate(['']);
       }).catch((err) => {
-        if (err && this.errorService.isErrorToDisplay(err.error.detail)) {
+        if (err && this.errorService.isErrorToDisplay(err.error[BACK_ERROR_MESSAGE_ATTRIBUT])) {
           this.messageService.showErrorNoTranslate(err.error.detail);
         }
       });

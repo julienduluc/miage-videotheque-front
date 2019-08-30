@@ -6,6 +6,7 @@ import { catchError, first } from 'rxjs/operators';
 import { MessagesService } from 'src/app/core/messages/messages.service';
 
 import { ErrorService } from '../../core/errors/error.service';
+import { BACK_ERROR_MESSAGE_ATTRIBUT } from './../../core/constants/app.constant';
 
 @Injectable()
 export class FileDownloadService {
@@ -72,7 +73,7 @@ export class FileDownloadService {
 
         const error = JSON.parse(reader.result + '');
 
-        if (error && this.errorService.isErrorToDisplay(error.message)) {
+        if (error && this.errorService.isErrorToDisplay(error[BACK_ERROR_MESSAGE_ATTRIBUT])) {
           this.messageService.showErrorNoTranslate(error.message);
         }
       };

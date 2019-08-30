@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 
 import { ErrorService } from '../errors/error.service';
 import { MessagesService } from '../messages/messages.service';
+import { BACK_ERROR_MESSAGE_ATTRIBUT } from './../constants/app.constant';
 
 /**
  * Intercepteur d'erreurs HTTP
@@ -45,7 +46,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   }
 
   handleServerErrors(err: any) {
-    if (err && err.error && this.errorService.isErrorToDisplay(err.error.message)) {
+    if (err && err.error && this.errorService.isErrorToDisplay(err.error[BACK_ERROR_MESSAGE_ATTRIBUT])) {
       this.messageService.showErrorNoTranslate(err.error.message);
     } else {
       this.messageService.showError('ERRORS.HTTP.DEFAULT');
