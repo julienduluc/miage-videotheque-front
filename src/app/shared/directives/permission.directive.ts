@@ -2,7 +2,7 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { NgxPermissionsService } from 'ngx-permissions';
 
 @Directive({
-  selector: '[sherpaPermissionsOnly]'
+  selector: '[permissionsOnly]'
 })
 
 export class PermissionDirective implements OnInit {

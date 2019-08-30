@@ -2,20 +2,6 @@
 @import "../assets/scss/font.scss";
 @import "../assets/scss/size.scss";
 
-/*.content {
-  position: relative;
-  min-height: calc(100% - #{$headerHeight} - #{$footerHeight});
-  width: 100%;
-  padding: 0 $marginContent $marginContent;
-  margin-bottom: -$footerHeight;
-
-  &:after {
-    height: $footerHeight;
-    content: "";
-    display: block;
-  }
-}*/
-
 .content {
   position: relative;
   width: 100%;
