@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ButtonComponent } from './components/button/button.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ExpansionComponent } from './components/expansion/expansion.component';
@@ -19,7 +18,6 @@ import { SharedLibsModule } from './shared-libs.module';
   imports: [RouterModule, SharedLibsModule, SharedCommonModule],
   declarations: [
     ConfirmationDialogComponent,
-    ButtonComponent,
     ExpansionComponent,
     FormErrorDirective,
     PermissionDirective,
@@ -38,7 +36,6 @@ import { SharedLibsModule } from './shared-libs.module';
   exports: [
     SharedCommonModule,
     ConfirmationDialogComponent,
-    ButtonComponent,
     ExpansionComponent,
     FormErrorDirective,
     PermissionDirective,

@@ -1,10 +1,10 @@
 <div class="expansion">
   <div class="expansion-title" (click)="changeExpansion()">
     <span *ngIf="!expanded" class="expansion-expander">
-      <fa-icon [icon]="icon_arrow_down"></fa-icon>
+      <fa-icon icon="angle-down"></fa-icon>
     </span>
     <span *ngIf="expanded" class="expansion-expander">
-      <fa-icon [icon]="icon_arrow_right"></fa-icon>
+      <fa-icon icon="angle-up"></fa-icon>
     </span>
     <ng-content select="[title]"></ng-content>
   </div>

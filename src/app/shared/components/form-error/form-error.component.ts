@@ -8,7 +8,6 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class FormErrorComponent implements OnInit {
 
-  icon_warning = faExclamationCircle;
   @Input() message: any;
   @Input() overlapDisplay = false;
 

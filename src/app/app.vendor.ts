@@ -12,6 +12,7 @@ import {
   faCloud,
   faDatabase,
   faEdit,
+  faExclamationCircle,
   faEye,
   faEyeDropper,
   faEyeSlash,
@@ -88,4 +89,5 @@ export function vendors() {
   library.add(faAtom);
   library.add(faDatabase);
   library.add(faUserCircle);
+  library.add(faExclamationCircle);
 }
