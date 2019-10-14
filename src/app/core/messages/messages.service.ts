@@ -23,7 +23,7 @@ export class MessagesService {
   showSuccess(msg: string) {
     this.translateService = this.injector.get(TranslateService);
     this.translateService.get(msg).subscribe((translation) => {
-      this.toastrService.success(translation.content, translation.title, { closeButton: true, timeOut: 0 });
+      this.toastrService.success(translation.CONTENT, translation.TITLE, { closeButton: true, timeOut: 0 });
     });
   }
 
@@ -45,7 +45,7 @@ export class MessagesService {
   showError(msg: string) {
     this.translateService = this.injector.get(TranslateService);
     this.translateService.get(msg).subscribe((translation) => {
-      this.toastrService.error(translation.content, translation.title, { closeButton: true, timeOut: 0 });
+      this.toastrService.error(translation.CONTENT, translation.TITLE, { closeButton: true, timeOut: 5000 });
     });
   }
 
@@ -53,7 +53,7 @@ export class MessagesService {
    * Red toast
    */
   showErrorParam(title: string, content: string) {
-    this.toastrService.error(content, title, { closeButton: true, timeOut: 0 });
+    this.toastrService.error(content, title, { closeButton: true, timeOut: 5000 });
   }
 
   showErrorNoTranslate(msg: string) {

@@ -1,3 +1,4 @@
+export const APP_NAME = 'MyApp';
 export const SERVER_API = '/api';
 
 // ---------------------- Back parameters ----------------------

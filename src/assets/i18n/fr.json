@@ -5,16 +5,16 @@
   "ERRORS": {
     "HTTP": {
       "DEFAULT": {
-        "content": "Merci de réessayer ultérieurement ou de contacter le support.",
-        "title": "Une erreur est survenue"
+        "CONTENT": "Merci de réessayer ultérieurement ou de contacter le support.",
+        "TITLE": "Une erreur est survenue"
       },
       "UNAUTHORIZED": {
-        "content": "Veuillez vous connecter.",
-        "title": "Vous n'êtes pas autorisé à effectuer cette action."
+        "CONTENT": "Veuillez vous connecter.",
+        "TITLE": "Vous n'êtes pas autorisé à effectuer cette action."
       },
       "UNAVAILABLE": {
-        "content": "Merci de réessayer ultérieurement ou de contacter le support.",
-        "title": "Serveur indisponible"
+        "CONTENT": "Merci de réessayer ultérieurement ou de contacter le support.",
+        "TITLE": "Serveur indisponible"
       }
     }
   },

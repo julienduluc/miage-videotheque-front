@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { APP_NAME } from './../constants/app.constant';
 import { LANGUAGES } from './language.constants';
 
 @Injectable({ providedIn: 'root' })
@@ -56,7 +57,7 @@ export class LanguageHelper {
   }
 
   private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
-    let title: string = routeSnapshot.data && routeSnapshot.data.pageTitle ? routeSnapshot.data.pageTitle : 'MyApp';
+    let title: string = routeSnapshot.data && routeSnapshot.data.pageTitle ? routeSnapshot.data.pageTitle : APP_NAME;
     if (routeSnapshot.firstChild) {
       title = this.getPageTitle(routeSnapshot.firstChild) || title;
     }

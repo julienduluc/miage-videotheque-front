@@ -5,16 +5,16 @@
   "ERRORS": {
     "HTTP": {
       "DEFAULT": {
-        "content": "Please try again or contact our support.",
-        "title": "An error has occured"
+        "CONTENT": "Please try again or contact our support.",
+        "TITLE": "An error has occured"
       },
       "UNAUTHORIZED": {
-        "content": "Log in.",
-        "title": "You are not authorized to do this."
+        "CONTENT": "Log in.",
+        "TITLE": "You are not authorized to do this."
       },
       "UNAVAILABLE": {
-        "content": "Please try again or contact our support.",
-        "title": "Server unavailable"
+        "CONTENT": "Please try again or contact our support.",
+        "TITLE": "Server unavailable"
       }
     }
   },
