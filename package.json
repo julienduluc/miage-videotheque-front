@@ -14,7 +14,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy-local.conf.json",
     "build": "ng build --prod",
-    "doc": "./node_modules/.bin/compodoc -p tsconfig.app.json",
+    "doc": "./node_modules/.bin/compodoc -p tsconfig.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
