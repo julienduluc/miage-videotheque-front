@@ -31,7 +31,7 @@ $secondary-blue-grey: #7A9AAD;
 
 $content-background: #F7F9FD;
 $menu-background: #F2F6FD;
-$footerColor: #3b3c3d;
+$footer-color: #3b3c3d;
 
 $white: #ffffff;
 $black: #4A4A4A;
@@ -46,13 +46,6 @@ $grey-background: #F2F2F2;
 $blue-background: #F2F6FD;
 $dark-blue-background: #DAE1EE;
 $light-primary-dark-blue: rgba(0, 81, 139, 0.582);
-$grey-border-tableau: #0000001F;
-$grey-hover-tableau: #EEE;
-$button-green: #4EB249;
-
-.grey-text {
-  color: $grey;
-}
 
 .font {
   &-red {
@@ -66,12 +59,4 @@ $button-green: #4EB249;
   &-grey {
     color: $primary-grey;
   }
-}
-
-.primary-dark-blue {
-  color: $primary-dark-blue;
-}
-
-.secondary-green {
-  color: $secondary-green;
 }

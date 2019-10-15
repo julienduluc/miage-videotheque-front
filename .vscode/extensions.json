@@ -1,0 +1,25 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "eg2.vscode-npm-script",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "dbaeumer.vscode-eslint",
+    "msjsdiag.debugger-for-chrome",
+    "firefox-devtools.vscode-firefox-debug",
+    "johnpapa.angular2",
+    "mikael.angular-beastcode",
+    "angular.ng-template",
+    "coenraads.bracket-pair-colorizer",
+    "ms-azuretools.vscode-docker",
+    "donjayamanne.githistory",
+    "abusaidm.html-snippets",
+    "zignd.html-css-class-completion",
+    "pkief.material-icon-theme",
+    "christian-kohler.path-intellisense",
+    "wayou.vscode-todo-highlight",
+    "alefragnani.project-manager",
+    "rbbit.typescript-hero",
+    "ms-vsliveshare.vsliveshare",
+    "yzhang.markdown-all-in-one"
+  ]
+}
