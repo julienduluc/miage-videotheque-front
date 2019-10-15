@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from '@core/core.module';
+import { SharedModule } from '@shared/shared.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
-import { SharedModule } from '../shared/shared.module';
-import { CoreModule } from './../core/core.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 

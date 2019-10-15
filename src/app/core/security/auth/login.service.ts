@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { UserService } from 'src/app/core/security/user/user.service';
 
+import { UserService } from '../user/user.service';
 import { AuthServerProvider } from './auth-jwt.service';
 
 @Injectable({ providedIn: 'root' })

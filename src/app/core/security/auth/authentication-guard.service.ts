@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { MessagesService } from '@core/messages/messages.service';
 
-import { MessagesService } from '../../messages/messages.service';
 import { LoginService } from './login.service';
 
 @Injectable({ providedIn: 'root' })
@@ -20,18 +20,22 @@ export class AuthenticationGuardService implements CanActivate {
 
   checkLogin(currentRoute: string): Promise<boolean> {
     const principal = this.loginService;
-    return Promise.resolve(
-      principal.identity().then(user => {
+    if (!currentRoute.includes('login')) {
+      return Promise.resolve(
+        principal.identity().then(user => {
 
-        if (user || currentRoute.includes('login')) {
-          return true;
-        } else {
-          this.router.navigate(['login']);
+          if (user) {
+            return true;
+          } else {
+            this.router.navigate(['login']);
+          }
+
+          return false;
         }
-
-        return false;
-      }
-      ));
+        ));
+    } else {
+      return Promise.resolve(true);
+    }
   }
 
 }

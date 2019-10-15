@@ -1,12 +1,12 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { BACK_ERROR_MESSAGE_ATTRIBUT } from '@core/constants/app.constant';
+import { ErrorService } from '@core/errors/error.service';
+import { MessagesService } from '@core/messages/messages.service';
 import { BAD_REQUEST, GATEWAY_TIMEOUT, INTERNAL_SERVER_ERROR, SERVICE_UNAVAILABLE, UNAUTHORIZED } from 'http-status-codes';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { ErrorService } from '../errors/error.service';
-import { MessagesService } from '../messages/messages.service';
-import { BACK_ERROR_MESSAGE_ATTRIBUT } from './../constants/app.constant';
 
 /**
  * Intercepteur d'erreurs HTTP

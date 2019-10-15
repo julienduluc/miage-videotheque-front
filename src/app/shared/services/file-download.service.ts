@@ -1,12 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BACK_ERROR_MESSAGE_ATTRIBUT } from '@core/constants/app.constant';
+import { ErrorService } from '@core/errors/error.service';
+import { MessagesService } from '@core/messages/messages.service';
 import { saveAs } from 'file-saver';
 import { Observable } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
-import { MessagesService } from 'src/app/core/messages/messages.service';
-
-import { ErrorService } from '../../core/errors/error.service';
-import { BACK_ERROR_MESSAGE_ATTRIBUT } from './../../core/constants/app.constant';
 
 @Injectable()
 export class FileDownloadService {

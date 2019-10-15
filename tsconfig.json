@@ -2,6 +2,20 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/app/components/*"],
+      "@sharedComponents/*": ["src/app/shared/components/*"],
+      "@core/*": ["src/app/core/*"],
+      "@layout/*": ["src/app/layouts/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@enums/*": ["src/app/shared/enums/*"],
+      "@constants/*": ["src/app/shared/constants/*"],
+      "@directives/*": ["src/app/shared/directives/*"],
+      "@pipes/*": ["src/app/shared/pipes/*"],
+      "@resolvers/*": ["src/app/shared/resolvers/*"],
+      "@models/*": ["src/app/shared/models/*"],
+      "@services/*": ["src/app/shared/services/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

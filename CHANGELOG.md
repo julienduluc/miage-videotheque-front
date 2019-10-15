@@ -1,20 +1,32 @@
-# 1.0.0 (2019-08-30)
-
+# 1.1.1 (2019-10-10)
 
 ### Features
 
-* **Authentication:** JWT authentication handled
-* **Layout:** Header and footer
-* **Errors:** HTTP errors automatically handled
-* **Message:** Messaging serving through toast
-* **Files:** Download and upload service/component includes
-* **Loader:** Automatic loader when calling http request
-* **Internationalization:** Using ngx-translate
+* **Documentation:** Added Compodoc --> use npm run-script doc to generate docs.
+* **Path:** Added shortcut for TypeScript and SCSS imports.
+* **library:** Updated angular-fontawesome version to 0.5.0.
+
+### Bug Fixes
+
+* **Authentication:** Removed unnecessary call to /whoami when you're on login page.
 
 # 1.1.0 (2019-10-10)
 
 
 ### Features
 
-* **Configuration:** VsCode config and recommended extensions added
-* **Debugging:** Debugging config added
+* **Configuration:** VS Code config and recommended extensions added.
+* **Debugging:** Debugging config added.
+
+# 1.0.0 (2019-08-30)
+
+
+### Features
+
+* **Authentication:** JWT authentication handled.
+* **Layout:** Header and footer.
+* **Errors:** HTTP errors automatically handled.
+* **Message:** Messaging serving through toast.
+* **Files:** Download and upload service/component includes.
+* **Loader:** Automatic loader when calling http request.
+* **Internationalization:** Using ngx-translate.

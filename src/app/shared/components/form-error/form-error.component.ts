@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'myApp-form-error',

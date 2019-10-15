@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { SERVER_API } from '../../constants/app.constant';
+import { SERVER_API, SERVER_USER_INFOS_ROUTE } from '@core/constants/app.constant';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,6 +12,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUserInfos() {
-    return this.http.get<any>(SERVER_API + '/account/', httpOptions);
+    return this.http.get<any>(SERVER_API + '/' + SERVER_USER_INFOS_ROUTE + '/', httpOptions);
   }
 }

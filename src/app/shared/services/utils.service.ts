@@ -32,9 +32,9 @@ export class UtilsService {
   }
 
   /**
- * Handle timeout to trigger an event allowing to refresheh
- * an ngx-datatable to adapt it to the window size
- */
+   * Handle timeout to trigger an event allowing to refresh
+   * an ngx-datatable to adapt it to the window size
+  */
   timeout(timeout: number) {
     setTimeout(() => {
       const event = document.createEvent('Event');

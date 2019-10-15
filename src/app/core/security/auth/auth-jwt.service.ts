@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { SERVER_API } from '@core/constants/app.constant';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { SERVER_API } from '../../constants/app.constant';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServerProvider {

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BACK_FILE_IMPORT_ATTRIBUTE } from '@core/constants/app.constant';
 import { Observable } from 'rxjs';
-
-import { BACK_FILE_IMPORT_ATTRIBUTE } from './../../../core/constants/app.constant';
 
 @Injectable()
 export class ImportService {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LanguageService } from 'src/app/core/language/language.service';
-import { LoginService } from 'src/app/core/security/auth/login.service';
-
-import { LanguageHelper } from './../../core/language/language.helper';
+import { LanguageHelper } from '@core/language/language.helper';
+import { LanguageService } from '@core/language/language.service';
+import { LoginService } from '@core/security/auth/login.service';
 
 @Component({
   selector: 'myApp-header',

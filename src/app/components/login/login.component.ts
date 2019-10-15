@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MessagesService } from 'src/app/core/messages/messages.service';
-import { LoginService } from 'src/app/core/security/auth/login.service';
-
-import { BACK_ERROR_MESSAGE_ATTRIBUT } from './../../core/constants/app.constant';
-import { ErrorService } from './../../core/errors/error.service';
+import { BACK_ERROR_MESSAGE_ATTRIBUT } from '@core/constants/app.constant';
+import { ErrorService } from '@core/errors/error.service';
+import { MessagesService } from '@core/messages/messages.service';
+import { LoginService } from '@core/security/auth/login.service';
 
 @Component({
   selector: 'myApp-login',

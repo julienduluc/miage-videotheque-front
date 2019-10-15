@@ -14,6 +14,7 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { MatRadioModule } from '@angular/material/radio';
+import { LanguageModule } from '@core/language/language.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbDropdownModule, NgbModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -27,8 +28,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER } from 'ngx-ui-loader';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-
-import { LanguageModule } from '../core/language/language.module';
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {

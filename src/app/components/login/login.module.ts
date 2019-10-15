@@ -1,9 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { SharedModule } from '@shared/shared.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { LanguageHelper } from 'src/app/core/language/language.helper';
 import { LanguageService } from 'src/app/core/language/language.service';
 
-import { SharedModule } from '../../shared/shared.module';
 import { LoginComponent } from './login.component';
 import { loginRouting } from './login.routing';
 

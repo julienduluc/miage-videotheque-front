@@ -1,10 +1,10 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { APP_NAME } from '@core/constants/app.constant';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { APP_NAME } from './../constants/app.constant';
 import { LANGUAGES } from './language.constants';
 
 @Injectable({ providedIn: 'root' })
