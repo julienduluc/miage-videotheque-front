@@ -1,0 +1,21 @@
+image: node:lts
+
+stages:
+  - init
+  - build
+
+cache:
+  untracked: true
+
+init:
+  stage: init
+  script:
+    - npm ci
+
+build:
+  stage: build
+  script:
+    - npm run-script build
+  artifacts:
+    paths:
+      - dist/
