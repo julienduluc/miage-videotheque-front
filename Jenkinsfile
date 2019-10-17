@@ -1,4 +1,4 @@
-String DOCKER_IMAGE_NAME = 'scalio-front'
+String DOCKER_IMAGE_NAME = 'myapp-front'
 String APP_VERSION = params.APP_VERSION ?: 'latest'
 String REGISTRY_URL = 'http://127.0.0.1:30400'
 Boolean DEPLOY = params.DEPLOY ?: false

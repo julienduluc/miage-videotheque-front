@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ImportService } from './import.service';
 
 @Component({
-  selector: 'myApp-import',
+  selector: 'myapp-import',
   templateUrl: 'import.component.html',
   styleUrls: ['./import.component.scss']
 })

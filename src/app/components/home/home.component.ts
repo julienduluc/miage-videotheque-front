@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'myApp-home',
+  selector: 'myapp-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

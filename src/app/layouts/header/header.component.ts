@@ -4,7 +4,7 @@ import { LanguageService } from '@core/language/language.service';
 import { LoginService } from '@core/security/auth/login.service';
 
 @Component({
-  selector: 'myApp-header',
+  selector: 'myapp-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

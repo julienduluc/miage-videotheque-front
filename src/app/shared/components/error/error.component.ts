@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
  * Component use to display errors'message under fields and buttons
  */
 @Component({
-  selector: 'myApp-error',
+  selector: 'myapp-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss']
 })

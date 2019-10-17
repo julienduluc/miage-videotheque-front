@@ -2,9 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
+## Features
+
+* **Authentication:** JWT authentication handled.
+* **Layout:** Header and footer.
+* **Errors:** HTTP errors automatically handled.
+* **Message:** Messaging serving through toast.
+* **Files:** Download and upload service/component includes.
+* **Loader:** Automatic loader when calling http requests.
+* **Internationalization:** Using ngx-translate.
+* * **Path:** Shortcuts for TypeScript and SCSS imports.
+* * **Configuration:** VS Code config and recommended extensions.
+
 ## Customize app
 
-* Rename all occurrences of `MyApp` and `myApp` on the project to your project name.
+* Rename all occurrences of `MyApp`, `myApp` and `myapp` on the project to your project name.
 * Rename constants in `src/app/core/constants/app.constant.ts` :
   * `APP_NAME` : Your app name.
   * `SERVER_API` : Base url for api (exemple : "/api").

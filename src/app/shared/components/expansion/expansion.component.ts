@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 @Component({
-  selector: 'myApp-expansion',
+  selector: 'myapp-expansion',
   templateUrl: './expansion.component.html',
   styleUrls: ['./expansion.component.scss']
 })

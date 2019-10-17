@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'myApp-form-error',
+  selector: 'myapp-form-error',
   templateUrl: './form-error.component.html',
   styleUrls: ['./form-error.component.scss']
 })

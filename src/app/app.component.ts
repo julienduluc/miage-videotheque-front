@@ -17,7 +17,7 @@ import { takeUntil } from 'rxjs/operators';
 import { vendors } from './app.vendor';
 
 @Component({
-  selector: 'myApp-root',
+  selector: 'myapp-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

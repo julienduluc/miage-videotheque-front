@@ -9,7 +9,6 @@
     min-height: 300px;
     max-height: 360px;
     position: fixed;
-    /*it can be fixed too*/
     left: 0;
     right: 0;
     top: 0;
@@ -28,12 +27,4 @@
   &-actions {
     text-align: center;
   }
-}
-
-.mat-card-content {
-  height: 100%;
-  padding: 0 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around
 }

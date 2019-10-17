@@ -1,14 +1,28 @@
+# 1.1.2 (2019-10-17)
+
+### Bug Fixes
+
+* **Docker:** Removed command in error
+
+### Code Refactoring
+
+* **Renaming:** Generic `myapp` name
+
+### BREAKING CHANGES
+
+* **Build:** Changed build path and base href to `./`
+
 # 1.1.1 (2019-10-10)
+
+### Bug Fixes
+
+* **Authentication:** Removed unnecessary call to /whoami when you're on login page.
 
 ### Features
 
 * **Documentation:** Added Compodoc --> use npm run-script doc to generate docs.
 * **Path:** Added shortcut for TypeScript and SCSS imports.
 * **library:** Updated angular-fontawesome version to 0.5.0.
-
-### Bug Fixes
-
-* **Authentication:** Removed unnecessary call to /whoami when you're on login page.
 
 # 1.1.0 (2019-10-10)
 
@@ -28,5 +42,5 @@
 * **Errors:** HTTP errors automatically handled.
 * **Message:** Messaging serving through toast.
 * **Files:** Download and upload service/component includes.
-* **Loader:** Automatic loader when calling http request.
+* **Loader:** Automatic loader when calling http requests.
 * **Internationalization:** Using ngx-translate.

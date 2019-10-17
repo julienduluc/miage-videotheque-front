@@ -7,7 +7,7 @@ import { MessagesService } from '@core/messages/messages.service';
 import { LoginService } from '@core/security/auth/login.service';
 
 @Component({
-  selector: 'myApp-login',
+  selector: 'myapp-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private messageService: MessagesService,
     private errorService: ErrorService
-  ) { }
-
-  ngOnInit() {
-    if (this.loginService.isAuthenticated()) {
+  ) {
+    if (loginService.isAuthenticated()) {
       this.router.navigate(['']);
     }
+  }
 
+  ngOnInit() {
     this.initForm();
   }
 
