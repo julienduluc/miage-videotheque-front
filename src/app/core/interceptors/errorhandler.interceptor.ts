@@ -21,7 +21,9 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      tap((event: HttpEvent<any>) => { }, (err: any) => {
+      tap((event: HttpEvent<any>) => {
+         this.ngxLoadingService.stopLoader('main');
+      }, (err: any) => {
         this.ngxLoadingService.stopLoader('main');
 
         if (err instanceof HttpErrorResponse) {
