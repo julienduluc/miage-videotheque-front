@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UtilsService {
 
+  /**
+   * Proper copy of an object
+   */
   copyObject(object: any): any {
     let objectJson = null;
 
@@ -13,6 +16,10 @@ export class UtilsService {
     return JSON.parse(objectJson);
   }
 
+  /**
+   * Proper copy of a map
+   * @param map
+   */
   copyMap(map: Map<any, any>): Map<any, any> {
     const newMap = new Map();
 
@@ -42,4 +49,20 @@ export class UtilsService {
       window.dispatchEvent(event);
     }, timeout);
   }
+
+  /**
+   * Transform blob to an usable image for the hmlt
+   */
+  createImageFromBlob(image: Blob, index: number): any {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+      return reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
+  }
 }
+
