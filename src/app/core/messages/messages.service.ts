@@ -10,7 +10,10 @@ export class MessagesService {
 
   private translateService: TranslateService;
 
-  constructor(private readonly toastrService: ToastrService, private injector: Injector) { }
+  constructor(
+    private readonly toastrService: ToastrService,
+    private injector: Injector
+  ) { }
 
   /**
    * Green toast
@@ -23,15 +26,20 @@ export class MessagesService {
   showSuccess(msg: string) {
     this.translateService = this.injector.get(TranslateService);
     this.translateService.get(msg).subscribe((translation) => {
-      this.toastrService.success(translation.CONTENT, translation.TITLE, { closeButton: true, timeOut: 0 });
+      this.toastrService.success(translation.CONTENT, translation.TITLE, { closeButton: true, timeOut: 5000 });
     });
   }
 
   /**
    * Green toast
    */
-  showSuccessParam(title: string, content: string) {
-    this.toastrService.success(content, title, { closeButton: true, timeOut: 0 });
+  showSuccessParam(title: string, content: string, param: any) {
+    this.translateService = this.injector.get(TranslateService);
+    this.translateService.get(title).subscribe((titleTranslated) => {
+      this.translateService.get(content, param).subscribe((res) => {
+        this.toastrService.success(res, titleTranslated, { closeButton: true, timeOut: 5000 });
+      });
+    });
   }
 
   /**
@@ -52,11 +60,32 @@ export class MessagesService {
   /**
    * Red toast
    */
-  showErrorParam(title: string, content: string) {
-    this.toastrService.error(content, title, { closeButton: true, timeOut: 5000 });
+  showErrorParam(title: string, content: string, param: any) {
+    this.translateService = this.injector.get(TranslateService);
+    this.translateService.get(title).subscribe((titleTranslated) => {
+      this.translateService.get(content, param).subscribe((res) => {
+        this.toastrService.error(res, titleTranslated, { closeButton: true, timeOut: 5000 });
+      });
+    });
   }
 
   showErrorNoTranslate(msg: string) {
-    this.toastrService.error(msg, '', { closeButton: true, timeOut: 0 });
+    this.toastrService.error(msg, '', { closeButton: true, timeOut: 5000 });
+  }
+
+  /**
+   * Green toast
+   * Take one parameter that is an i18n string on this format :
+   * {
+   *  title: '',
+   *  content: ''
+   * }
+   */
+  showWarning(msg: string) {
+    this.translateService = this.injector.get(TranslateService);
+    this.translateService.get(msg).subscribe((translation) => {
+      this.toastrService.error(translation.CONTENT, translation.TITLE,
+        { closeButton: true, timeOut: 5000 });
+    });
   }
 }
