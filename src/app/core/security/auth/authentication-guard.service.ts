@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { MessagesService } from '@core/messages/messages.service';
 
 import { LoginService } from './login.service';
+import { StateStorageService } from './state-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationGuardService implements CanActivate {
@@ -10,7 +10,7 @@ export class AuthenticationGuardService implements CanActivate {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private errorService: MessagesService
+    private stateStorageService: StateStorageService
   ) {
   }
 
@@ -27,6 +27,7 @@ export class AuthenticationGuardService implements CanActivate {
           if (user) {
             return true;
           } else {
+            this.stateStorageService.storeUrl(currentRoute);
             this.router.navigate(['login']);
           }
 
