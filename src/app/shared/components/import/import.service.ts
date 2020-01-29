@@ -16,4 +16,14 @@ export class ImportService {
 
     return this.http.post<any>(url, formData);
   }
+
+  importFiles(files: Array<File>, url: string): Observable<any> {
+    const formData: FormData = new FormData();
+
+    for (const file of files) {
+      formData.append(BACK_FILE_IMPORT_ATTRIBUTE, file, file.name);
+    }
+
+    return this.http.post<any>(url, formData);
+  }
 }
