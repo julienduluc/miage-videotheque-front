@@ -1,0 +1,7 @@
+<div class="select-container" [style.width]="width">
+  <label>{{label | translate}} <ng-content></ng-content> <strong *ngIf="optional" class="optional">**</strong></label>
+  <div #myDiv [class]="'select-content ' + (disabled ? 'disabled' : '')" (click)="onClickSelect()">
+    <span *ngIf="!value">{{'SELECT.CHOICE' | translate}}</span>
+    <span *ngIf="value">{{text}}</span>
+  </div>
+</div>

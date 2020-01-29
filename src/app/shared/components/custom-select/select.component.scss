@@ -1,0 +1,49 @@
+@import 'color.scss';
+@import 'font.scss';
+
+.select {
+  &-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 0 20px 20px 0;
+
+    label {
+      color: $primary-orange;
+      font-size: 18px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    .optional {
+      color: $green;
+    }
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: $small-shadow;
+    text-align: center;
+    color: $greyText;
+    background-color: $primary-white;
+    font-size: $size2;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+      border: 2px solid $primary-orange;
+    }
+  }
+}
+
+.disabled {
+  background-color: $disabled-color !important;
+  opacity: 1 !important;
+  pointer-events: none;
+}

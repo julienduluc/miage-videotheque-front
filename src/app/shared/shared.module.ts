@@ -1,9 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { InputComponent } from '@sharedComponents/custom-input/input.component';
+import { SelectComponent } from '@sharedComponents/custom-select/select.component';
 
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { ErrorComponent } from './components/error/error.component';
-import { ExpansionComponent } from './components/expansion/expansion.component';
 import { FormErrorComponent } from './components/form-error/form-error.component';
 import { ImportComponent } from './components/import/import.component';
 import { ImportService } from './components/import/import.service';
@@ -18,12 +19,13 @@ import { SharedLibsModule } from './shared-libs.module';
   imports: [RouterModule, SharedLibsModule, SharedCommonModule],
   declarations: [
     ConfirmationDialogComponent,
-    ExpansionComponent,
     FormErrorDirective,
     PermissionDirective,
     ErrorComponent,
     FormErrorComponent,
-    ImportComponent
+    ImportComponent,
+    SelectComponent,
+    InputComponent
   ],
   providers: [
     FileDownloadService,
@@ -36,12 +38,13 @@ import { SharedLibsModule } from './shared-libs.module';
   exports: [
     SharedCommonModule,
     ConfirmationDialogComponent,
-    ExpansionComponent,
     FormErrorDirective,
     PermissionDirective,
     ErrorComponent,
     FormErrorComponent,
-    ImportComponent
+    ImportComponent,
+    SelectComponent,
+    InputComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,0 +1,33 @@
+<div class="input-container" [style.width]="width" [style.height]="height">
+  <label>{{label | translate}} <strong *ngIf="optional" class="optional">**</strong></label>
+  <ng-container *ngIf="inputPatterns">
+    <input *ngIf="type !== 'date' && type !== 'hour' && type !== 'datetime' && type !== 'time'" [type]="type"
+      [(ngModel)]='value' (blur)="touched($event)" [placeholder]="placeholder" [mask]="inputMask"
+      [patterns]="inputPatterns" [maxlength]="maxlength" [disabled]="disabled" thousandSeparator="-">
+  </ng-container>
+  <ng-container *ngIf="!inputPatterns">
+    <input *ngIf="type !== 'date' && type !== 'hour' && type !== 'datetime' && type !== 'time'" [type]="type"
+      [(ngModel)]='value' (blur)="touched($event)" [placeholder]="placeholder" [mask]="inputMask"
+      [maxlength]="maxlength" [disabled]="disabled">
+  </ng-container>
+  <mat-form-field *ngIf="type === 'date'">
+    <input matInput [matDatepicker]="picker" [placeholder]="placeholder" [(ngModel)]='value' (blur)="touched($event)"
+      [disabled]="disabled">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <ngx-timepicker-field *ngIf="type === 'hour'" [controlOnly]="dialog" [format]="24" [(ngModel)]='value'
+    (blur)="touched($event)" [disabled]="disabled">
+  </ngx-timepicker-field>
+  <ng-container *ngIf="type === 'datetime'">
+    <input [owlDateTime]="dt" [owlDateTimeTrigger]="dt" [placeholder]="placeholder" [(ngModel)]='value'
+      [disabled]="disabled" (blur)="touched($event)">
+    <owl-date-time #dt></owl-date-time>
+  </ng-container>
+  <ng-container *ngIf="type === 'time'">
+    <input type="text" [placeholder]="placeholder" [ngxTimepicker]="repairTime" [format]="24" [(ngModel)]='value'
+      readonly>
+    <ngx-material-timepicker [minutesGap]="minutesGap" #repairTime>
+    </ngx-material-timepicker>
+  </ng-container>
+</div>
