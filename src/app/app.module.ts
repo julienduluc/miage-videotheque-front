@@ -1,6 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthExpiredInterceptor } from '@core/interceptors/auth-expired.interceptor';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
@@ -46,6 +47,14 @@ import { SharedModule } from './shared/shared.module';
         ErrorService
       ]
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthExpiredInterceptor,
+      multi: true,
+      deps: [
+        Injector
+      ]
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

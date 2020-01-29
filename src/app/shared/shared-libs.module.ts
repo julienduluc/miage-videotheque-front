@@ -22,13 +22,16 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularDraggableModule } from 'angular2-draggable';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { AvatarModule } from 'ngx-avatar';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { NgxMaskModule } from 'ngx-mask';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER } from 'ngx-ui-loader';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -70,7 +73,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AngularDraggableModule,
     NgxChartsModule,
     MatIconModule,
-    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    AvatarModule,
+    NgxMaterialTimepickerModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    NgxExtendedPdfViewerModule
   ],
   declarations: [],
   providers: [],
@@ -103,7 +111,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatInputModule,
     NgxChartsModule,
     MatIconModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
+    AvatarModule,
+    NgxMaterialTimepickerModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    NgxExtendedPdfViewerModule
   ],
 })
 export class SharedLibsModule {
