@@ -6,6 +6,8 @@
   position: relative;
   width: 100%;
   height: calc(100vh - #{$headerHeight});
+  // min-height: calc(100vh);
+  // height: auto;
   padding: 0;
   margin: 0;
   background-color: $content-background;
@@ -21,6 +23,7 @@
   &-container {
     width: 100%;
     min-height: 100%;
+    height: auto;
     padding: $marginContent;
     margin-bottom: -$footerHeight;
 
@@ -43,6 +46,14 @@
       display: block;
       width: 100%;
       height: $headerHeight;
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  .content {
+    &-container {
+      padding: $marginContent 30px !important;
     }
   }
 }
