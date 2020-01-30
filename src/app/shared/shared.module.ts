@@ -4,6 +4,7 @@ import { InputComponent } from '@sharedComponents/custom-input/input.component';
 import { SelectComponent } from '@sharedComponents/custom-select/select.component';
 
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { SelectDialogComponent } from './components/custom-select/dialog/select-dialog.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FormErrorComponent } from './components/form-error/form-error.component';
 import { ImportComponent } from './components/import/import.component';
@@ -25,6 +26,7 @@ import { SharedLibsModule } from './shared-libs.module';
     FormErrorComponent,
     ImportComponent,
     SelectComponent,
+    SelectDialogComponent,
     InputComponent
   ],
   providers: [
@@ -34,6 +36,7 @@ import { SharedLibsModule } from './shared-libs.module';
   ],
   entryComponents: [
     ConfirmationDialogComponent,
+    SelectDialogComponent
   ],
   exports: [
     SharedCommonModule,

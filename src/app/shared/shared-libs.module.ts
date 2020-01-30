@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
@@ -59,6 +60,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatSlideToggleModule,
     MatMenuModule,
     MatButtonModule,
+    MatDatepickerModule,
     MatInputModule,
     MatCardModule,
     NgbDropdownModule,
@@ -92,6 +94,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatDialogModule,
     MatFormFieldModule,
     MatSidenavModule,
+    MatDatepickerModule,
     MatSlideToggleModule,
     MatButtonModule,
     MatCardModule,
