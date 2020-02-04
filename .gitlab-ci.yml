@@ -10,6 +10,9 @@ cache:
 
 init:
   stage: init
+  cache:
+    paths:
+      - node_modules/
   script:
     - npm ci
 
@@ -17,6 +20,8 @@ tests:
   stage: tests
   cache:
     policy: pull
+    paths:
+      - node_modules/
   script:
     - npm run test-ci
     - npm run e2e-ci
