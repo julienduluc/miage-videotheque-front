@@ -6,7 +6,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './layouts/header/header.component';
+import { AppModule } from './app.module';
 
 // FIXME : create a proper mock
 class MockStorageService {
@@ -34,6 +34,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        AppModule,
         RouterTestingModule,
         HttpClientTestingModule,
         TranslateModule.forRoot({
@@ -44,8 +45,6 @@ describe('AppComponent', () => {
         })
       ],
       declarations: [
-        AppComponent,
-        HeaderComponent
       ],
       providers: [
         TranslateService,

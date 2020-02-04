@@ -12,6 +12,9 @@ export class ErrorService {
         && !message.toLowerCase().includes('exception')
         && !message.toLowerCase().includes('java')
         && !message.toLowerCase().includes('required')
+        && !message.toLowerCase().includes('unauthorized')
+        && !message.toLowerCase().includes('jwt')
+        && !message.toLowerCase().includes('no message')
         && !message.toLowerCase().includes('spring'))) {
       result = true;
     }

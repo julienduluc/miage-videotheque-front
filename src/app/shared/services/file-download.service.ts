@@ -38,11 +38,19 @@ export class FileDownloadService {
     return (matches[1] || 'untitled').trim();
   }
 
-  downloadFileGet(fileUrl: string, message?: string) {
+  downloadFileGet(fileUrl: string, message?: string, filename?: string) {
     this.http.get(fileUrl, { observe: 'response', responseType: 'blob' })
       .pipe(catchError((error) => this.parseErrorBlob(error))).pipe(first()).subscribe(
         (response) => {
-          FileDownloadService.saveFile(response.body, FileDownloadService.getFileNameFromResponseContentDisposition(response));
+          let filenameToDownload = '';
+
+          if (filename) {
+            filenameToDownload = filename;
+          } else {
+            filenameToDownload = FileDownloadService.getFileNameFromResponseContentDisposition(response);
+          }
+
+          FileDownloadService.saveFile(response.body, filenameToDownload);
 
           if (message) {
             this.messageService.showSuccess(message);
@@ -50,11 +58,19 @@ export class FileDownloadService {
         });
   }
 
-  downloadFilePost(fileUrl: string, body: any, message?: string) {
+  downloadFilePost(fileUrl: string, body: any, message?: string, filename?: string) {
     this.http.post(fileUrl, body, { observe: 'response', responseType: 'blob' })
       .pipe(catchError((error) => this.parseErrorBlob(error))).pipe(first()).subscribe(
         (response) => {
-          FileDownloadService.saveFile(response.body, FileDownloadService.getFileNameFromResponseContentDisposition(response));
+          let filenameToDownload = '';
+
+          if (filename) {
+            filenameToDownload = filename;
+          } else {
+            filenameToDownload = FileDownloadService.getFileNameFromResponseContentDisposition(response);
+          }
+
+          FileDownloadService.saveFile(response.body, filenameToDownload);
 
           if (message) {
             this.messageService.showSuccess(message);
