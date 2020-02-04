@@ -2,6 +2,7 @@ image: node:lts
 
 stages:
   - init
+  - tests
   - build
 
 cache:
@@ -11,6 +12,14 @@ init:
   stage: init
   script:
     - npm ci
+
+test:
+  stage: test
+  cache:
+    policy: pull
+  script:
+    - npm run test-ci
+    - npm run e2e-ci
 
 build:
   stage: build
