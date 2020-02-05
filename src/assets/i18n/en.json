@@ -16,7 +16,8 @@
         "CONTENT": "Please try again or contact our support.",
         "TITLE": "Server unavailable"
       }
-    }
+    },
+     "TITLE": "Error"
   },
   "HOME": {
     "PAGE_TITLE": "Home"

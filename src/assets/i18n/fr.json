@@ -16,7 +16,8 @@
         "CONTENT": "Merci de réessayer ultérieurement ou de contacter le support.",
         "TITLE": "Serveur indisponible"
       }
-    }
+    },
+    "TITLE": "Erreur"
   },
   "HOME": {
     "PAGE_TITLE": "Accueil"

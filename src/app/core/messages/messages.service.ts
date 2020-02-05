@@ -69,8 +69,14 @@ export class MessagesService {
     });
   }
 
+  /**
+   * Red Toast with message without translation.
+   */
   showErrorNoTranslate(msg: string) {
-    this.toastrService.error(msg, '', { closeButton: true, timeOut: 5000 });
+    this.translateService = this.injector.get(TranslateService);
+    this.translateService.get('ERRORS.TITLE').subscribe((titleTranslated) => {
+      this.toastrService.error(msg, titleTranslated, { closeButton: true, timeOut: 5000 });
+    });
   }
 
   /**
