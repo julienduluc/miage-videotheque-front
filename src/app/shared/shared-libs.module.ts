@@ -123,9 +123,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   ],
 })
 export class SharedLibsModule {
-  static forRoot() {
+  static forRoot(): ModuleWithProviders<SharedLibsModule> {
     return {
-      ngModule: SharedLibsModule
+        ngModule: SharedLibsModule
     };
-  }
+}
 }

@@ -52,11 +52,10 @@ import { SharedLibsModule } from './shared-libs.module';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule {
-  static forRoot() {
+  static forRoot(): ModuleWithProviders<SharedModule> {
     return {
-      ngModule: SharedModule,
-      providers: [
-      ]
+        ngModule: SharedModule,
+        providers: []
     };
-  }
+}
 }

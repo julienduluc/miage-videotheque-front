@@ -32,7 +32,7 @@ export function translateLoader(http: HttpClient) {
   ]
 })
 export class LanguageModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<LanguageModule> {
     return {
       ngModule: LanguageModule,
       providers: [
@@ -47,7 +47,7 @@ export class LanguageModule {
       ]
     };
   }
-  static forChild(): ModuleWithProviders {
+  static forChild(): ModuleWithProviders<LanguageModule> {
     return {
       ngModule: LanguageModule,
       providers: []
