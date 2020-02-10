@@ -19,11 +19,6 @@
   <ngx-timepicker-field *ngIf="type === 'hour'" [controlOnly]="dialog" [format]="24" [(ngModel)]='value'
     (blur)="touched($event)" [disabled]="disabled">
   </ngx-timepicker-field>
-  <ng-container *ngIf="type === 'datetime'">
-    <input [owlDateTime]="dt" [owlDateTimeTrigger]="dt" [placeholder]="placeholder" [(ngModel)]='value'
-      [disabled]="disabled" (blur)="touched($event)">
-    <owl-date-time #dt></owl-date-time>
-  </ng-container>
   <ng-container *ngIf="type === 'time'">
     <input type="text" [placeholder]="placeholder" [ngxTimepicker]="repairTime" [format]="24" [(ngModel)]='value'
       readonly>

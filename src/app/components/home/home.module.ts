@@ -24,8 +24,6 @@ import { homeRouting } from './home.routing';
       useClass: LanguageService
     }
   ],
-  entryComponents: [
-  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
   ],

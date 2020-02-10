@@ -1,15 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -42,7 +31,7 @@ export class SelectComponent implements OnInit, OnChanges, ControlValueAccessor 
 
   text: string;
 
-  @ViewChild('myDiv', null) divView: ElementRef;
+  // @ViewChild('myDiv', null) divView: ElementRef;
 
   constructor(
     private dialog: MatDialog,
@@ -92,9 +81,9 @@ export class SelectComponent implements OnInit, OnChanges, ControlValueAccessor 
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
     if (isDisabled) {
-      this._renderer.addClass(this.divView.nativeElement, 'disabled');
+      // this._renderer.addClass(this.divView.nativeElement, 'disabled');
     } else {
-      this._renderer.removeClass(this.divView.nativeElement, 'disabled');
+      // this._renderer.removeClass(this.divView.nativeElement, 'disabled');
     }
   }
 

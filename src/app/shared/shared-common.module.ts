@@ -9,8 +9,6 @@ import { SharedLibsModule } from './shared-libs.module';
   declarations: [
   ],
   providers: [],
-  entryComponents: [
-  ],
   exports: [
     SharedLibsModule
   ],

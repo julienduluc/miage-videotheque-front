@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { InputComponent } from '@sharedComponents/custom-input/input.component';
 import { SelectComponent } from '@sharedComponents/custom-select/select.component';
@@ -34,10 +34,6 @@ import { SharedLibsModule } from './shared-libs.module';
     ImportService,
     UtilsService
   ],
-  entryComponents: [
-    ConfirmationDialogComponent,
-    SelectDialogComponent
-  ],
   exports: [
     SharedCommonModule,
     ConfirmationDialogComponent,
@@ -54,8 +50,8 @@ import { SharedLibsModule } from './shared-libs.module';
 export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
-        ngModule: SharedModule,
-        providers: []
+      ngModule: SharedModule,
+      providers: []
     };
-}
+  }
 }

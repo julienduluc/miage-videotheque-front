@@ -64,12 +64,10 @@
               ]
             },
             "es5": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
+              "budgets": [{
+                "type": "anyComponentStyle",
+                "maximumWarning": "6kb"
+              }],
               "tsConfig": "./tsconfig-es5.app.json"
             }
           }

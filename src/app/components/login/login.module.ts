@@ -22,8 +22,6 @@ import { loginRouting } from './login.routing';
       useClass: LanguageService
     }
   ],
-  entryComponents: [
-  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
   ],

@@ -1,7 +1,7 @@
-@import "color";
-@import "font";
-@import "components";
-@import "size";
+@import "color.scss";
+@import "font.scss";
+@import "components.scss";
+@import "size.scss";
 
 .login {
   &-card {
