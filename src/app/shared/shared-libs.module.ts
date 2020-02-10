@@ -19,11 +19,9 @@ import { LanguageModule } from '@core/language/language.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbDropdownModule, NgbModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { NguCarouselModule } from '@ngu/carousel';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularDraggableModule } from 'angular2-draggable';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AvatarModule } from 'ngx-avatar';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { NgxMaskModule } from 'ngx-mask';
@@ -71,15 +69,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AutoCompleteModule,
     MatTooltipModule,
     MatRadioModule,
-    NguCarouselModule,
     AngularDraggableModule,
     NgxChartsModule,
     MatIconModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     AvatarModule,
     NgxMaterialTimepickerModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
     NgxExtendedPdfViewerModule
   ],
   declarations: [],
@@ -109,7 +104,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AutoCompleteModule,
     MatTooltipModule,
     MatRadioModule,
-    NguCarouselModule,
     AngularDraggableModule,
     MatInputModule,
     NgxChartsModule,
@@ -117,15 +111,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule,
     AvatarModule,
     NgxMaterialTimepickerModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
     NgxExtendedPdfViewerModule
   ],
 })
 export class SharedLibsModule {
   static forRoot(): ModuleWithProviders<SharedLibsModule> {
     return {
-        ngModule: SharedLibsModule
+      ngModule: SharedLibsModule
     };
-}
+  }
 }
