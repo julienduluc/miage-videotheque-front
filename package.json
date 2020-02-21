@@ -19,6 +19,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand",
+    "test:karma": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e-ci": "ng e2e --protractor-config=e2e/protractor-ci.conf.js",
