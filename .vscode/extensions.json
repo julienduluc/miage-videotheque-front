@@ -21,6 +21,9 @@
     "alefragnani.project-manager",
     "rbbit.typescript-hero",
     "ms-vsliveshare.vsliveshare",
-    "yzhang.markdown-all-in-one"
+    "yzhang.markdown-all-in-one",
+    "orta.vscode-jest",
+    "andys8.jest-snippets",
+    "firsttris.vscode-jest-runner"
   ]
 }
