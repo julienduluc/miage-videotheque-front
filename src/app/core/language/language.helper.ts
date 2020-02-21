@@ -1,5 +1,5 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { APP_NAME } from '@core/constants/app.constant';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
@@ -16,7 +16,8 @@ export class LanguageHelper {
     private translateService: TranslateService,
     private rootRenderer: RendererFactory2,
     private titleService: Title,
-    private router: Router
+    private router: Router,
+    private meta: Meta
   ) {
     this._language = new BehaviorSubject<string>(this.translateService.currentLang);
     this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);
@@ -45,6 +46,7 @@ export class LanguageHelper {
 
     this.translateService.get(['APP.NAME', titleKey]).subscribe(title => {
       this.titleService.setTitle(title['APP.NAME'] + ': ' + title[titleKey]);
+      this.meta.updateTag({ property: 'og:title', content: title[titleKey] });
     });
   }
 

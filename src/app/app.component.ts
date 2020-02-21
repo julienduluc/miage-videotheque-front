@@ -1,12 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
-  Router,
-} from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { LanguageHelper } from '@core/language/language.helper';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { TranslateService } from '@ngx-translate/core';
@@ -45,7 +38,6 @@ export class AppComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationStart) {
         this.ngxLoadingService.startLoader('main');
       } else if (event instanceof NavigationEnd) {
-        this.languageHelper.updateTitle(this.getPageTitle(this.router.routerState.snapshot.root));
         this.ngxLoadingService.stopLoader('main');
       } else if (event instanceof NavigationError) {
         //  this.messagesService.showError('NAVIGATION.FAIL');
@@ -59,20 +51,5 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  /**
-   * Get page title from route's datas
-   * @private
-   * @param {ActivatedRouteSnapshot} routeSnapshot
-   * @returns
-   * @memberof AppComponent
-   */
-  private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
-    let title: string = routeSnapshot.data && routeSnapshot.data.pageTitle ? routeSnapshot.data.pageTitle : 'MyApp';
-    if (routeSnapshot.firstChild) {
-      title = this.getPageTitle(routeSnapshot.firstChild) || title;
-    }
-    return title;
   }
 }
