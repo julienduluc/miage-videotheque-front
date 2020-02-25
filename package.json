@@ -18,7 +18,8 @@
     "doc": "./node_modules/.bin/compodoc -p tsconfig.json",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:ci": "jest --runInBand",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --runInBand --coverage --reporters=default --reporters=jest-junit",
     "test:karma": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -54,7 +55,17 @@
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!@amcharts/).+\\.js$"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html",
+      "text"
     ]
+  },
+  "jest-junit": {
+    "outputDirectory": "./tests",
+    "outputName": "junit_jest.xml"
   },
   "dependencies": {
     "@angular/animations": "~9.0.0",
@@ -113,6 +124,7 @@
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "jest": "^25.1.0",
+    "jest-junit": "^10.0.0",
     "jest-preset-angular": "^8.0.0",
     "karma": "~4.3.0",
     "karma-chrome-launcher": "~3.1.0",

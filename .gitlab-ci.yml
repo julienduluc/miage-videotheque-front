@@ -19,11 +19,21 @@ init:
 test:
   script:
     - npm run test:ci
+  artifacts:
+    expire_in: 31d
+    when: always
+    paths:
+      - coverage/
+    reports:
+      junit: tests/junit_jest.xml
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
 build:
   stage: build
   script:
     - npm run-script build
   artifacts:
+    expire_in: 2d
+    when: always
     paths:
       - dist/
