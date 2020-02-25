@@ -1,6 +1,10 @@
 # MyApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+
+## Documentation
+
+* **See:** [Start Pack documentation](https://its-bdx.atlassian.net/wiki/spaces/CDS/pages/911081558/Starter+Pack).
 
 ## Features
 
@@ -39,7 +43,7 @@ Run `npm run-script doc` to build the project's documentation. The documentation
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [jest]
 
 ## Running end-to-end tests
 

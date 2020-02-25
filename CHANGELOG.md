@@ -1,3 +1,18 @@
+# 2.0.0 (2010-02-25)
+
+### Bug Fixes
+
+* **Test:** Test now works
+
+### Features
+
+* **Tests:** Added Jest
+* **CI:** CI now runs jest tests and show test coverage
+
+### BREAKING CHANGES
+
+* **Build:** Angular 9 and ivy is now used
+
 # 1.1.2 (2019-10-17)
 
 ### Bug Fixes
