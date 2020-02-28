@@ -1,3 +1,9 @@
+# 2.0.1 (2010-02-28)
+
+### Bug Fixes
+
+* **Build:** Bug with es5 modules for ie compability on dev mode
+
 # 2.0.0 (2010-02-25)
 
 ### Bug Fixes

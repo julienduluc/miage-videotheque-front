@@ -9,15 +9,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatRadioModule } from '@angular/material/radio';
 import { LanguageModule } from '@core/language/language.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbDropdownModule, NgbModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { AvatarModule } from 'ngx-avatar';
@@ -68,7 +67,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatTooltipModule,
     MatRadioModule,
     AngularDraggableModule,
-    NgxChartsModule,
     MatIconModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     AvatarModule,
@@ -104,7 +102,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatRadioModule,
     AngularDraggableModule,
     MatInputModule,
-    NgxChartsModule,
     MatIconModule,
     NgxUiLoaderModule,
     AvatarModule,
