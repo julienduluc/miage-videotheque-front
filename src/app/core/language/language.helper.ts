@@ -58,7 +58,7 @@ export class LanguageHelper {
     });
   }
 
-  private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
+  getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
     let title: string = routeSnapshot.data && routeSnapshot.data.pageTitle ? routeSnapshot.data.pageTitle : APP_NAME;
     if (routeSnapshot.firstChild) {
       title = this.getPageTitle(routeSnapshot.firstChild) || title;

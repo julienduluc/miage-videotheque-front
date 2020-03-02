@@ -1,3 +1,9 @@
+# 2.0.2 (2010-03-02)
+
+### Bug Fixes
+
+* **i18n:** Page title is now correctly updated
+
 # 2.0.1 (2010-02-28)
 
 ### Bug Fixes

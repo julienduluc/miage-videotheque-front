@@ -38,6 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationStart) {
         this.ngxLoadingService.startLoader('main');
       } else if (event instanceof NavigationEnd) {
+        this.languageHelper.updateTitle(this.languageHelper.getPageTitle(this.router.routerState.snapshot.root));
         this.ngxLoadingService.stopLoader('main');
       } else if (event instanceof NavigationError) {
         //  this.messagesService.showError('NAVIGATION.FAIL');
