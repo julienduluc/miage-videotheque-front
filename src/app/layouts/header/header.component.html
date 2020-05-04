@@ -1,29 +1,18 @@
 <div class="header">
   <a routerLink="/">
     <div class="header-title">
-      <img class="title-logo" alt="Logo" src="../../../assets/images/logo_df.png" />
+      <img class="title-logo" alt="Logo" src="../../../assets/images/logo_ubordeaux.png" />
     </div>
   </a>
   <div *ngIf="isAuthenticated()">
     <ul class="nav nav-pills menu">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active">{{ 'MENU.HOME' | translate }}</a>
+        <a class="nav-link" routerLink="/" routerLinkActive="active">Accueil</a>
       </li>
-      <li class="nav-item">
-        <a [matMenuTriggerFor]="menu" class="nav-link">
-          <span>
-            {{ 'MENU.LANGUAGE' | translate }}
-          </span>
-          <mat-menu #menu="matMenu" [overlapTrigger]="false">
-            <button mat-menu-item *ngFor="let language of languages"
-              (click)="changeLanguage(language)">{{language | findLanguageFromKey}}
-            </button>
-          </mat-menu>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="logout()">{{ 'MENU.LOGOUT' | translate }}</a>
-      </li>
+
+      <!--<li class="nav-item">
+        <a class="nav-link" (click)="logout()">Déconnexion</a>
+      </li>-->
     </ul>
   </div>
 </div>

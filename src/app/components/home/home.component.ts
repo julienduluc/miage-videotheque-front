@@ -10,11 +10,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private unsubscribe$ = new Subject();
 
-  constructor(
-  ) { }
+  constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngOnDestroy() {
     this.unsubscribe$.next();

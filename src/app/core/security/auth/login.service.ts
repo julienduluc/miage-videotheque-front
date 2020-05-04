@@ -8,7 +8,7 @@ import { AuthServerProvider } from './auth-jwt.service';
 export class LoginService {
   errorMessage = '';
 
-  private authenticated = false;
+  private authenticated = true;
   private userIdentity: any;
 
   constructor(
@@ -18,7 +18,7 @@ export class LoginService {
   ) { }
 
   login(credentials, callback?) {
-    const cb = callback || function () { };
+    const cb = callback || function() { };
     return new Promise((resolve, reject) => {
       this.authServerProvider.login(credentials).subscribe(
         data => {

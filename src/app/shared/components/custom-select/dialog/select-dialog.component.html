@@ -1,7 +1,0 @@
-<div class="dialog-container">
-  <div *ngIf="optional" class="dialog-data" (click)="onClickEntry('')"></div>
-  <div class="dialog-data" *ngFor="let entry of entries" (click)="onClickEntry(entry)">
-    <ng-container *ngIf="labelVar"> {{entry[labelVar]}}</ng-container>
-    <ng-container *ngIf="!labelVar"> {{entry}}</ng-container>
-  </div>
-</div>

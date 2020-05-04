@@ -28,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER } from 'ngx-ui-loader';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FullCalendarModule } from 'primeng/fullcalendar';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -71,7 +72,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     AvatarModule,
     NgxMaterialTimepickerModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    FullCalendarModule
   ],
   declarations: [],
   providers: [],
@@ -106,7 +108,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule,
     AvatarModule,
     NgxMaterialTimepickerModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    FullCalendarModule
   ],
 })
 export class SharedLibsModule {

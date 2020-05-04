@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuardService } from '@core/security/auth/authentication-guard.service';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -8,13 +7,14 @@ const ROUTES: Routes = [
   {
     path: '',
     loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule),
-    canActivate: [AuthenticationGuardService]
-  },
+    canActivate: []
+  }
+  /*,
   {
     path: 'login',
     loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule),
-    canActivate: [AuthenticationGuardService]
-  }
+    canActivate: []
+  }*/
 ];
 
 @NgModule({

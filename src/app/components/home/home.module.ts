@@ -7,6 +7,7 @@ import { LanguageService } from 'src/app/core/language/language.service';
 
 import { HomeComponent } from './home.component';
 import { homeRouting } from './home.routing';
+import { HomeService } from './home.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { homeRouting } from './home.routing';
     {
       provide: LanguageService,
       useClass: LanguageService
-    }
+    },
+    HomeService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
