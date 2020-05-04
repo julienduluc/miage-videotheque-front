@@ -15,6 +15,7 @@ import { LanguageModule } from './core/language/language.module';
 import { MessagesService } from './core/messages/messages.service';
 import { LayoutsModule } from './layouts/layout.module';
 import { SharedModule } from './shared/shared.module';
+import { FilmComponent } from './components/film/film.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { SharedModule } from './shared/shared.module';
 
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    FilmComponent
   ],
   providers: [
     // { provide: LOCALE_ID, useValue: 'fr-FR' },

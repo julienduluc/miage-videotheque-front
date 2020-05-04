@@ -4,5 +4,12 @@
 @import "size.scss";
 
 .home {
-  &-content {}
+  &-content {
+
+    .title {
+      color: $black;
+      font-size: $size6;
+      text-align: center;
+    }
+  }
 }

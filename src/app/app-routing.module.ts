@@ -8,13 +8,18 @@ const ROUTES: Routes = [
     path: '',
     loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule),
     canActivate: []
+  },
+  {
+    path: 'film',
+    loadChildren: () => import('./components/film/film.module').then(m => m.FilmModule),
+    canActivate: []
   }
-  /*,
+  ,
   {
     path: 'login',
     loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule),
     canActivate: []
-  }*/
+  }
 ];
 
 @NgModule({

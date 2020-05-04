@@ -1,0 +1,28 @@
+<ng-container *ngIf="filmSelected; else noData">
+  <div class="film-container">
+    <div class="title">
+      {{filmSelected?.name}}
+    </div>
+
+    <div>
+      infos .....
+    </div>
+
+  </div>
+</ng-container>
+<ng-template #noData>
+  <div class="no-data-container">
+    <div class="left">
+      <fa-icon icon="search"></fa-icon>
+    </div>
+
+    <div class="right">
+      <p>
+        Aucun résultat
+      </p>
+      <p>
+        Veuillez rechercher un film
+      </p>
+    </div>
+  </div>
+</ng-template>
