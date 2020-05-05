@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
 
   search(event: any) {
     this.filmsService.getFilmsByName(event.query).subscribe(films => {
-      this.films = [...films];
+      this.films = [...films.results];
     });
   }
 

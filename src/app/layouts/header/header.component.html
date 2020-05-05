@@ -6,7 +6,7 @@
   </a>
   <div *ngIf="isAuthenticated()">
     <p-autoComplete #auto class="autocomplete" [(ngModel)]="filmName" [suggestions]="films"
-      (completeMethod)="search($event)" field="name" placeholder="Rechercher un film ..." (onSelect)="onSelect($event)"
+      (completeMethod)="search($event)" field="title" placeholder="Rechercher un film ..." (onSelect)="onSelect($event)"
       [forceSelection]="true" [delay]="1000" [minLength]="3" [size]="60">
     </p-autoComplete>
   </div>

@@ -1,32 +1,27 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Film } from '@shared/models/film.model';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-import { UtilsService } from './utils.service';
+const httpOptions = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+let param = new HttpParams().set('api_key', 'e6fa63e454efad680e9c890b9dc30a88');
 
-const films: Film[] = [
-  { id: 1, name: 'Titanic' },
-  { id: 2, name: 'Pulp Fiction' },
-  { id: 3, name: 'Avatar' },
-  { id: 4, name: 'Inception' },
-  { id: 5, name: 'Fight club' },
-];
 
 @Injectable()
 export class FilmsService {
 
-  url: '';
+  private url = 'https://api.themoviedb.org/3/search/movie';
+  private apiKey = 'e6fa63e454efad680e9c890b9dc30a88';
+
   public currentFilm$ = new BehaviorSubject<Film>(null);
 
   constructor(
-    private http: HttpClient,
-    private utilsService: UtilsService
+    private http: HttpClient
   ) { }
 
   getFilmsByName(name: string) {
-    // return this.http.get<Film[]>(this.url);
-    return of(films);
+    param = param.append('query', name);
+    return this.http.get<any>(this.url, { headers: httpOptions, params: param });
   }
 
   getCurrentFilm() {
@@ -34,8 +29,7 @@ export class FilmsService {
   }
 
   setCurrentFilm(film: Film) {
-    const newFilm = films.find(x => x.id === film.id);
-    this.currentFilm$.next(this.utilsService.copyObject(newFilm));
+    this.currentFilm$.next(film);
   }
 
 
