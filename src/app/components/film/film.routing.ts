@@ -6,10 +6,16 @@ import { FilmComponent } from './film.component';
 const routes: Routes = [
   {
     path: '',
+    canActivate: [],
+    data: { pageTitle: 'HOME.PAGE_TITLE' }
+  },
+  {
+    path: ':id',
     component: FilmComponent,
     canActivate: [],
     data: { pageTitle: 'HOME.PAGE_TITLE' }
   }
+
 ];
 
 export const filmRouting: ModuleWithProviders = RouterModule.forChild(routes);

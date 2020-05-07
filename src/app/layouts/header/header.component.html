@@ -6,8 +6,22 @@
   </a>
   <div *ngIf="isAuthenticated()">
     <p-autoComplete #auto class="autocomplete" [(ngModel)]="filmName" [suggestions]="films"
-      (completeMethod)="search($event)" field="title" placeholder="Rechercher un film ..." (onSelect)="onSelect($event)"
-      [forceSelection]="true" [delay]="1000" [minLength]="3" [size]="60">
+      (completeMethod)="search($event)" field="title release_date" placeholder="Rechercher un film ..."
+      (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000" [minLength]="3" [size]="60">
+
+      <ng-template let-film pTemplate="item">
+        <div class="ui-helper-clearfix item items-container">
+          <div style="width:32px;margin:5px 0 2px 5px;min-height: 48px;">
+            <img *ngIf="film?.poster_path" src="https://image.tmdb.org/t/p/w92/{{film?.poster_path}}"
+              style="width:32px;" />
+          </div>
+
+          <div style=" font-size:16px;margin-left:10px">
+            {{film?.title}} ({{film?.release_date | date:'yyyy'}})
+          </div>
+        </div>
+      </ng-template>
+
     </p-autoComplete>
   </div>
   <div *ngIf="isAuthenticated()">

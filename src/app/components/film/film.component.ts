@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Film } from '@shared/models/film.model';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
@@ -13,13 +14,19 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   private unsubscribe$ = new Subject();
   filmSelected: Film;
+  id: number;
 
   constructor(
-    private filmsService: FilmsService
+    private filmsService: FilmsService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    // Lors d'un changement de film
+
+    // Récupère l'id du film dans l'URL
+    this.id = +this.route.snapshot.paramMap.get('id');
+
+    // Détection : changement de film dans la barre de recherche
     this.filmsService.currentFilm$.pipe(takeUntil(this.unsubscribe$)).subscribe(
       (film) => {
         if (film) {
@@ -27,6 +34,12 @@ export class FilmComponent implements OnInit, OnDestroy {
         }
       });
 
+    // Récupère les infos du film sélectionné
+    this.filmsService.getFilmById(this.id).subscribe((film) => {
+      if (film) {
+        this.filmSelected = film;
+      }
+    });
   }
 
   ngOnDestroy() {

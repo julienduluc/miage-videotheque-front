@@ -32,6 +32,7 @@ import {
   faSort,
   faSortDown,
   faSortUp,
+  faStar,
   faSync,
   faTachometerAlt,
   faTasks,
@@ -52,6 +53,6 @@ export function vendors(library: any) {
     faHeart, faList, faBell, faTasks, faBook, faHdd, faFlag,
     faWrench, faClock, faCloud, faSignOutAlt, faSignInAlt,
     faCalendarAlt, faSearch, faTrashAlt, faAsterisk,
-    faLock, faEyeSlash, faEyeDropper, faFolder, faEdit,
+    faLock, faEyeSlash, faEyeDropper, faFolder, faEdit, faStar,
     faAtom, faDatabase, faUserCircle, faExclamationCircle);
 }

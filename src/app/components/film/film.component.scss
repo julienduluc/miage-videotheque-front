@@ -3,32 +3,44 @@
 @import "components.scss";
 @import "size.scss";
 
-.film-container {
+.top {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: $size4;
+
   .title {
-    font-size: $size5;
-    color: $black;
-    text-align: center;
+    font-weight: bold;
+  }
+
+  .icon-star {
+    font-size: $size6;
+    color: $secondary-yellow;
   }
 }
 
-.no-data-container {
+.film-container {
   display: flex;
-  justify-content: space-between;
-  height: 100px;
 
-  .left {
-    width: 20%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-size: $size4;
+  .poster {
+
   }
 
   .right {
-    width: 80%;
-    flex-direction: column;
+
+    margin-left: 30px;
     display: flex;
-    justify-content: center;
-    font-size: $size3;
+    flex-direction: column;
+
+
+    .title {
+font-size: $size4;
+    }
+
+    .overview {
+      font-size: $size3;
+    }
+
   }
 }

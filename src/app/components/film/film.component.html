@@ -1,18 +1,41 @@
 <ng-container *ngIf="filmSelected; else noData">
-  <div class="film-container">
+
+  <div class="top">
     <div class="title">
-      {{filmSelected?.title}}
+      {{filmSelected?.title}} ({{filmSelected?.release_date | date: 'yyyy'}})
     </div>
 
-    <div>
-      infos .....
+    <div class="rates">
+      <fa-icon icon="star" class="icon-star"></fa-icon>
+      {{filmSelected?.vote_average}}/10
+      ({{filmSelected?.vote_count}} votes)
+    </div>
+
+    <div class="logos">
+
+    </div>
+  </div>
+  <div class="film-container">
+    <div class="poster">
+      <img src="https://image.tmdb.org/t/p/w342/{{filmSelected?.poster_path}}">
+    </div>
+
+    <div class="right">
+      <p class="title">Synopsis</p>
+      <p class="overview">
+        {{filmSelected?.overview}}
+      </p>
     </div>
 
   </div>
 </ng-container>
+
+
+
+
 <ng-template #noData>
-  <div class="no-data-container">
-    <div class="left">
+  <div class="film-container">
+    <div class="poster">
       <fa-icon icon="search"></fa-icon>
     </div>
 

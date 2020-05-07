@@ -32,24 +32,28 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  /**
+   * Peuple la liste déroulante en fonction de la recherche
+   * @param event : event (liste déroulante)
+   */
   search(event: any) {
     this.filmsService.getFilmsByName(event.query).subscribe(films => {
       this.films = [...films.results];
     });
   }
 
-  onSelect(filmSelected: any) {
+  /**
+   * Agit lorsqu'un film est sélectionné
+   * @param filmSelected : film sélectionné
+   */
+  onSelect(filmSelected: Film) {
     this.filmsService.setCurrentFilm(filmSelected);
     this.filmName = '';
-    this.route.navigate(['film']);
+    this.route.navigate(['film/' + filmSelected.id]);
   }
 
   isAuthenticated() {
     return this.loginService.isAuthenticated();
-  }
-
-  changeLanguage(languageKey: string) {
-    this.languageService.changeLanguage(languageKey);
   }
 
   logout() {
