@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@core/auth/auth.service';
 import { LanguageHelper } from '@core/language/language.helper';
 import { LanguageService } from '@core/language/language.service';
-import { LoginService } from '@core/security/auth/login.service';
 import { Film } from '@shared/models/film.model';
 import { FilmsService } from '@shared/services/films.service';
 
@@ -18,11 +18,12 @@ export class HeaderComponent implements OnInit {
   films: Film[];
 
   constructor(
-    private loginService: LoginService,
     private languageHelper: LanguageHelper,
     private languageService: LanguageService,
     private filmsService: FilmsService,
-    private route: Router
+    private router: Router,
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -30,8 +31,20 @@ export class HeaderComponent implements OnInit {
       this.languages = languages;
     });
 
+    let par: any;
+    this.route.queryParams.subscribe(param => {
+      par = param.request_token;
+      this.authService.createSession(par);
+    });
   }
 
+  login(): void {
+    this.authService.createRequestToken();
+  }
+
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
   /**
    * Peuple la liste déroulante en fonction de la recherche
    * @param event : event (liste déroulante)
@@ -49,16 +62,6 @@ export class HeaderComponent implements OnInit {
   onSelect(filmSelected: Film) {
     this.filmsService.setCurrentFilm(filmSelected);
     this.filmName = '';
-    this.route.navigate(['film/' + filmSelected.id]);
+    this.router.navigate(['film/' + filmSelected.id]);
   }
-
-  isAuthenticated() {
-    return this.loginService.isAuthenticated();
-  }
-
-  logout() {
-    // this.loginService.logout();
-  }
-
-
 }

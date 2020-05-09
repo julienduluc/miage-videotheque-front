@@ -1,21 +1,15 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthExpiredInterceptor } from '@core/interceptors/auth-expired.interceptor';
+import { AuthService } from '@core/auth/auth.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FilmComponent } from './components/film/film.component';
 import { CoreModule } from './core/core.module';
-import { ErrorService } from './core/errors/error.service';
-import { AuthInterceptor } from './core/interceptors/auth-interceptor.service';
-import { ErrorHandlerInterceptor } from './core/interceptors/errorhandler.interceptor';
 import { LanguageModule } from './core/language/language.module';
-import { MessagesService } from './core/messages/messages.service';
 import { LayoutsModule } from './layouts/layout.module';
 import { SharedModule } from './shared/shared.module';
-import { FilmComponent } from './components/film/film.component';
 
 @NgModule({
   imports: [
@@ -33,30 +27,7 @@ import { FilmComponent } from './components/film/film.component';
     FilmComponent
   ],
   providers: [
-    // { provide: LOCALE_ID, useValue: 'fr-FR' },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlerInterceptor,
-      multi: true,
-      deps: [
-        MessagesService,
-        NgxUiLoaderService,
-        ErrorService
-      ]
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthExpiredInterceptor,
-      multi: true,
-      deps: [
-        Injector
-      ]
-    }
+    AuthService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -15,6 +15,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
   filmSelected: Film;
   id: number;
+  request_token: any;
 
   constructor(
     private filmsService: FilmsService,
@@ -40,6 +41,7 @@ export class FilmComponent implements OnInit, OnDestroy {
         this.filmSelected = film;
       }
     });
+
   }
 
   ngOnDestroy() {

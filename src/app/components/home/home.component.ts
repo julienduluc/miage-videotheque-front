@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 
+import { HomeService } from './home.service';
+
 @Component({
   selector: 'myapp-home',
   templateUrl: './home.component.html',
@@ -10,9 +12,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private unsubscribe$ = new Subject();
 
-  constructor() { }
+  constructor(
+    private homeService: HomeService
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   ngOnDestroy() {
     this.unsubscribe$.next();
