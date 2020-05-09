@@ -4,7 +4,7 @@
       <img class="title-logo" alt="Logo" src="../../../assets/images/logo_ubordeaux.png" />
     </div>
   </a>
-  <div *ngIf="isAuthenticated()">
+  <div>
     <p-autoComplete #auto class="autocomplete" [(ngModel)]="filmName" [suggestions]="films"
       (completeMethod)="search($event)" field="title release_date" placeholder="Rechercher un film ..."
       (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000" [minLength]="3" [size]="60">
@@ -24,14 +24,17 @@
 
     </p-autoComplete>
   </div>
-  <div *ngIf="isAuthenticated()">
+  <div>
     <ul class="nav nav-pills menu">
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="active">Accueil</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Déconnexion</a>
+
+        <a *ngIf="!isAuthenticated()" (click)="login()" class="nav-link">Connexion</a>
+        <a *ngIf="isAuthenticated()" class="nav-link">Déconnexion</a>
+
       </li>
     </ul>
   </div>

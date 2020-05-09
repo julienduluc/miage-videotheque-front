@@ -4,7 +4,7 @@ import { Film } from '@shared/models/film.model';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { CarouselModule } from 'primeng/carousel';
+
 @Component({
   selector: 'myapp-film',
   templateUrl: './film.component.html',
@@ -17,6 +17,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   id: number;
   director: Array<any>[];
   actors: Array<any>[];
+  request_token: any;
 
   constructor(
     private filmsService: FilmsService,

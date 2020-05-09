@@ -1,8 +1,7 @@
 export const APP_NAME = 'MyApp';
 
-export const SERVER_API = '/api';
-export const SERVER_USER_INFOS_ROUTE = 'account';
+export const APP_URL = 'http://localhost:4200/';
+export const API_KEY = 'e6fa63e454efad680e9c890b9dc30a88';
+export const API = 'https://api.themoviedb.org/3/';
+export const API_PERMISSION = 'https://www.themoviedb.org/authenticate/';
 
-// ---------------------- Back parameters ----------------------
-export const BACK_FILE_IMPORT_ATTRIBUTE = 'fichier';
-export const BACK_ERROR_MESSAGE_ATTRIBUT = 'detail';

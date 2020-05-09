@@ -18,7 +18,9 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent,
     FooterComponent
   ],
-  providers: [],
+  providers: [
+
+  ],
   exports: [
     HeaderComponent,
     FooterComponent

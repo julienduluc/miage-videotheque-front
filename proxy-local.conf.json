@@ -1,8 +1,11 @@
 {
-  "/api/*": {
-    "target": "http://localhost:8080",
+  "/authenticate": {
+    "target": "https://api.themoviedb.org/",
     "secure": false,
     "changeOrigin": true,
-    "headers": {}
+    "headers": {
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
+    }
   }
 }

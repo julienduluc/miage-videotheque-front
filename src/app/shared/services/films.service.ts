@@ -1,11 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_KEY } from '@core/constants/app.constant';
 import { Film } from '@shared/models/film.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const httpOptions = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-let param = new HttpParams().set('api_key', 'e6fa63e454efad680e9c890b9dc30a88');
-
 
 @Injectable()
 export class FilmsService {
@@ -13,22 +12,11 @@ export class FilmsService {
   private urlSearch = 'https://api.themoviedb.org/3/search/movie';
   private urlMovie = 'https://api.themoviedb.org/3/movie/';
 
-  private apiKey = 'e6fa63e454efad680e9c890b9dc30a88';
-
   public currentFilm$ = new BehaviorSubject<Film>(null);
 
   constructor(
     private http: HttpClient
   ) { }
-
-  getFilmsByName(name: string): Observable<any> {
-    param = param.append('query', name);
-    return this.http.get<any>(this.urlSearch, { headers: httpOptions, params: param });
-  }
-
-  getFilmById(id: number): Observable<Film> {
-    return this.http.get<any>(this.urlMovie + id, { headers: httpOptions, params: param });
-  }
 
   getCreditsByFilmId(id: number): Observable<any> {
     return this.http.get<any>(this.urlMovie + id + '/credits', { headers: httpOptions, params: param });
@@ -39,5 +27,25 @@ export class FilmsService {
 
   setCurrentFilm(film: Film) {
     this.currentFilm$.next(film);
+  }
+
+  /**
+   * Liste de films pas titre
+   * @param name : titre du film
+   */
+  getFilmsByName(name: string): Observable<any> {
+    let param = new HttpParams().append('query', name);
+    param = param.append('api_key', API_KEY);
+    return this.http.get<any>(this.urlSearch, { headers: httpOptions, params: param });
+  }
+
+
+  /**
+   * Film par id
+   * @param id : id film
+   */
+  getFilmById(id: number): Observable<Film> {
+    const param = new HttpParams().append('api_key', API_KEY);
+    return this.http.get<any>(this.urlMovie + id, { headers: httpOptions, params: param });
   }
 }

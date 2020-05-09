@@ -6,6 +6,7 @@ import { FilmComponent } from './film.component';
 const routes: Routes = [
   {
     path: '',
+    component: FilmComponent,
     canActivate: [],
     data: { pageTitle: 'HOME.PAGE_TITLE' }
   },
