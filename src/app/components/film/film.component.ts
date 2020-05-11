@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '@core/auth/auth.service';
 import { Film } from '@shared/models/film.model';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
@@ -21,7 +22,8 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   constructor(
     private filmsService: FilmsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,14 @@ export class FilmComponent implements OnInit, OnDestroy {
       this.director = res.crew;
       this.actors = res.cast;
     });
+  }
+
+  fav(): void {
+    if (this.authService.isAuthenticated()) {
+      this.authService.markFav(this.filmSelected.id).subscribe(res => {
+        console.log('res');
+      });
+    }
   }
 
   ngOnDestroy() {

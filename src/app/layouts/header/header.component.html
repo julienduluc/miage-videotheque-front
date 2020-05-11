@@ -30,11 +30,26 @@
         <a class="nav-link" routerLink="/" routerLinkActive="active">Accueil</a>
       </li>
 
+
+
       <li class="nav-item">
+        <a [matMenuTriggerFor]="menuAdmin" class="nav-link" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <span><button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+              <mat-icon>?</mat-icon>
+            </button></span>
+          <mat-menu #menuAdmin="matMenu" [overlapTrigger]="false">
+            <button *ngIf="!isAuthenticated()" mat-menu-item (click)="login()" routerLinkActive="active-submenu">
 
-        <a *ngIf="!isAuthenticated()" (click)="login()" class="nav-link">Connexion</a>
-        <a *ngIf="isAuthenticated()" class="nav-link">Déconnexion</a>
+              Se connecter
 
+            </button>
+
+            <button *ngIf="isAuthenticated()" mat-menu-item (click)="logout()" routerLinkActive="active-submenu">
+              Se déconnecter
+            </button>
+          </mat-menu>
+        </a>
       </li>
     </ul>
   </div>

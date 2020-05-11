@@ -1,6 +1,8 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from '@core/auth/auth.service';
+import { AuthInterceptor } from '@core/auth/interceptor.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +29,11 @@ import { SharedModule } from './shared/shared.module';
     FilmComponent
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     AuthService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

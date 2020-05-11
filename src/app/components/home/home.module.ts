@@ -17,7 +17,7 @@ import { HomeService } from './home.service';
     homeRouting
   ],
   declarations: [
-    HomeComponent,
+    HomeComponent
   ],
   providers: [
     {

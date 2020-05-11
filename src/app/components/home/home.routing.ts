@@ -9,12 +9,6 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [],
     data: { pageTitle: 'HOME.PAGE_TITLE' }
-  },
-  {
-    path: 'approved',
-    component: HomeComponent,
-    canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE' }
   }
 ];
 
