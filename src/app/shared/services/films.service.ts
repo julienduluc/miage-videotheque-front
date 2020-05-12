@@ -30,6 +30,9 @@ export class FilmsService {
     return this.http.get<any>(this.urlMovie + id, { headers: httpOptions, params: param });
   }
 
+  getDirectorByFilmId(id: number): Observable<any> {
+    return this.http.get<any>(this.urlMovie + id + '/credits', { headers: httpOptions, params: param });
+  }
   getCurrentFilm() {
     return this.currentFilm$.getValue();
   }
@@ -37,6 +40,4 @@ export class FilmsService {
   setCurrentFilm(film: Film) {
     this.currentFilm$.next(film);
   }
-
-
 }

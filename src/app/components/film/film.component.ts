@@ -4,7 +4,7 @@ import { Film } from '@shared/models/film.model';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { CarouselModule } from 'primeng/carousel';
 @Component({
   selector: 'myapp-film',
   templateUrl: './film.component.html',
@@ -15,6 +15,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
   filmSelected: Film;
   id: number;
+  director: Array<any>[];
 
   constructor(
     private filmsService: FilmsService,
@@ -39,6 +40,11 @@ export class FilmComponent implements OnInit, OnDestroy {
       if (film) {
         this.filmSelected = film;
       }
+    });
+
+    // Récupère le réalisateur du film sélectionné
+    this.filmsService.getDirectorByFilmId(this.id).subscribe((res) => {
+      this.director = res.crew;
     });
   }
 

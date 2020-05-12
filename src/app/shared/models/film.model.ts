@@ -5,6 +5,8 @@ export class Film {
   overview: number;
   release_date: string;
   genre_ids: number[];
+  genres: Array<any>[];
+  runtime: number;
   id: number;
   original_title: string;
   original_language: string;
@@ -22,6 +24,8 @@ export class Film {
       this.overview = obj.overview;
       this.release_date = obj.release_date;
       this.genre_ids = obj.genre_ids;
+      this.genres = obj.genres;
+      this.runtime = obj.runtime;
       this.id = obj.id;
       this.original_title = obj.original_title;
       this.original_language = obj.original_language;
