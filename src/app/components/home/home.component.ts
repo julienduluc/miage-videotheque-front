@@ -22,16 +22,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.authService._auth.pipe(takeUntil(this.unsubscribe$)).subscribe(
       (res) => {
         if (res) {
-
-          console.log('is', this.authService.isAuthenticated());
-
           this.authService.getAccountDetails().subscribe(res => {
             this.title = 'bonjour ' + res.username;
           });
         } else {
           this.title = 'bonjour random';
-          console.log('is', this.authService.isAuthenticated());
-
         }
       });
   }

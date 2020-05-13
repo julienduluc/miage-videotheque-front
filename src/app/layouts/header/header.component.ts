@@ -33,22 +33,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.languageHelper.getAll().then(languages => {
-      this.languages = languages;
-    });
-
     this.route.queryParams.subscribe(param => {
       const par = param.request_token;
       this.authService.createSession(par);
     });
-
-    /*this.authService._sessionId$.pipe(takeUntil(this.unsubscribe$)).subscribe(
-      (res) => {
-        if (res) {
-
-        }
-      });*/
-
   }
 
   login(): void {

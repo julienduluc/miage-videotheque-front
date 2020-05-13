@@ -15,7 +15,8 @@ import { SharedLibsModule } from './shared-libs.module';
     PermissionDirective
   ],
   providers: [
-    UtilsService
+    UtilsService,
+    FilmsService
   ],
   exports: [
     SharedCommonModule,
@@ -28,7 +29,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
-      providers: [FilmsService]
+      providers: []
     };
   }
 }

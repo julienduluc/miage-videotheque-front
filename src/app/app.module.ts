@@ -7,7 +7,6 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilmComponent } from './components/film/film.component';
 import { CoreModule } from './core/core.module';
 import { LanguageModule } from './core/language/language.module';
 import { LayoutsModule } from './layouts/layout.module';
@@ -25,8 +24,7 @@ import { SharedModule } from './shared/shared.module';
 
   ],
   declarations: [
-    AppComponent,
-    FilmComponent
+    AppComponent
   ],
   providers: [
     {

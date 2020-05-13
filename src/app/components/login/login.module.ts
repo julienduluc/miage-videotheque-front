@@ -1,23 +1,20 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CoreModule } from '@core/core.module';
-import { SharedModule } from '@shared/shared.module';
+import { LanguageHelper } from '@core/language/language.helper';
+import { LanguageService } from '@core/language/language.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { LanguageHelper } from 'src/app/core/language/language.helper';
-import { LanguageService } from 'src/app/core/language/language.service';
+import { SharedModule } from 'primeng/api/shared';
 
-import { FilmComponent } from './film.component';
-import { filmRouting } from './film.routing';
-
+import { LoginComponent } from './login.component';
 
 @NgModule({
   declarations: [
-    FilmComponent
+    LoginComponent
   ],
   imports: [
     CoreModule,
     SharedModule,
     NgxPermissionsModule.forChild(),
-    filmRouting
   ],
   exports: [],
   providers: [
@@ -28,7 +25,7 @@ import { filmRouting } from './film.routing';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FilmModule {
+export class LoginModule {
   constructor(private languageService: LanguageService, private languageHelper: LanguageHelper) {
     this.languageHelper.language.subscribe((languageKey: string) => {
       if (languageKey !== undefined) {

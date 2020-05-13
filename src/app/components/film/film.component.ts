@@ -55,7 +55,7 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   fav(): void {
     if (this.authService.isAuthenticated()) {
-      this.authService.markFav(this.filmSelected.id).subscribe(res => {
+      this.filmsService.markFav(this.filmSelected.id).subscribe(res => {
         console.log('res');
       });
     }
