@@ -16,6 +16,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   filmSelected: Film;
   id: number;
   director: Array<any>[];
+  actors: Array<any>[];
 
   constructor(
     private filmsService: FilmsService,
@@ -43,8 +44,9 @@ export class FilmComponent implements OnInit, OnDestroy {
     });
 
     // Récupère le réalisateur du film sélectionné
-    this.filmsService.getDirectorByFilmId(this.id).subscribe((res) => {
+    this.filmsService.getCreditsByFilmId(this.id).subscribe((res) => {
       this.director = res.crew;
+      this.actors = res.cast;
     });
   }
 

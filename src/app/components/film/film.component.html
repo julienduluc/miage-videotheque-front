@@ -28,7 +28,7 @@
       <p class="overview">Date de sortie : {{filmSelected?.release_date}} </p>
       <p class="overview">Durée :
         <span *ngIf="filmSelected?.runtime > 60">
-          {{ (filmSelected?.runtime / 60).toFixed(0) }}h{{filmSelected?.runtime % 60}}</span>
+          {{ (filmSelected?.runtime / 60).toFixed(0) }}h{{filmSelected?.runtime % 60}} </span>
       </p>
 
       <p class="overview">Genres :
@@ -45,6 +45,8 @@
       </p>
     </div>
   </div>
+
+
 
 </ng-container>
 
