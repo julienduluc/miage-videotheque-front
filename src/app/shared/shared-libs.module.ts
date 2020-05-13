@@ -29,6 +29,7 @@ import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER }
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FullCalendarModule } from 'primeng/fullcalendar';
+import { CarouselModule } from 'primeng/carousel';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -73,7 +74,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AvatarModule,
     NgxMaterialTimepickerModule,
     NgxExtendedPdfViewerModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CarouselModule
   ],
   declarations: [],
   providers: [],
@@ -109,7 +111,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AvatarModule,
     NgxMaterialTimepickerModule,
     NgxExtendedPdfViewerModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CarouselModule
   ],
 })
 export class SharedLibsModule {

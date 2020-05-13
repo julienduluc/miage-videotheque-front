@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
 import { Film } from '@shared/models/film.model';
+import { Actor } from './../../shared/models/actor.model';
 import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
@@ -18,7 +19,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   filmSelected: Film;
   id: number;
   director: Array<any>[];
-  actors: Array<any>[];
+  actors: Array<Actor>[];
   request_token: any;
 
   constructor(

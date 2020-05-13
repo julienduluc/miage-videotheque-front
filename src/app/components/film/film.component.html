@@ -45,6 +45,19 @@
       </p>
     </div>
   </div>
+
+  <p-carousel [value]="actors" styleClass="custom-carousel" [numVisible]="8" [numScroll]="3" [circular]="true"
+    [autoplayInterval]="3000">
+    <p-header>
+      <h3>Les acteurs</h3>
+    </p-header>
+    <ng-template let-actor pTemplate="item">
+      <img src="https://image.tmdb.org/t/p/w92{{actor?.profile_path}}" />
+      <div>{{actor?.name}}</div>
+      <div>{{actor?.character}}</div>
+    </ng-template>
+  </p-carousel>
+
 </ng-container>
 
 <ng-template #noData>

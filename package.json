@@ -106,6 +106,7 @@
     "ngx-ui-loader": "^8.0.0",
     "ngx-webstorage": "^5.0.0",
     "normalize.css": "^8.0.1",
+    "primeicons": "^3.0.0-rc.1",
     "primeng": "^9.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
