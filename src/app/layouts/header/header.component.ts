@@ -43,10 +43,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.createRequestToken();
   }
 
-  logout(): void {
-    this.authService.logout();
-  }
-
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }

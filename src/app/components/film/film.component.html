@@ -24,12 +24,16 @@
       <p class="title">Synopsis</p>
       <p class="overview">
         {{filmSelected?.overview}}
+<<<<<<< HEAD
       </p>
       <p class="overview">Date de sortie : {{filmSelected?.release_date}} </p>
       <p class="overview">Durée :
         <span *ngIf="filmSelected?.runtime > 60">
           {{ (filmSelected?.runtime / 60).toFixed(0) }}h{{filmSelected?.runtime % 60}} </span>
       </p>
+=======
+    </div>
+>>>>>>> 76f5a99c891adc4d8eaaeea8fb04f5842d40bbf9
 
       <p class="overview">Genres :
         <span *ngFor="let genre of filmSelected?.genres">
