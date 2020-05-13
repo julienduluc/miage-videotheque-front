@@ -1,6 +1,6 @@
 {
-  "/authenticate": {
-    "target": "https://api.themoviedb.org/",
+  "/api/*": {
+    "target": "http://videotheque.brahimelo.fr",
     "secure": false,
     "changeOrigin": true,
     "headers": {
