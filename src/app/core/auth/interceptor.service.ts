@@ -1,24 +1,24 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { API_KEY } from '@core/constants/app.constant';
 import { Observable } from 'rxjs';
-
-import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(
-    private localStorage: LocalStorageService,
-    private sessionStorage: SessionStorageService,
-    private ngxLoadingService: NgxUiLoaderService,
-    private route: ActivatedRoute,
-    private authService: AuthService
-  ) { }
+  constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    request = request.clone({
+      setHeaders: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      setParams: {
+        api_key: API_KEY
+      }
+
+    });
     return next.handle(request);
   }
 }

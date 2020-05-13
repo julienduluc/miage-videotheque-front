@@ -1,7 +1,6 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthService } from '@core/auth/auth.service';
 import { AuthInterceptor } from '@core/auth/interceptor.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
@@ -21,7 +20,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule.forRoot(),
     LanguageModule.forRoot(),
     NgxPermissionsModule.forRoot(),
-
+    HttpClientModule
   ],
   declarations: [
     AppComponent
@@ -31,8 +30,7 @@ import { SharedModule } from './shared/shared.module';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    },
-    AuthService
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <div class="header">
   <a routerLink="/">
     <div class="header-title">
-      <img class="title-logo" alt="Logo" src="../../../assets/images/logo_ubordeaux.png" />
+      <img class="title-logo" alt="Logo" src="../../../assets/images/logo.png" />
     </div>
   </a>
   <div>
@@ -30,29 +30,36 @@
         <a class="nav-link" routerLink="/" routerLinkActive="active">Accueil</a>
       </li>-->
 
+      <ng-container *ngIf="isAuthenticated(); else noLogin">
+        <li class="nav-item">
+          <!-- <myapp-login></myapp-login> -->
+          <a [matMenuTriggerFor]="menuAdmin" class="nav-link" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            <span>
+              <button mat-mini-fab color="primary">
+                <mat-icon>{{label}}</mat-icon>
+              </button>
+            </span>
+            <mat-menu #menuAdmin="matMenu">
+              <div class="username">{{accountConnected?.username}}</div>
+              <button mat-menu-item (click)="logout()" routerLinkActive="active-submenu">
+                Se déconnecter
+              </button>
+            </mat-menu>
+          </a>
+
+        </li>
+      </ng-container>
+      <ng-template #noLogin>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="login()" routerLinkActive="active">Se connecter</a>
+        </li>
+      </ng-template>
 
 
-      <li class="nav-item">
-        <!-- <myapp-login></myapp-login> -->
-        <a [matMenuTriggerFor]="menuAdmin" class="nav-link" routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: true}">
-          <span><button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-              <mat-icon>?</mat-icon>
-            </button></span>
-          <mat-menu #menuAdmin="matMenu" [overlapTrigger]="false">
-            <button *ngIf="!isAuthenticated()" mat-menu-item (click)="login()" routerLinkActive="active-submenu">
 
-              Se connecter
 
-            </button>
-
-            <button *ngIf="isAuthenticated()" mat-menu-item (click)="logout()" routerLinkActive="active-submenu">
-              Se déconnecter
-            </button>
-          </mat-menu>
-        </a>
-
-      </li>
     </ul>
   </div>
 </div>

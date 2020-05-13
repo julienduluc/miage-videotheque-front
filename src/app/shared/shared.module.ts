@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { PermissionDirective } from './directives/permission.directive';
+import { AccountService } from './services/account.service';
 import { FilmsService } from './services/films.service';
 import { UtilsService } from './services/utils.service';
 import { SharedCommonModule } from './shared-common.module';
@@ -16,7 +17,8 @@ import { SharedLibsModule } from './shared-libs.module';
   ],
   providers: [
     UtilsService,
-    FilmsService
+    FilmsService,
+    AccountService
   ],
   exports: [
     SharedCommonModule,

@@ -15,7 +15,7 @@
   align-items: center;
   height: $headerHeight;
   padding-right: 10px;
-  background-color: $principal-white;
+  background-color: $footer-color;
 
   &-title {
     display: flex;
@@ -66,10 +66,10 @@
 }
 
 .nav-link {
-  color: $primary-dark-blue;
+  color: $white;
 
   &:hover {
-    color: $primary-blue;
+    color: $white;
   }
 }
 
@@ -88,4 +88,10 @@
 .items-container {
   display: flex;
   align-items: center;
+}
+
+.username {
+  margin-left: 10px;
+  margin-bottom: 8px;
+  font-style: italic;
 }

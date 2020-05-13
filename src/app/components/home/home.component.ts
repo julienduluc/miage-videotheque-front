@@ -19,14 +19,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.authService._auth.pipe(takeUntil(this.unsubscribe$)).subscribe(
+    this.authService._isAuthenticated.pipe(takeUntil(this.unsubscribe$)).subscribe(
       (res) => {
         if (res) {
-          this.authService.getAccountDetails().subscribe(res => {
-            this.title = 'bonjour ' + res.username;
-          });
+          this.title = 'Connecté';
         } else {
-          this.title = 'bonjour random';
+          this.title = 'Non connecté';
         }
       });
   }

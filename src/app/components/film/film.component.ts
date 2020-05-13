@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
 import { Film } from '@shared/models/film.model';
+import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,6 +23,7 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   constructor(
     private filmsService: FilmsService,
+    private accountService: AccountService,
     private route: ActivatedRoute,
     private authService: AuthService
   ) { }
@@ -53,10 +55,12 @@ export class FilmComponent implements OnInit, OnDestroy {
     });
   }
 
-  fav(): void {
-    if (this.authService.isAuthenticated()) {
-      this.filmsService.markFav(this.filmSelected.id).subscribe(res => {
-        console.log('res');
+  addToFavorite() {
+    if (this.authService.isAuthenticated) {
+      this.accountService.addFavorite(this.filmSelected.id).subscribe((res) => {
+        if (res.status_code === 12) {
+          console.log('ok');
+        }
       });
     }
   }
