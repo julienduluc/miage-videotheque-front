@@ -1,0 +1,29 @@
+<div>
+  <select (change)="onChange($event)">
+    <option *ngFor="let order of optionsOrder" [value]="order.value">
+      {{order.label}}
+    </option>
+  </select>
+
+  <myapp-account-lists-view *ngFor="let rate of ratings">
+    <span image>
+      <img src="https://image.tmdb.org/t/p/w92/{{rate?.poster_path}}">
+    </span>
+
+    <!-- <span body></span> -->
+    <span title>
+      {{rate?.title}}
+    </span>
+    <span releaseDate>
+      {{rate?.release_date | date: 'longDate'}}
+    </span>
+
+    <span overview>
+      {{rate?.overview}}
+    </span>
+
+    <span rating>
+      {{rate?.rating}}
+    </span>
+  </myapp-account-lists-view>
+</div>

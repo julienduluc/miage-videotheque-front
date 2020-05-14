@@ -82,8 +82,12 @@
 .active {
   background-color: $primary-dark-blue !important;
   color: $principal-white !important;
+
 }
 
+.active-submenu:focus {
+  outline: none !important;
+}
 
 .items-container {
   display: flex;
@@ -91,7 +95,8 @@
 }
 
 .username {
-  margin-left: 10px;
+  margin-left: 16px;
   margin-bottom: 8px;
   font-style: italic;
+  font-weight: bold;
 }

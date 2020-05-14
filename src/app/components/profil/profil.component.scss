@@ -1,0 +1,39 @@
+@import "color.scss";
+@import "font.scss";
+@import "components.scss";
+@import "size.scss";
+
+.profil-container {
+  font-size: $size6;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  .username {
+    margin-left: 20px;
+  }
+
+
+}
+ .statistics {
+   display: flex;
+   font-size: $size6;
+   margin-top: 20px;
+
+    .card {
+      width: 50%;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .label {
+
+    }
+
+    .value {
+      color: $primary-dark-blue;
+      font-size: 80px;
+    }
+  }

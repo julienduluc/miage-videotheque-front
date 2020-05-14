@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AccountListsViewComponent } from '@sharedComponents/account-lists-view/account-lists-view.component';
 
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { PermissionDirective } from './directives/permission.directive';
@@ -13,7 +14,8 @@ import { SharedLibsModule } from './shared-libs.module';
   imports: [RouterModule, SharedLibsModule, SharedCommonModule],
   declarations: [
     ConfirmationDialogComponent,
-    PermissionDirective
+    PermissionDirective,
+    AccountListsViewComponent
   ],
   providers: [
     UtilsService,
@@ -23,7 +25,8 @@ import { SharedLibsModule } from './shared-libs.module';
   exports: [
     SharedCommonModule,
     ConfirmationDialogComponent,
-    PermissionDirective
+    PermissionDirective,
+    AccountListsViewComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -3,6 +3,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LanguageModule } from '@core/language/language.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -28,8 +30,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER } from 'ngx-ui-loader';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { FullCalendarModule } from 'primeng/fullcalendar';
 import { CarouselModule } from 'primeng/carousel';
+import { DataViewModule } from 'primeng/dataview';
+import { FullCalendarModule } from 'primeng/fullcalendar';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -75,7 +78,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxMaterialTimepickerModule,
     NgxExtendedPdfViewerModule,
     FullCalendarModule,
-    CarouselModule
+    CarouselModule,
+    MatTabsModule,
+    DataViewModule,
+    MatChipsModule
   ],
   declarations: [],
   providers: [],
@@ -112,7 +118,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxMaterialTimepickerModule,
     NgxExtendedPdfViewerModule,
     FullCalendarModule,
-    CarouselModule
+    CarouselModule,
+    MatTabsModule,
+    DataViewModule,
+    MatChipsModule
   ],
 })
 export class SharedLibsModule {

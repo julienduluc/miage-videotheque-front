@@ -33,8 +33,7 @@
       <ng-container *ngIf="isAuthenticated(); else noLogin">
         <li class="nav-item">
           <!-- <myapp-login></myapp-login> -->
-          <a [matMenuTriggerFor]="menuAdmin" class="nav-link" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}">
+          <a [matMenuTriggerFor]="menuAdmin" class="nav-link">
             <span>
               <button mat-mini-fab color="primary">
                 <mat-icon>{{label}}</mat-icon>
@@ -42,6 +41,23 @@
             </span>
             <mat-menu #menuAdmin="matMenu">
               <div class="username">{{accountConnected?.username}}</div>
+              <hr />
+              <button mat-menu-item routerLink="/profil" routerLinkActive="active-submenu">
+                Statistiques
+              </button>
+
+              <button mat-menu-item routerLink="/profil/ratings" routerLinkActive="active-submenu">
+                Notes
+              </button>
+
+              <button mat-menu-item routerLink="/profil/ratings" routerLinkActive="active-submenu">
+                Favoris
+              </button>
+
+              <button mat-menu-item routerLink="/profil/ratings" routerLinkActive="active-submenu">
+                Listes
+              </button>
+              <hr />
               <button mat-menu-item (click)="logout()" routerLinkActive="active-submenu">
                 Se déconnecter
               </button>

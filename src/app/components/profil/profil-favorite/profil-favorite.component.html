@@ -1,0 +1,25 @@
+<div>
+  <!-- <select (change)="onChange($event)">
+    <option *ngFor="let order of optionsOrder" [value]="order.value">
+      {{order.label}}
+    </option>
+  </select> -->
+
+  <myapp-account-lists-view *ngFor="let fav of favorites">
+    <span image>
+      <img src="https://image.tmdb.org/t/p/w92/{{fav?.poster_path}}">
+    </span>
+
+    <span title>
+      {{fav?.title}}
+    </span>
+    <span releaseDate>
+      {{fav?.release_date | date: 'longDate'}}
+    </span>
+
+    <span overview>
+      {{fav?.overview}}
+    </span>
+
+  </myapp-account-lists-view>
+</div>

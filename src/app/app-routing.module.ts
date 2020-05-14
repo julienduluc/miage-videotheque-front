@@ -13,6 +13,11 @@ const ROUTES: Routes = [
     path: 'film',
     loadChildren: () => import('./components/film/film.module').then(m => m.FilmModule),
     canActivate: []
+  },
+  {
+    path: 'profil',
+    loadChildren: () => import('./components/profil/profil.module').then(m => m.ProfilModule),
+    canActivate: []
   }
 ];
 

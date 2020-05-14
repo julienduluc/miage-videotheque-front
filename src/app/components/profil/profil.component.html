@@ -1,0 +1,46 @@
+<div class="profil-container">
+
+  <img src="https://secure.gravatar.com/avatar/{{account?.avatar.gravatar.hash}}">
+  <span class="username">
+    {{account?.username}}</span>
+</div>
+
+<mat-tab-group #tabGroup mat-stretch-tabs (selectedTabChange)="selectedTabChange($event)">
+  <mat-tab label="Statistiques">
+
+    <div class="statistics">
+
+      <div class="card"><span class="label">Notes totales</span>
+        <span class="value">{{statistics?.get('ratings')}}</span>
+      </div>
+
+      <div class="card"><span class="label">Favoris</span>
+        <span class="value">{{statistics?.get('favorites')}}</span>
+      </div>
+
+      <!-- <div class="card"><span class="label">Notes totales :</span>
+        <span class="value">{{statistics?.get('ratings')}}</span>
+      </div>
+
+      <div class="card"><span class="label">Favoris totales :</span>
+        <span class="value">{{statistics?.get('ratings')}}</span>
+      </div> -->
+
+    </div>
+
+
+  </mat-tab>
+
+  <mat-tab label="Notes">
+    <myapp-profil-ratings [ratings]="ratings"></myapp-profil-ratings>
+  </mat-tab>
+  <mat-tab label="Favoris">
+    <myapp-profil-favorite [favorites]="favorites"></myapp-profil-favorite>
+  </mat-tab>
+  <mat-tab label="Listes">
+    <myapp-profil-lists [lists]="lists"></myapp-profil-lists>
+  </mat-tab>
+  <mat-tab label="Suivi">
+    <myapp-profil-watchlist [watchlist]="watchlist"></myapp-profil-watchlist>
+  </mat-tab>
+</mat-tab-group>
