@@ -20,7 +20,10 @@ export class FilmComponent implements OnInit, OnDestroy {
   id: number;
   director: Array<any>[];
   actors: Array<Actor>[];
+  similarFilms: Array<Film>[];
+  keywords: Array<any>[];
   request_token: any;
+
 
   constructor(
     private filmsService: FilmsService,
@@ -49,12 +52,20 @@ export class FilmComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Récupère le réalisateur du film sélectionné
+    // Récupère le réalisateur et les acteurs du film sélectionné
     this.filmsService.getCreditsByFilmId(this.id).subscribe((res) => {
       this.director = res.crew;
       this.actors = res.cast;
     });
+
+    // Récupère les films similaires au film sélectionné
+    this.filmsService.getSimilarFilmsByFilmId(this.id).subscribe((films) => {
+      this.similarFilms = films.results;
+    });
+
+
   }
+
 
   addToFavorite() {
     if (this.authService.isAuthenticated) {
