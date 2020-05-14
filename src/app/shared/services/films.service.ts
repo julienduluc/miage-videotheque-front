@@ -21,6 +21,14 @@ export class FilmsService {
   getCreditsByFilmId(id: number): Observable<any> {
     return this.http.get<any>(this.urlMovie + id + '/credits');
   }
+
+  getSimilarFilmsByFilmId(id: number): Observable<any> {
+    return this.http.get<any>(this.urlMovie + id + '/similar');
+  }
+
+  getVideosByFilmId(id: number): Observable<any> {
+    return this.http.get<any>(this.urlMovie + id + '/videos');
+  }
   getCurrentFilm() {
     return this.currentFilm$.getValue();
   }

@@ -58,6 +58,17 @@
     </ng-template>
   </p-carousel>
 
+  <p-carousel [value]="similarFilms" styleClass="custom-carousel" [numVisible]="8" [numScroll]="3" [circular]="true"
+    [autoplayInterval]="3000">
+    <p-header>
+      <h3>Les films similaires</h3>
+    </p-header>
+    <ng-template let-similarFilm pTemplate="item">
+      <img src="https://image.tmdb.org/t/p/w92{{similarFilm?.poster_path}}" />
+      <div>{{similarFilm?.title}}</div>
+      <div>{{similarFilm?.release_date}}</div>
+    </ng-template>
+  </p-carousel>
 </ng-container>
 
 <ng-template #noData>
