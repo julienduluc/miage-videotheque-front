@@ -1,20 +1,20 @@
 <div class="home-content">
-  <h2 class="title">Dernieres sorties :</h2>
+  <h2 class="title">Actuellement en salle</h2>
   <div class="movies_list">
     <div *ngFor="let movie of latest_movies" class="card">
       <p class="movie_rate"><i class="fa fa-star"></i> {{ movie.rate }} / 10</p>
       <img src="{{ movie.image_url }}" />
       <p class="movie_title">{{ movie.title }}</p>
-      <p class="movie_release_date">{{ movie.release_date }}</p>
+      <p class="movie_release_date">{{ movie.release_date | date: 'longDate'}}</p>
     </div>
   </div>
-  <h2 class="title">Mieux notes :</h2>
+  <h2 class="title">Mieux notés</h2>
   <div class="movies_list">
     <div *ngFor="let movie of top_rated_movies" class="card">
       <p class="movie_rate"><i class="fa fa-star"></i> {{ movie.rate }} / 10</p>
       <img src="{{ movie.image_url }}" />
       <p class="movie_title">{{ movie.title }}</p>
-      <p class="movie_release_date">{{ movie.release_date }}</p>
+      <p class="movie_release_date">{{ movie.release_date | date: 'longDate'}}</p>
     </div>
   </div>
 </div>

@@ -35,7 +35,7 @@ export class ProfilComponent implements OnInit, AfterViewInit {
     this.profilService.activeTab = this.tabSelected;
 
     this.accountDetails();
-    this.getAccountListsAndRatingsAndWatchlist();
+    this.getAccountMultiples();
   }
 
   ngAfterViewInit(): void {
@@ -53,8 +53,8 @@ export class ProfilComponent implements OnInit, AfterViewInit {
   }
 
 
-  getAccountListsAndRatingsAndWatchlist(): void {
-    this.accountService.getAccountListsAndRatingsAndWatchlist().subscribe((results) => {
+  getAccountMultiples(): void {
+    this.accountService.getAccountMultiples().subscribe((results) => {
 
       this.ratings = results[0].results;
       this.favorites = results[1].results;

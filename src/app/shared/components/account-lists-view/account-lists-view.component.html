@@ -6,9 +6,17 @@
   <div class="listsview-body">
 
     <div class="listsview-title">
-      <ng-content select="[title]"></ng-content>
-      <fa-icon icon="star" class="icon-star"></fa-icon>
-      <ng-content select="[rating]"></ng-content>
+      <span>
+        <ng-content select="[title]"></ng-content>
+        <span class="listsview-rating">
+          <ng-content select="[rating]"></ng-content>
+        </span>
+      </span>
+      <!-- <span>
+        <button mat-mini-fab color="primary">
+          <fa-icon icon="eye" class="icon-star"></fa-icon>
+        </button>
+      </span> -->
     </div>
     <div class="listsview-releaseDate">
       <ng-content select="[releaseDate]"></ng-content>

@@ -1,5 +1,7 @@
 import {
+  faArrowDown,
   faArrowLeft,
+  faArrowUp,
   faAsterisk,
   faAtom,
   faBan,
@@ -47,7 +49,7 @@ import {
 
 export function vendors(library: any) {
   // Adds the SVG icon to the library so you can use it in your page
-  library.addIcons(faUser, faSort, faSortUp, faSortDown, faSync, faEye,
+  library.addIcons(faUser, faSort, faSortUp, faSortDown, faSync, faEye, faArrowUp, faArrowDown,
     faBan, faTimes, faArrowLeft, faSave, faPlus, faPencilAlt,
     faBars, faHome, faThList, faUserPlus, faRoad, faTachometerAlt,
     faHeart, faList, faBell, faTasks, faBook, faHdd, faFlag,

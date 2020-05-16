@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '@shared/services/account.service';
-import { SelectItem } from 'primeng/api/selectitem';
 
 @Component({
   selector: 'myapp-profil-ratings',
@@ -10,40 +10,26 @@ import { SelectItem } from 'primeng/api/selectitem';
 export class ProfilRatingsComponent implements OnInit, OnChanges {
 
   @Input() ratings: any[];
-
-  displayDialog: boolean;
-
-  sortOptions: SelectItem[];
-
-  sortKey: string;
-
-  sortField: string;
-
-  sortOrder: number;
-
-  descOrder = false;
-  optionsOrder = [{ label: 'Croissant', value: 'asc' }, { label: 'Décroissant', value: 'desc' }];
-
+  selectedOrder = 'desc';
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.sortOptions = [
-      { label: 'Date de notation', value: '!year' },
-      { label: 'Note', value: 'year' }
-    ];
-  }
+  ngOnInit(): void { }
 
   ngOnChanges(): void { }
 
-  onChange(event: any): void {
-    this.descOrder = !this.descOrder;
-
-    this.accountService.getAccountRatings(this.descOrder).subscribe(res => {
+  onChange(order: string): void {
+    this.selectedOrder = order;
+    this.accountService.getAccountRatings(this.selectedOrder).subscribe(res => {
       this.ratings = res.results;
     });
+  }
+
+  goToFilm(id: number) {
+    this.router.navigate(['film/' + id]);
   }
 
 

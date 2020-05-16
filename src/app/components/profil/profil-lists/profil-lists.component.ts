@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AccountService } from '@shared/services/account.service';
 
 @Component({
   selector: 'myapp-profil-lists',
@@ -9,10 +10,19 @@ export class ProfilListsComponent implements OnInit {
 
   @Input() lists: any[];
 
-  constructor() { }
+  selectedOrder = 'desc';
+
+  constructor(
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void { }
 
-
+  onChange(order: string): void {
+    this.selectedOrder = order;
+    this.accountService.getAccountLists(this.selectedOrder).subscribe(res => {
+      this.lists = res.results;
+    });
+  }
 
 }

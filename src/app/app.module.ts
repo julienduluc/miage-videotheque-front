@@ -1,5 +1,7 @@
+import { registerLocaleData } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import localeFr from '@angular/common/locales/fr';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from '@core/auth/interceptor.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
@@ -11,6 +13,7 @@ import { LanguageModule } from './core/language/language.module';
 import { LayoutsModule } from './layouts/layout.module';
 import { SharedModule } from './shared/shared.module';
 
+registerLocaleData(localeFr, 'fr-FR');
 @NgModule({
   imports: [
     AppRoutingModule,
@@ -30,6 +33,10 @@ import { SharedModule } from './shared/shared.module';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'fr-FR'
     }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

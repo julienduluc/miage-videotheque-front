@@ -17,55 +17,58 @@ export class AccountService {
   private url = 'account';
 
   getAccountDetails(): Observable<any> {
-    const param = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
-    return this.http.get<any>(API + this.url, { params: param });
+    const queryParams = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
+    return this.http.get<any>(API + this.url, { params: queryParams });
   }
 
   addFavorite(idFilm: number): Observable<any> {
-    const param = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
+    const queryParams = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
     const body = {
       media_type: 'movie',
       media_id: idFilm,
       favorite: true
     };
-    return this.http.post<any>(API + 'account/null/favorite', body, { params: param });
+    return this.http.post<any>(API + 'account/null/favorite', body, { params: queryParams });
   }
 
-  getAccountLists(): Observable<any> {
-    const param = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
-    return this.http.get<any>(API + this.url + '/null/lists', { params: param });
+  getAccountRatings(order?: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('session_id', this.sessionStorage.retrieve('sessionId'))
+      .append('sort_by', 'created_at.' + order)
+      .append('language', 'fr-FR');
+
+    return this.http.get<any>(API + this.url + '/null/rated/movies', { params: queryParams });
   }
 
-  getAccountRatings(asc?: boolean): Observable<any> {
-    let param = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
-    if (asc) {
-      param = param.append('sort_by', 'created_at.asc');
-    } else {
-      param = param.append('sort_by', 'created_at.desc');
-    }
+  getAccountFavorite(order?: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('session_id', this.sessionStorage.retrieve('sessionId'))
+      .append('sort_by', 'created_at.' + order)
+      .append('language', 'fr-FR');
 
-    return this.http.get<any>(API + this.url + '/null/rated/movies', { params: param });
+    return this.http.get<any>(API + this.url + '/null/favorite/movies', { params: queryParams });
   }
 
+  getAccountLists(order?: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('session_id', this.sessionStorage.retrieve('sessionId'))
+      .append('sort_by', 'created_at.' + order)
+      .append('language', 'fr-FR');
 
-  getAccountFavorite(): Observable<any> {
-    /*let param = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
-    if (asc) {
-      param = param.append('sort_by', 'created_at.asc');
-    } else {
-      param = param.append('sort_by', 'created_at.desc');
-    }
-*/
-    return this.http.get<any>(API + this.url + '/null/favorite/movies');
+    return this.http.get<any>(API + this.url + '/null/lists', { params: queryParams });
   }
 
-  getAccountListsAndRatingsAndWatchlist(): Observable<any> {
-    const param = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
-    const req1 = this.http.get<any>(API + this.url + '/null/lists', { params: param });
-    const req2 = this.http.get<any>(API + this.url + '/null/rated/movies', { params: param });
-    const req3 = this.http.get<any>(API + this.url + '/null/watchlist/movies', { params: param });
-    const req4 = this.http.get<any>(API + this.url + '/null/favorite/movies', { params: param });
+  getAccountWatchlist(order?: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('session_id', this.sessionStorage.retrieve('sessionId'))
+      .append('sort_by', 'created_at.' + order)
+      .append('language', 'fr-FR');
 
-    return forkJoin([req1, req2, req3, req4]);
+    return this.http.get<any>(API + this.url + '/null/watchlist/movies', { params: queryParams });
+  }
+
+  getAccountMultiples(): Observable<any> {
+    return forkJoin([this.getAccountRatings('desc'), this.getAccountFavorite('desc'),
+    this.getAccountLists('desc'), this.getAccountWatchlist('desc')]);
   }
 }

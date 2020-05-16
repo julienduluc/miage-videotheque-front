@@ -7,18 +7,27 @@
 
 <mat-tab-group #tabGroup mat-stretch-tabs (selectedTabChange)="selectedTabChange($event)">
   <mat-tab label="Statistiques">
+    <div class="tabs-container">
 
-    <div class="statistics">
+      <div class="top">
+        <span class="title">Statistiques</span>
+        <span>
 
-      <div class="card"><span class="label">Notes totales</span>
-        <span class="value">{{statistics?.get('ratings')}}</span>
+        </span>
       </div>
 
-      <div class="card"><span class="label">Favoris</span>
-        <span class="value">{{statistics?.get('favorites')}}</span>
-      </div>
 
-      <!-- <div class="card"><span class="label">Notes totales :</span>
+      <div class="statistics">
+
+        <div class="card"><span class="label">Notes totales</span>
+          <span class="value">{{statistics?.get('ratings')}}</span>
+        </div>
+
+        <div class="card"><span class="label">Favoris</span>
+          <span class="value">{{statistics?.get('favorites')}}</span>
+        </div>
+
+        <!-- <div class="card"><span class="label">Notes totales :</span>
         <span class="value">{{statistics?.get('ratings')}}</span>
       </div>
 
@@ -26,21 +35,29 @@
         <span class="value">{{statistics?.get('ratings')}}</span>
       </div> -->
 
+      </div>
     </div>
-
 
   </mat-tab>
 
   <mat-tab label="Notes">
-    <myapp-profil-ratings [ratings]="ratings"></myapp-profil-ratings>
+    <div class="tabs-container">
+      <myapp-profil-ratings [ratings]="ratings"></myapp-profil-ratings>
+    </div>
   </mat-tab>
   <mat-tab label="Favoris">
-    <myapp-profil-favorite [favorites]="favorites"></myapp-profil-favorite>
+    <div class="tabs-container">
+      <myapp-profil-favorite [favorites]="favorites"></myapp-profil-favorite>
+    </div>
   </mat-tab>
   <mat-tab label="Listes">
-    <myapp-profil-lists [lists]="lists"></myapp-profil-lists>
+    <div class="tabs-container">
+      <myapp-profil-lists [lists]="lists"></myapp-profil-lists>
+    </div>
   </mat-tab>
   <mat-tab label="Suivi">
-    <myapp-profil-watchlist [watchlist]="watchlist"></myapp-profil-watchlist>
+    <div class="tabs-container">
+      <myapp-profil-watchlist [watchlist]="watchlist"></myapp-profil-watchlist>
+    </div>
   </mat-tab>
 </mat-tab-group>

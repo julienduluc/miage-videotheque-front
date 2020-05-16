@@ -1,1 +1,15 @@
 @import "color.scss";
+
+.mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: $videotheque-green !important;
+}
+
+.mat-mini-fab.mat-primary {
+  background-color: $videotheque-green !important;
+}
+
+.mat-tab-header {
+  background-color: $white;
+  padding: 0 40px;
+  margin: 0 -40px;
+}

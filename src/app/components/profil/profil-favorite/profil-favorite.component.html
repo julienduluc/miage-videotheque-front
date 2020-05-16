@@ -1,20 +1,30 @@
-<div>
-  <!-- <select (change)="onChange($event)">
-    <option *ngFor="let order of optionsOrder" [value]="order.value">
-      {{order.label}}
-    </option>
-  </select> -->
+<div class="top">
+  <span class="title">Mes favoris</span>
+  <span>
+    <span class="tri-title">Trier par : </span><span class="tri">Date d'ajout </span>
+
+    <span *ngIf="selectedOrder === 'desc'" (click)="onChange('asc')">
+      <fa-icon icon="arrow-down"></fa-icon>
+    </span>
+    <span *ngIf="selectedOrder === 'asc'" (click)="onChange('desc')">
+      <fa-icon icon="arrow-up"></fa-icon>
+    </span>
+  </span>
+</div>
+
+<ng-container *ngIf="favorites?.length > 0; else noData">
 
   <myapp-account-lists-view *ngFor="let fav of favorites">
     <span image>
-      <img src="https://image.tmdb.org/t/p/w92/{{fav?.poster_path}}">
+      <img (click)="goToFilm(fav?.id)" src="https://image.tmdb.org/t/p/w92/{{fav?.poster_path}}"
+        style="cursor: pointer;">
     </span>
 
-    <span title>
+    <span title (click)="goToFilm(fav?.id)" class="link">
       {{fav?.title}}
     </span>
     <span releaseDate>
-      {{fav?.release_date | date: 'longDate'}}
+      Sorti le : {{fav?.release_date | date: 'longDate'}}
     </span>
 
     <span overview>
@@ -22,4 +32,10 @@
     </span>
 
   </myapp-account-lists-view>
-</div>
+</ng-container>
+
+<ng-template #noData>
+  <div class="no-data">
+    Aucun favoris
+  </div>
+</ng-template>

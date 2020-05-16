@@ -1,0 +1,33 @@
+@import "color.scss";
+@import "font.scss";
+@import "components.scss";
+@import "size.scss";
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+
+  .title {
+    font-size: $size6;
+    font-weight: bold;
+  }
+
+  .tri-title {
+    font-size: $size3;
+  }
+  .tri {
+    color: $videotheque-green;
+    font-size: $size3;
+  }
+}
+
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-weight: bold;
+  font-size: $size5;
+}

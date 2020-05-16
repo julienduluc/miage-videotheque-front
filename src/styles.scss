@@ -15,7 +15,7 @@
   &-logo {
     width: 80px;
     height: 80px;
-    // background: url(./assets/images/logo_scalian.png) center center no-repeat;
+    background: url(./assets/images/logo-loading.png) center center no-repeat;
     transform-origin: center center;
     position: absolute;
     top: 0;
@@ -46,6 +46,11 @@
       stroke: #ddd;
     }
   }
+}
+
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url(./assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf) format("truetype");
 }
 
 @keyframes rotate {

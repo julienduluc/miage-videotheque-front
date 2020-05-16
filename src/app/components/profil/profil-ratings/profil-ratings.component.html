@@ -1,21 +1,29 @@
-<div>
-  <select (change)="onChange($event)">
-    <option *ngFor="let order of optionsOrder" [value]="order.value">
-      {{order.label}}
-    </option>
-  </select>
+<div class="top">
+  <span class="title">Mes notes</span>
+  <span>
+    <span class="tri-title">Trier par : </span><span class="tri">Date de notation </span>
 
+    <span *ngIf="selectedOrder === 'desc'" (click)="onChange('asc')">
+      <fa-icon icon="arrow-down"></fa-icon>
+    </span>
+    <span *ngIf="selectedOrder === 'asc'" (click)="onChange('desc')">
+      <fa-icon icon="arrow-up"></fa-icon>
+    </span>
+  </span>
+</div>
+
+<ng-container *ngIf="ratings?.length > 0; else noData">
   <myapp-account-lists-view *ngFor="let rate of ratings">
     <span image>
-      <img src="https://image.tmdb.org/t/p/w92/{{rate?.poster_path}}">
+      <img (click)="goToFilm(rate?.id)" src="https://image.tmdb.org/t/p/w92/{{rate?.poster_path}}"
+        style="cursor: pointer;">
     </span>
 
-    <!-- <span body></span> -->
-    <span title>
+    <span title (click)="goToFilm(rate?.id)" class="link">
       {{rate?.title}}
     </span>
     <span releaseDate>
-      {{rate?.release_date | date: 'longDate'}}
+      Sorti le : {{rate?.release_date | date: 'longDate'}}
     </span>
 
     <span overview>
@@ -23,7 +31,15 @@
     </span>
 
     <span rating>
+      <fa-icon icon="star" class="icon-star"></fa-icon>
       {{rate?.rating}}
     </span>
   </myapp-account-lists-view>
-</div>
+
+</ng-container>
+
+<ng-template #noData>
+  <div class="no-data">
+    Aucune notes
+  </div>
+</ng-template>

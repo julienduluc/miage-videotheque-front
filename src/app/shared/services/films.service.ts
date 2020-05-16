@@ -42,7 +42,9 @@ export class FilmsService {
    * @param name : titre du film
    */
   getFilmsByName(name: string): Observable<any> {
-    const param = new HttpParams().append('query', name);
+    const param = new HttpParams()
+      .append('query', name)
+      .append('language', 'fr-FR');
     return this.http.get<any>(this.urlSearch, { params: param });
   }
 
@@ -52,6 +54,8 @@ export class FilmsService {
    * @param id : id film
    */
   getFilmById(id: number): Observable<any> {
-    return this.http.get<any>(this.urlMovie + id);
+    const param = new HttpParams()
+      .append('language', 'fr-FR');
+    return this.http.get<any>(this.urlMovie + id, { params: param });
   }
 }

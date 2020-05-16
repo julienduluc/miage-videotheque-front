@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -31,11 +32,10 @@ import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER }
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CarouselModule } from 'primeng/carousel';
-import { DataViewModule } from 'primeng/dataview';
-import { FullCalendarModule } from 'primeng/fullcalendar';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  bgsColor: 'red',
+  pbColor: '#50ba92',
+  fgsColor: '#50ba92',
   bgsPosition: POSITION.bottomCenter,
   bgsSize: 40,
   bgsType: SPINNER.rectangleBounce,
@@ -77,11 +77,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AvatarModule,
     NgxMaterialTimepickerModule,
     NgxExtendedPdfViewerModule,
-    FullCalendarModule,
     CarouselModule,
     MatTabsModule,
-    DataViewModule,
-    MatChipsModule
+    MatChipsModule,
+    MatBadgeModule
   ],
   declarations: [],
   providers: [],
@@ -117,11 +116,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AvatarModule,
     NgxMaterialTimepickerModule,
     NgxExtendedPdfViewerModule,
-    FullCalendarModule,
     CarouselModule,
     MatTabsModule,
-    DataViewModule,
-    MatChipsModule
+    MatChipsModule,
+    MatBadgeModule
   ],
 })
 export class SharedLibsModule {

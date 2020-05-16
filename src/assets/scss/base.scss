@@ -4,10 +4,10 @@
 
 * {
   box-sizing: border-box;
+  font-family: $fontText !important;
 }
 
 html {
-  font-family: $fontText !important;
   font-size: $size0;
   font-weight: 600;
   color: $black !important;

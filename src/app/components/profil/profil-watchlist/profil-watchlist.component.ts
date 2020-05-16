@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from '@shared/services/account.service';
 
 @Component({
   selector: 'myapp-profil-watchlist',
@@ -9,9 +11,23 @@ export class ProfilWatchlistComponent implements OnInit {
 
   @Input() watchlist: any[];
 
-  constructor() { }
+  selectedOrder = 'desc';
+
+  constructor(
+    private accountService: AccountService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void { }
 
+  onChange(order: string): void {
+    this.selectedOrder = order;
+    this.accountService.getAccountWatchlist(this.selectedOrder).subscribe(res => {
+      this.watchlist = res.results;
+    });
+  }
 
+  goToFilm(id: number) {
+    this.router.navigate(['film/' + id]);
+  }
 }

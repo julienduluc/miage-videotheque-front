@@ -1,0 +1,41 @@
+<div class="top">
+  <span class="title">Suivis</span>
+  <span>
+    <span class="tri-title">Trier par : </span><span class="tri">Date d'ajout </span>
+
+    <span *ngIf="selectedOrder === 'desc'" (click)="onChange('asc')">
+      <fa-icon icon="arrow-down"></fa-icon>
+    </span>
+    <span *ngIf="selectedOrder === 'asc'" (click)="onChange('desc')">
+      <fa-icon icon="arrow-up"></fa-icon>
+    </span>
+  </span>
+</div>
+
+<ng-container *ngIf="watchlist?.length > 0; else noData">
+
+  <myapp-account-lists-view *ngFor="let element of watchlist">
+    <span image>
+      <img (click)="goToFilm(element?.id)" src="https://image.tmdb.org/t/p/w92/{{element?.poster_path}}"
+        style="cursor: pointer;">
+    </span>
+
+    <span title (click)="goToFilm(element?.id)" class="link">
+      {{element?.title}}
+    </span>
+    <span releaseDate>
+      Sorti le : {{element?.release_date | date: 'longDate'}}
+    </span>
+
+    <span overview>
+      {{element?.overview}}
+    </span>
+
+  </myapp-account-lists-view>
+</ng-container>
+
+<ng-template #noData>
+  <div class="no-data">
+    Aucun film suivi
+  </div>
+</ng-template>
