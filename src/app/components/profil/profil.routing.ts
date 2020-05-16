@@ -8,31 +8,31 @@ const routes: Routes = [
     path: '',
     component: ProfilComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE', tab: 0 }
+    data: { pageTitle: 'Profil', tab: 0 }
   },
   {
     path: 'ratings',
     component: ProfilComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE', tab: 1 }
+    data: { pageTitle: 'Notes', tab: 1 }
   },
   {
     path: 'favorite',
     component: ProfilComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE', tab: 2 }
+    data: { pageTitle: 'Favoris', tab: 2 }
   },
   {
     path: 'lists',
     component: ProfilComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE', tab: 3 }
+    data: { pageTitle: 'Listes', tab: 3 }
   },
   {
     path: 'watchlist',
     component: ProfilComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE', tab: 4 }
+    data: { pageTitle: 'Suivis', tab: 4 }
   },
 
 

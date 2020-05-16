@@ -8,13 +8,13 @@ const routes: Routes = [
     path: '',
     component: FilmComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE' }
+    data: { pageTitle: 'Film' }
   },
   {
     path: ':id',
     component: FilmComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE' }
+    data: { pageTitle: 'Film' }
   }
 
 ];

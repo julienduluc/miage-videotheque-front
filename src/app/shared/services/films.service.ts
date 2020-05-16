@@ -60,11 +60,11 @@ export class FilmsService {
   }
 
   /**
-   * 
-   * 
+   *
+   *
    */
   addReview(review: any): Observable<any> {
-    return this.http.post<any>('/api/add', review);
+    return this.http.post<any>('api/review/add', review);
   }
 
 }

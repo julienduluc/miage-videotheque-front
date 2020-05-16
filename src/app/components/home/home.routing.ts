@@ -8,13 +8,13 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE' }
+    data: { pageTitle: 'Accueil' }
   },
   {
     path: 'approved',
     component: HomeComponent,
     canActivate: [],
-    data: { pageTitle: 'HOME.PAGE_TITLE' }
+    data: { pageTitle: 'Accueil' }
   }
 ];
 
