@@ -23,5 +23,27 @@ export class HomeService {
     );
   }
 
-  get_recommendations() { }
+  get_latest_movie(language: string = ' ') {
+    return axios.get(
+      `https://api.themoviedb.org/3/movie/latest?api_key=${this.api_key}&${language === ' '
+        ? ''
+        : `language=${language}`}`
+    );
+  }
+
+  get_popular_movies(language: string = ' ') {
+    return axios.get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${this.api_key}&${language === ' '
+        ? ''
+        : `language=${language}`}`
+    );
+  }
+
+  get_upcoming_movies(language: string = ' ') {
+    return axios.get(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${this.api_key}&${language === ' '
+        ? ''
+        : `language=${language}`}`
+    );
+  }
 }

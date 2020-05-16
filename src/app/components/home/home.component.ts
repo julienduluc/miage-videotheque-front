@@ -61,6 +61,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.load_latest_movies();
     this.load_top_rated_movies();
 
+    this.home_service.get_upcoming_movies().then((response) => console.log(response.data));
+
     this.authService._isAuthenticated.pipe(takeUntil(this.unsubscribe$)).subscribe((res) => {
       if (res) {
         this.title = 'Connecté';
