@@ -8,6 +8,7 @@ import { LanguageService } from 'src/app/core/language/language.service';
 import { HomeComponent } from './home.component';
 import { homeRouting } from './home.routing';
 import { HomeService } from './home.service';
+import { ReviewComponent } from '../film/review/review.component';
 
 @NgModule({
   imports: [

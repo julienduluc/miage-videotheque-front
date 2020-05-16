@@ -69,6 +69,8 @@
       <div>{{similarFilm?.release_date}}</div>
     </ng-template>
   </p-carousel>
+
+  <myapp-review [idFilm]="filmSelected?.id"></myapp-review>
 </ng-container>
 
 <ng-template #noData>

@@ -1,0 +1,6 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="reviewForm">
+    <div>
+        <textarea placeholder="Merci d'écrire un commentaire..." formControlName="review"></textarea>
+    </div>
+    <button type="submit">Envoyer</button>
+</form>

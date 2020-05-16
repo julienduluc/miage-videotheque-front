@@ -7,11 +7,12 @@ import { LanguageService } from 'src/app/core/language/language.service';
 
 import { FilmComponent } from './film.component';
 import { filmRouting } from './film.routing';
+import { ReviewComponent } from './review/review.component';
 
 
 @NgModule({
   declarations: [
-    FilmComponent
+    FilmComponent, git s
   ],
   imports: [
     CoreModule,

@@ -58,4 +58,13 @@ export class FilmsService {
       .append('language', 'fr-FR');
     return this.http.get<any>(this.urlMovie + id, { params: param });
   }
+
+  /**
+   * 
+   * 
+   */
+  addReview(review: any): Observable<any> {
+    return this.http.post<any>('/api/add', review);
+  }
+
 }
