@@ -12,7 +12,8 @@ import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
-    FilmComponent, git s
+    FilmComponent,
+    ReviewComponent
   ],
   imports: [
     CoreModule,

@@ -39,11 +39,6 @@ export class ReviewComponent implements OnInit, OnDestroy {
         }
 
         this.filmService.addReview(data).subscribe();
-
-
-        //if (this.form.valid) {
-        console.log('', this.form)
-        //}
     }
 
 
