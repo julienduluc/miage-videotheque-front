@@ -34,10 +34,8 @@ export class ProfilComponent implements OnInit, AfterViewInit {
     this.tabSelected = this.route.snapshot.data.tab;
     this.profilService.activeTab = this.tabSelected;
 
-
     this.accountDetails();
     this.getAccountListsAndRatingsAndWatchlist();
-
   }
 
   ngAfterViewInit(): void {
@@ -57,15 +55,16 @@ export class ProfilComponent implements OnInit, AfterViewInit {
 
   getAccountListsAndRatingsAndWatchlist(): void {
     this.accountService.getAccountListsAndRatingsAndWatchlist().subscribe((results) => {
-      this.lists = results[0].results;
-      this.ratings = results[1].results;
-      this.watchlist = results[2].results;
-      this.favorites = results[3].results;
 
-      this.statistics.set('lists', results[0].total_results);
-      this.statistics.set('ratings', results[1].total_results);
-      this.statistics.set('watchlist', results[2].total_results);
-      this.statistics.set('favorites', results[3].total_results);
+      this.ratings = results[0].results;
+      this.favorites = results[1].results;
+      this.lists = results[2].results;
+      this.watchlist = results[3].results;
+
+      this.statistics.set('ratings', results[0].total_results);
+      this.statistics.set('favorites', results[1].total_results);
+      this.statistics.set('lists', results[2].total_results);
+      this.statistics.set('watchlist', results[3].total_results);
     });
   }
 }
