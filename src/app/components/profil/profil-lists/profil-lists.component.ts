@@ -12,6 +12,8 @@ export class ProfilListsComponent implements OnInit {
 
   selectedOrder = 'desc';
 
+  displayModal = false;
+
   constructor(
     private accountService: AccountService
   ) { }
@@ -25,4 +27,11 @@ export class ProfilListsComponent implements OnInit {
     });
   }
 
+  openModal(): void {
+    this.displayModal = true;
+  }
+
+  closeModal(): void {
+    this.displayModal = false;
+  }
 }

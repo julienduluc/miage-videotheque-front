@@ -32,6 +32,7 @@ import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER }
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CarouselModule } from 'primeng/carousel';
+import { DialogModule } from 'primeng/dialog';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   pbColor: '#50ba92',
@@ -80,7 +81,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CarouselModule,
     MatTabsModule,
     MatChipsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    DialogModule
   ],
   declarations: [],
   providers: [],
@@ -119,7 +121,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CarouselModule,
     MatTabsModule,
     MatChipsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    DialogModule
   ],
 })
 export class SharedLibsModule {

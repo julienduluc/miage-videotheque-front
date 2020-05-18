@@ -5,13 +5,15 @@ import { LanguageService } from '@core/language/language.service';
 import { SharedModule } from '@shared/shared.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
+import { ProfilFavoriteComponent } from './profil-favorite/profil-favorite.component';
+import { ProfilListsModalComponent } from './profil-lists/profil-lists-modal/profil-lists-modal.component';
 import { ProfilListsComponent } from './profil-lists/profil-lists.component';
+import { ProfilListsService } from './profil-lists/profil-lists.service';
 import { ProfilRatingsComponent } from './profil-ratings/profil-ratings.component';
+import { ProfilWatchlistComponent } from './profil-watchlist/profil-watchlist.component';
 import { ProfilComponent } from './profil.component';
 import { profilRouting } from './profil.routing';
 import { ProfilService } from './profil.service';
-import { ProfilFavoriteComponent } from './profil-favorite/profil-favorite.component';
-import { ProfilWatchlistComponent } from './profil-watchlist/profil-watchlist.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { ProfilWatchlistComponent } from './profil-watchlist/profil-watchlist.co
     ProfilListsComponent,
     ProfilRatingsComponent,
     ProfilFavoriteComponent,
-    ProfilWatchlistComponent
+    ProfilWatchlistComponent,
+    ProfilListsModalComponent
   ],
   imports: [
     CoreModule,
@@ -33,7 +36,8 @@ import { ProfilWatchlistComponent } from './profil-watchlist/profil-watchlist.co
       provide: LanguageService,
       useClass: LanguageService
     },
-    ProfilService
+    ProfilService,
+    ProfilListsService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

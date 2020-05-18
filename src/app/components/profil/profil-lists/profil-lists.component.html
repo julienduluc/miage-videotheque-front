@@ -1,5 +1,10 @@
 <div class="top">
-  <span class="title">Mes listes</span>
+  <span class="title">Mes listes
+
+    <button mat-mini-fab color="primary" (click)="openModal()">
+      <fa-icon icon="plus"></fa-icon>
+    </button>
+  </span>
   <span>
 
   </span>
@@ -25,6 +30,9 @@
     </span>
   </myapp-account-lists-view>
 
+  <span *ngIf="displayModal">
+    <myapp-profil-lists-modal (hideModal)="closeModal($event)"></myapp-profil-lists-modal>
+  </span>
 </ng-container>
 
 <ng-template #noData>
