@@ -19,7 +19,6 @@ import { SharedLibsModule } from './shared-libs.module';
   ],
   providers: [
     UtilsService,
-    FilmsService,
     AccountService
   ],
   exports: [
@@ -34,7 +33,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
-      providers: []
+      providers: [FilmsService]
     };
   }
 }
