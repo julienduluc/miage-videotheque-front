@@ -30,4 +30,11 @@ export class ProfilFavoriteComponent implements OnInit {
     this.router.navigate(['film/' + id]);
   }
 
+  editFavorite(id: number): void {
+    this.accountService.editFavorite(id, false).subscribe((res) => {
+      const a = this.favorites.findIndex(x => x.id === id);
+      this.favorites.splice(a, 1);
+    });
+  }
+
 }

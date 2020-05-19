@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AccountService } from '@shared/services/account.service';
 
+import { ProfilListsService } from './profil-lists.service';
+
 @Component({
   selector: 'myapp-profil-lists',
   templateUrl: './profil-lists.component.html',
@@ -15,23 +17,46 @@ export class ProfilListsComponent implements OnInit {
   displayModal = false;
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private listsService: ProfilListsService
   ) { }
 
   ngOnInit(): void { }
 
-  onChange(order: string): void {
-    this.selectedOrder = order;
+  getLists(): void {
     this.accountService.getAccountLists(this.selectedOrder).subscribe(res => {
       this.lists = res.results;
     });
+  }
+
+  onChange(order: string): void {
+    this.selectedOrder = order;
+    this.getLists();
   }
 
   openModal(): void {
     this.displayModal = true;
   }
 
-  closeModal(): void {
+  closeModal(form: any) {
+
+    if (form) {
+      this.listsService.createList(form.value).subscribe(() => {
+        this.getLists();
+        this.lists = [...this.lists];
+      });
+    }
     this.displayModal = false;
+  }
+
+  deleteList(idList: any) {
+
+    this.listsService.deleteList(idList).subscribe(() => {
+      // ANO API
+    }, (err) => {
+      const a = this.lists.findIndex(x => x.id === idList);
+      this.lists.splice(a, 1);
+      this.lists = [...this.lists];
+    });
   }
 }

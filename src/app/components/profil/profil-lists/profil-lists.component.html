@@ -1,20 +1,24 @@
 <div class="top">
   <span class="title">Mes listes
 
+
+  </span>
+  <span>
     <button mat-mini-fab color="primary" (click)="openModal()">
       <fa-icon icon="plus"></fa-icon>
     </button>
-  </span>
-  <span>
-
   </span>
 </div>
 
 <ng-container *ngIf="lists?.length > 0; else noData">
 
   <myapp-account-lists-view *ngFor="let list of lists">
+
     <span image>
-      <img src="https://image.tmdb.org/t/p/w92/{{list?.poster_path}}">
+      <div class="icon-container">
+        <fa-icon icon="list"></fa-icon>
+      </div>
+
     </span>
 
     <span title>
@@ -28,13 +32,20 @@
     <span rating>
       ({{list?.item_count}} élément<span *ngIf="list?.item_count > 1">s</span> dans cette liste)
     </span>
+
+    <span actions>
+      <button mat-mini-fab color="warn" (click)="deleteList(list?.id)" matTooltip="Supprimer la liste"
+        matTooltipPosition='below'>
+        <fa-icon icon="times"></fa-icon>
+      </button>
+    </span>
   </myapp-account-lists-view>
 
-  <span *ngIf="displayModal">
-    <myapp-profil-lists-modal (hideModal)="closeModal()"></myapp-profil-lists-modal>
-  </span>
-</ng-container>
 
+</ng-container>
+<span *ngIf="displayModal">
+  <myapp-profil-lists-modal (hideModal)="closeModal($event)"></myapp-profil-lists-modal>
+</span>
 <ng-template #noData>
   <div class="no-data">
     Aucune liste

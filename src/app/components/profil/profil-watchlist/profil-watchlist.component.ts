@@ -27,6 +27,13 @@ export class ProfilWatchlistComponent implements OnInit {
     });
   }
 
+  editWatchlist(id: number): void {
+    this.accountService.editWatchlist(id, false).subscribe((res) => {
+      const a = this.watchlist.findIndex(x => x.id === id);
+      this.watchlist.splice(a, 1);
+    });
+  }
+
   goToFilm(id: number) {
     this.router.navigate(['film/' + id]);
   }

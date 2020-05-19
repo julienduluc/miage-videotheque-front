@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
+import { Actor } from '@shared/models/actor.model';
 import { Film } from '@shared/models/film.model';
 import { Video } from '@shared/models/video.model';
-import { Actor } from './../../shared/models/actor.model';
 import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'myapp-film',
@@ -24,9 +24,10 @@ export class FilmComponent implements OnInit, OnDestroy {
   actors: Array<Actor>[];
   similarFilms: Array<Film>[];
   keywords: Array<any>[];
-  videos: Array<Video>;
   safeUrl: SafeResourceUrl;
   request_token: any;
+
+  videos: Array<Video>;
 
 
   constructor(
@@ -80,7 +81,7 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   addToFavorite() {
     if (this.authService.isAuthenticated) {
-      this.accountService.addFavorite(this.filmSelected.id).subscribe((res) => {
+      this.accountService.editFavorite(this.filmSelected.id, true).subscribe((res) => {
         if (res.status_code === 12) {
           console.log('ok');
         }

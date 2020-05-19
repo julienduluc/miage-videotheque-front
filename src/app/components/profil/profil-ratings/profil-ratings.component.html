@@ -15,8 +15,8 @@
 <ng-container *ngIf="ratings?.length > 0; else noData">
   <myapp-account-lists-view *ngFor="let rate of ratings">
     <span image>
-      <img (click)="goToFilm(rate?.id)" src="https://image.tmdb.org/t/p/w92/{{rate?.poster_path}}"
-        style="cursor: pointer;">
+      <img (click)="goToFilm(rate?.id)" src="https://image.tmdb.org/t/p/w154/{{rate?.poster_path}}"
+        style="cursor: pointer; height: 100%;">
     </span>
 
     <span title (click)="goToFilm(rate?.id)" class="link">
@@ -33,6 +33,13 @@
     <span rating>
       <fa-icon icon="star" class="icon-star"></fa-icon>
       {{rate?.rating}}
+    </span>
+
+    <span actions>
+      <button mat-mini-fab color="warn" matTooltip="Retirer la note" matTooltipPosition='below'
+        (click)="deleteRate(rate?.id)">
+        <fa-icon icon="times"></fa-icon>
+      </button>
     </span>
   </myapp-account-lists-view>
 

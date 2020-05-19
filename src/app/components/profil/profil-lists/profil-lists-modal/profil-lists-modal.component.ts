@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'myapp-profil-lists-modal',
@@ -7,14 +8,29 @@ import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 })
 export class ProfilListsModalComponent implements OnInit {
 
-  @ViewChild('dd') dd: any;
-  hideModal = new EventEmitter<any>();
-  constructor() { }
+  @Output() hideModal = new EventEmitter<any>();
+  form: FormGroup;
 
-  ngOnInit(): void { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
-  onHide(event: any): void {
-    console.log('chech'); console.log('dd', this.dd);
+
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      name: [null, Validators.required],
+      description: ['']
+    });
+  }
+
+  onHide(event): void {
     this.hideModal.emit();
+  }
+
+  onSubmit(): void {
+    if (this.form.valid) {
+      this.hideModal.emit(this.form);
+    }
   }
 }

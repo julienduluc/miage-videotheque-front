@@ -21,14 +21,24 @@ export class AccountService {
     return this.http.get<any>(API + this.url, { params: queryParams });
   }
 
-  addFavorite(idFilm: number): Observable<any> {
+  editFavorite(idFilm: number, isFavorite: boolean): Observable<any> {
     const queryParams = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
     const body = {
       media_type: 'movie',
       media_id: idFilm,
-      favorite: true
+      favorite: isFavorite
     };
     return this.http.post<any>(API + 'account/null/favorite', body, { params: queryParams });
+  }
+
+  editWatchlist(idFilm: number, isWatchlist: boolean): Observable<any> {
+    const queryParams = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
+    const body = {
+      media_type: 'movie',
+      media_id: idFilm,
+      watchlist: isWatchlist
+    };
+    return this.http.post<any>(API + 'account/null/watchlist', body, { params: queryParams });
   }
 
   getAccountRatings(order?: string): Observable<any> {
