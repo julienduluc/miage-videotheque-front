@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '@shared/services/account.service';
+import { FilmsService } from '@shared/services/films.service';
 
 @Component({
   selector: 'myapp-profil-ratings',
@@ -14,6 +15,7 @@ export class ProfilRatingsComponent implements OnInit, OnChanges {
 
   constructor(
     private accountService: AccountService,
+    private filmService: FilmsService,
     private router: Router
   ) { }
 
@@ -25,6 +27,13 @@ export class ProfilRatingsComponent implements OnInit, OnChanges {
     this.selectedOrder = order;
     this.accountService.getAccountRatings(this.selectedOrder).subscribe(res => {
       this.ratings = res.results;
+    });
+  }
+
+  deleteRate(id: number): void {
+    this.filmService.deleteRate(id).subscribe((res) => {
+      const a = this.ratings.findIndex(x => x.id === id);
+      this.ratings.splice(a, 1);
     });
   }
 

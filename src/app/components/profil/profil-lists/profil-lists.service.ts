@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ProfilListsService {
 
-  url = '/list';
+  url = 'list';
   queryParams: any;
 
 
@@ -23,18 +23,18 @@ export class ProfilListsService {
   }
 
   clearList(idList: number, body: any) {
-    return this.http.post<any>(API + this.url + idList + '/clear', body, { params: this.queryParams });
+    return this.http.post<any>(API + this.url + '/' + idList + '/clear', body, { params: this.queryParams });
   }
 
   deleteList(idList: number) {
-    return this.http.delete<any>(API + this.url + idList, { params: this.queryParams });
+    return this.http.delete<any>(API + this.url + '/' + idList, { params: this.queryParams });
   }
 
   addMovie(idList: number, body: any) {
-    return this.http.post<any>(API + this.url + idList + '/add_item', body, { params: this.queryParams });
+    return this.http.post<any>(API + this.url + '/' + idList + '/add_item', body, { params: this.queryParams });
   }
 
   removeMovie(idList: number, body: any) {
-    return this.http.post<any>(API + this.url + idList + '/remove_item', body, { params: this.queryParams });
+    return this.http.post<any>(API + this.url + '/' + idList + '/remove_item', body, { params: this.queryParams });
   }
 }

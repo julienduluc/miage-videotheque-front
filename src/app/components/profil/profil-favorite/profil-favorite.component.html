@@ -16,8 +16,8 @@
 
   <myapp-account-lists-view *ngFor="let fav of favorites">
     <span image>
-      <img (click)="goToFilm(fav?.id)" src="https://image.tmdb.org/t/p/w92/{{fav?.poster_path}}"
-        style="cursor: pointer;">
+      <img (click)="goToFilm(fav?.id)" src="https://image.tmdb.org/t/p/w154/{{fav?.poster_path}}"
+        style="cursor: pointer; height: 100%;">
     </span>
 
     <span title (click)="goToFilm(fav?.id)" class="link">
@@ -29,6 +29,13 @@
 
     <span overview>
       {{fav?.overview}}
+    </span>
+
+    <span actions>
+      <button mat-mini-fab color="warn" (click)="editFavorite(fav?.id)" matTooltip="Retirer des favoris"
+        matTooltipPosition='below'>
+        <fa-icon icon="heart"></fa-icon>
+      </button>
     </span>
 
   </myapp-account-lists-view>

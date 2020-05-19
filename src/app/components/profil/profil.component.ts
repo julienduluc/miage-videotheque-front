@@ -13,7 +13,7 @@ import { ProfilService } from './profil.service';
 export class ProfilComponent implements OnInit, AfterViewInit {
 
   @ViewChild('tabGroup') tabGroup: MatTabGroup;
-  tabSelected: number;
+
   account: any;
 
   lists: any[];
@@ -31,8 +31,7 @@ export class ProfilComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    this.tabSelected = this.route.snapshot.data.tab;
-    this.profilService.activeTab = this.tabSelected;
+    this.profilService.activeTab = this.route.snapshot.data.tab;
 
     this.accountDetails();
     this.getAccountMultiples();
@@ -44,6 +43,9 @@ export class ProfilComponent implements OnInit, AfterViewInit {
 
   selectedTabChange($event: any) {
     this.profilService.activeTab = $event.index;
+    if (this.profilService.activeTab === 0) {
+      this.getAccountMultiples();
+    }
   }
 
   accountDetails(): void {
@@ -51,7 +53,6 @@ export class ProfilComponent implements OnInit, AfterViewInit {
       this.account = account;
     });
   }
-
 
   getAccountMultiples(): void {
     this.accountService.getAccountMultiples().subscribe((results) => {
@@ -66,5 +67,9 @@ export class ProfilComponent implements OnInit, AfterViewInit {
       this.statistics.set('lists', results[2].total_results);
       this.statistics.set('watchlist', results[3].total_results);
     });
+  }
+
+  test() {
+    console.log('omg');
   }
 }

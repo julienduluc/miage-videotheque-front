@@ -5,33 +5,60 @@
 
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
-  margin: 20px 20px;
-  display: flex;
+  margin: 20px;
   background-color: $white;
 
-  &-image {
-
-  }
-
   &-body {
-      margin: 20px;
+    width: 100%;
+    display: flex;
+
+    .listsview-image {
+      height: 230px;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .right {
+      margin: 10px 20px 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+
+      .title {
+        font-weight: bold;
+        font-size: $size4;
+      }
+
+      .realeaseDate {
+        font-style: italic;
+      }
+
+      .overview {
+        padding-top: 2px;
+        text-align: justify;
+      }
+
+      .rating {
+        font-weight: normal;
+        font-size: $size2;
+      }
+    }
   }
 
-  &-title {
-    font-weight: bold;
-    font-size: $size4;
-  }
+  &-footer {
+    padding-top: 5px;
 
-  &-realeaseDate {
-    font-style: italic;
-  }
+    .actions {
+      background: lightgray;
+      margin: 0 -20px;
+      padding: 5px 20px 5px 20px;
+    }
 
-  &-overview {
-
-  }
-
-  &-rating {
-    font-weight: normal;
-    font-size: $size2;
+    hr {
+      margin-bottom: 0.5rem;
+    }
   }
 }

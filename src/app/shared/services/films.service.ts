@@ -67,4 +67,13 @@ export class FilmsService {
     return this.http.post<any>('api/review/add', review);
   }
 
+  /**
+   * Supprime une note
+   * @param idFilm : id film
+   */
+  deleteRate(idFilm: number): Observable<any> {
+    const queryParams = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
+    return this.http.delete<any>(this.urlMovie + idFilm + '/rating', { params: queryParams });
+  }
+
 }

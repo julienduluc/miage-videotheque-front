@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from '@core/auth/auth.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   latest_movies: Movie[];
   top_rated_movies: Movie[];
 
-  constructor(private authService: AuthService, private home_service: HomeService) { }
+  constructor(private authService: AuthService, private home_service: HomeService,
+    private sanitizer: DomSanitizer) { }
 
   load_latest_movies() {
     this.home_service.get_latest_movies('fr-FR').then((response) => {

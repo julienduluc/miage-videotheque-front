@@ -5,13 +5,14 @@
 
 .top {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   align-items: center;
   margin: 0 20px;
 
   .title {
     font-size: $size6;
     font-weight: bold;
+    margin-right: 30px;
   }
 
   .tri-title {
@@ -21,6 +22,18 @@
     color: $videotheque-green;
     font-size: $size3;
   }
+
+
+}
+.icon-container {
+  height: 100%;
+  width: 153px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  background-color: lightslategrey;
+  color: $white;
 }
 
 .no-data {

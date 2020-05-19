@@ -1,33 +1,43 @@
 <div class="listsview">
-  <div class="listsview-title">
-    <ng-content select="[image]"></ng-content>
-  </div>
 
   <div class="listsview-body">
+    <div class="listsview-image">
+      <ng-content select="[image]"></ng-content>
+    </div>
 
-    <div class="listsview-title">
-      <span>
-        <ng-content select="[title]"></ng-content>
-        <span class="listsview-rating">
-          <ng-content select="[rating]"></ng-content>
-        </span>
-      </span>
-      <!-- <span>
+    <div class="right">
+
+      <div>
+        <div class="title">
+          <span>
+            <ng-content select="[title]"></ng-content>
+            <span class="rating">
+              <ng-content select="[rating]"></ng-content>
+            </span>
+          </span>
+          <!-- <span>
         <button mat-mini-fab color="primary">
           <fa-icon icon="eye" class="icon-star"></fa-icon>
         </button>
       </span> -->
-    </div>
-    <div class="listsview-releaseDate">
-      <ng-content select="[releaseDate]"></ng-content>
-    </div>
-    <div class="listsview-overview">
-      <ng-content select="[overview]"></ng-content>
-    </div>
+        </div>
+        <div class="realeaseDate">
+          <ng-content select="[releaseDate]"></ng-content>
+        </div>
+        <div class="overview">
+          <ng-content select="[overview]"></ng-content>
+        </div>
 
-    <div class="listsview-rating">
+      </div>
+      <div class="listsview-footer">
+        <div class="actions">
 
+          <ng-content select="[actions]"></ng-content>
+        </div>
+      </div>
     </div>
 
   </div>
+
+
 </div>
