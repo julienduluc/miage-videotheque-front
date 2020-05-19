@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
 import { Film } from '@shared/models/film.model';
+import { Video } from '@shared/models/video.model';
 import { Actor } from './../../shared/models/actor.model';
 import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'myapp-film',
@@ -22,6 +24,8 @@ export class FilmComponent implements OnInit, OnDestroy {
   actors: Array<Actor>[];
   similarFilms: Array<Film>[];
   keywords: Array<any>[];
+  videos: Array<Video>;
+  safeUrl: SafeResourceUrl;
   request_token: any;
 
 
@@ -29,7 +33,8 @@ export class FilmComponent implements OnInit, OnDestroy {
     private filmsService: FilmsService,
     private accountService: AccountService,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +69,12 @@ export class FilmComponent implements OnInit, OnDestroy {
     });
 
 
+    this.filmsService.getVideosByFilmId(this.id).subscribe((res) => {
+      this.videos = res.results;
+      this.videos.forEach(v => {
+        v.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + v.key);
+      });
+    });
   }
 
 
