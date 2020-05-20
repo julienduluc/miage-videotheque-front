@@ -10,3 +10,9 @@
 
   </span>
 </div>
+<div>
+  <ul *ngFor="let review of reviews">
+    <li>{{review.review}}</li>
+  </ul>
+  <button (click)="getReviews()">test</button>
+</div>

@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilmsService } from '@shared/services/films.service';
 import { ReviewService } from '@shared/services/review.service';
+import { SessionStorageService } from 'ngx-webstorage';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -19,7 +20,8 @@ export class ReviewComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private filmService: FilmsService,
-    private reviewService: ReviewService
+    private reviewService: ReviewService,
+    private localStorage: SessionStorageService
   ) { }
 
   ngOnInit() {
@@ -31,11 +33,10 @@ export class ReviewComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-
     const data = {
       review: this.form.get('review').value,
       id_film: this.idFilm,
-      id_user: 11
+      id_user: this.localStorage.retrieve('sessionid')
     };
 
     this.reviewService.addReview(data).subscribe();
