@@ -17,7 +17,7 @@
   "editor.tabCompletion": "on",
   "breadcrumbs.enabled": true,
   "editor.formatOnPaste": true,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "typescriptHero.imports.organizeOnSave": true,
   "typescriptHero.imports.organizeSortsByFirstSpecifier": true,
   "auto-close-tag.SublimeText3Mode": true,

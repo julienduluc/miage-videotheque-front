@@ -1,24 +1,26 @@
 <div class="home-content">
   <h2 class="title">Actuellement en salle</h2>
   <div class="movies_list">
-    <div *ngFor="let movie of latest_movies" class="card">
-      <p class="movie_rate">
-        <fa-icon icon="star"></fa-icon> {{ movie.rate }} / 10
-      </p>
-      <img src="{{ movie.image_url }}" />
-      <p class="movie_title">{{ movie.title }}</p>
-      <p class="movie_release_date">{{ movie.release_date | date: 'longDate'}}</p>
-    </div>
+    <myapp-card *ngFor="let movie of latest_movies" [movie]='movie'></myapp-card>
   </div>
   <h2 class="title">Mieux notés</h2>
   <div class="movies_list">
-    <div *ngFor="let movie of top_rated_movies" class="card">
-      <p class="movie_rate">
-        <fa-icon icon="star"></fa-icon> {{ movie.rate }} / 10
-      </p>
-      <img src="{{ movie.image_url }}" />
-      <p class="movie_title">{{ movie.title }}</p>
-      <p class="movie_release_date">{{ movie.release_date | date: 'yyyy'}}</p>
-    </div>
+    <myapp-card *ngFor="let movie of top_rated_movies" [movie]='movie'></myapp-card>
+  </div>
+  <h2 class="title">Nouveau Film</h2>
+  <div class="movies_list">
+    <div></div>
+    <div></div>
+    <myapp-card [movie]='latest_movie'></myapp-card>
+    <div></div>
+    <div></div>
+  </div>
+  <h2 class="title">films populaires</h2>
+  <div class="movies_list">
+    <myapp-card *ngFor="let movie of popular_movies" [movie]='movie'></myapp-card>
+  </div>
+  <h2 class="title">films a venir</h2>
+  <div class="movies_list">
+    <myapp-card *ngFor="let movie of upcoming_movies" [movie]='movie'></myapp-card>
   </div>
 </div>

@@ -1,0 +1,11 @@
+<div *ngIf="movie" class="card">
+    <p class="movie_rate">
+        <fa-icon icon="star"></fa-icon> {{ movie.rate }} / 10
+    </p>
+    <img src="{{ movie.image_url }}" />
+    <p class="movie_title" [style.font-size]="movie.title.length > 10  ? '1em' : '1.3em' "
+        [style.padding]="movie.title.length > 10 ? ( movie.title.length > 40 ? '1em 0 1.3em' : '1em 0 2.6em' ) : '.5em 0 2em'">
+        <a href="film/{{movie.id}}">{{ movie.title }}</a>
+    </p>
+    <p class="movie_release_date">{{ movie.release_date | date: movie.date_format }}</p>
+</div>

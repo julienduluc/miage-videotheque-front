@@ -7,41 +7,12 @@
 	&-content {
 		.title {
 			color: #3b3c3d;
-			margin: 2em 0 1em;
+			margin: 1em 0 1em;
 		}
 
 		.movies_list {
 			display: grid;
-			grid-template-columns: repeat(6, 1fr);
-			grid-row-gap: 1em;
-		}
-
-		.card {
-			width: 95%;
-		}
-
-		.movie_rate,
-		.movie_release_date {
-			margin: 0;
-			padding: .3em 0;
-			text-align: center;
-			color: #50ba92;
-			background-color: #eeeff1;
-			font-weight: bold;
-			font-size: 1em;
-		}
-
-		.movie_release_date {
-			margin-top: auto;
-		}
-
-		.movie_title {
-			margin: 0;
-			text-align: center;
-			color: #0b5a59;
-			padding: 0.5em 0;
-			font-size: 1.3em;
-			font-weight: bold;
+			grid-template-columns: repeat(5, 1fr);
 		}
 	}
 }
