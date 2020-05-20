@@ -9,6 +9,7 @@ import { HomeComponent } from './home.component';
 import { homeRouting } from './home.routing';
 import { HomeService } from './home.service';
 import { ReviewComponent } from '../film/review/review.component';
+import { CardComponent } from './tools/card/card.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ReviewComponent } from '../film/review/review.component';
     homeRouting
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    CardComponent
   ],
   providers: [
     {

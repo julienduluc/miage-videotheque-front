@@ -1,0 +1,34 @@
+.card {
+	width: 96%;
+	margin: 0 auto 1.5em;
+}
+
+.movie_rate,
+.movie_release_date {
+	margin: 0;
+	padding: .3em 0;
+	text-align: center;
+	color: #50ba92;
+	background-color: #eeeff1;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.movie_release_date {
+	margin-top: auto;
+}
+
+.movie_title {
+	margin: 0;
+	text-align: center;
+	padding: 0.5em 0;
+	font-size: 1.3em;
+	font-weight: bold;
+	width: 80%;
+	margin: 0 auto;
+	height: fit-content;
+
+	& a {
+		color: #0b5a59;
+	}
+}
