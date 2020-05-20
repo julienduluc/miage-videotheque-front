@@ -6,6 +6,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { PermissionDirective } from './directives/permission.directive';
 import { AccountService } from './services/account.service';
 import { FilmsService } from './services/films.service';
+import { ReviewService } from './services/review.service';
 import { UtilsService } from './services/utils.service';
 import { SharedCommonModule } from './shared-common.module';
 import { SharedLibsModule } from './shared-libs.module';
@@ -19,7 +20,8 @@ import { SharedLibsModule } from './shared-libs.module';
   ],
   providers: [
     UtilsService,
-    AccountService
+    AccountService,
+    ReviewService
   ],
   exports: [
     SharedCommonModule,

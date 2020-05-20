@@ -12,8 +12,14 @@
       <ng-template let-film pTemplate="item">
         <div class="ui-helper-clearfix item items-container">
           <div style="width:32px;margin:5px 0 2px 5px;min-height: 48px;">
-            <img *ngIf="film?.poster_path" src="https://image.tmdb.org/t/p/w92/{{film?.poster_path}}"
+            <img *ngIf="film?.poster_path; else noImg" src="https://image.tmdb.org/t/p/w92/{{film?.poster_path}}"
               style="width:32px;" />
+            <ng-template #noImg>
+              <div class="noimg">
+                <fa-icon icon="film"></fa-icon>
+              </div>
+
+            </ng-template>
           </div>
 
           <div style=" font-size:16px;margin-left:10px">

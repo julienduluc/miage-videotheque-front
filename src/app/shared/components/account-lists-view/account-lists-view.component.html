@@ -14,6 +14,9 @@
             <span class="rating">
               <ng-content select="[rating]"></ng-content>
             </span>
+            <span class="average">
+              <ng-content select="[average]"></ng-content>
+            </span>
           </span>
           <!-- <span>
         <button mat-mini-fab color="primary">
@@ -31,8 +34,11 @@
       </div>
       <div class="listsview-footer">
         <div class="actions">
-
           <ng-content select="[actions]"></ng-content>
+          <span class="txt">
+            <ng-content select="[actions-txt]"></ng-content>
+          </span>
+
         </div>
       </div>
     </div>

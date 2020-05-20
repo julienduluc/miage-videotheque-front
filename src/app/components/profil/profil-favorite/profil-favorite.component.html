@@ -32,11 +32,11 @@
     </span>
 
     <span actions>
-      <button mat-mini-fab color="warn" (click)="editFavorite(fav?.id)" matTooltip="Retirer des favoris"
-        matTooltipPosition='below'>
+      <button mat-mini-fab color="warn" (click)="editFavorite(fav?.id)">
         <fa-icon icon="heart"></fa-icon>
       </button>
     </span>
+    <span actions-txt (click)="editFavorite(fav?.id)" style="cursor:pointer">Retirer des favoris</span>
 
   </myapp-account-lists-view>
 </ng-container>

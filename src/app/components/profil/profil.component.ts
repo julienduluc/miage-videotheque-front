@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '@shared/services/account.service';
+import { ReviewService } from '@shared/services/review.service';
 
 import { ProfilService } from './profil.service';
 
@@ -20,13 +21,15 @@ export class ProfilComponent implements OnInit, AfterViewInit {
   ratings: any[];
   watchlist: any[];
   favorites: any[];
+  reviews: any[];
 
   statistics: Map<string, number> = new Map();
 
   constructor(
     private accountService: AccountService,
     private profilService: ProfilService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private reviewService: ReviewService
   ) { }
 
   ngOnInit(): void {
@@ -69,7 +72,9 @@ export class ProfilComponent implements OnInit, AfterViewInit {
     });
   }
 
-  test() {
-    console.log('omg');
+  getReviews() {
+    this.reviewService.getReviewsByUser().subscribe((reviews) => {
+      this.reviews = reviews;
+    });
   }
 }

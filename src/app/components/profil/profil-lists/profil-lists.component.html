@@ -22,23 +22,19 @@
     </span>
 
     <span title>
-      {{list?.name}}
+      {{list?.name}} &nbsp;&nbsp; ({{list?.item_count}} élément<span *ngIf="list?.item_count > 1">s</span>)
     </span>
 
     <span overview>
       {{list?.description}}
     </span>
 
-    <span rating>
-      ({{list?.item_count}} élément<span *ngIf="list?.item_count > 1">s</span> dans cette liste)
-    </span>
-
     <span actions>
-      <button mat-mini-fab color="warn" (click)="deleteList(list?.id)" matTooltip="Supprimer la liste"
-        matTooltipPosition='below'>
+      <button mat-mini-fab color="warn" (click)="deleteList(list?.id)">
         <fa-icon icon="times"></fa-icon>
       </button>
     </span>
+    <span actions-txt (click)="deleteList(list?.id)" style="cursor:pointer">Supprimer la liste</span>
   </myapp-account-lists-view>
 
 

@@ -30,17 +30,22 @@
       {{rate?.overview}}
     </span>
 
-    <span rating>
+    <span rating matTooltip="Ma note /10" matTooltipPosition='right'>
       <fa-icon icon="star" class="icon-star"></fa-icon>
       {{rate?.rating}}
     </span>
 
+    <span average matTooltip="Note moyenne des utilisateurs /10" matTooltipPosition='right'>
+      <fa-icon icon="star" class="icon-star"></fa-icon>
+      {{rate?.vote_average}}
+    </span>
+
     <span actions>
-      <button mat-mini-fab color="warn" matTooltip="Retirer la note" matTooltipPosition='below'
-        (click)="deleteRate(rate?.id)">
+      <button mat-mini-fab color="warn" (click)="deleteRate(rate?.id)">
         <fa-icon icon="times"></fa-icon>
       </button>
     </span>
+    <span actions-txt (click)="deleteRate(rate?.id)" style="cursor:pointer">Retirer la note</span>
   </myapp-account-lists-view>
 
 </ng-container>

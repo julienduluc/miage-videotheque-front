@@ -59,13 +59,7 @@ export class FilmsService {
     return this.http.get<any>(this.urlMovie + id, { params: param });
   }
 
-  /**
-   *
-   *
-   */
-  addReview(review: any): Observable<any> {
-    return this.http.post<any>('api/review/add', review);
-  }
+
 
   /**
    * Supprime une note

@@ -34,16 +34,27 @@
 
       .realeaseDate {
         font-style: italic;
+        color: grey;
       }
 
       .overview {
         padding-top: 2px;
         text-align: justify;
+        font-size: $size2;
       }
 
       .rating {
         font-weight: normal;
-        font-size: $size2;
+        font-size: $size4;
+        color: $secondary-yellow;
+        margin-left: 10px;
+      }
+
+      .average {
+        font-weight: normal;
+        font-size: $size4;
+        color: $videotheque-green;
+        margin-left: 10px;
       }
     }
   }
@@ -52,9 +63,13 @@
     padding-top: 5px;
 
     .actions {
-      background: lightgray;
+     // background: lightgray;
       margin: 0 -20px;
-      padding: 5px 20px 5px 20px;
+      padding: 5px 20px 10px 20px;
+      .txt {
+        margin-left: 5px;
+        font-size: $size2;
+      }
     }
 
     hr {

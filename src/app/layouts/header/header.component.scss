@@ -100,3 +100,12 @@
   font-style: italic;
   font-weight: bold;
 }
+
+.noimg {
+  width: 32px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
