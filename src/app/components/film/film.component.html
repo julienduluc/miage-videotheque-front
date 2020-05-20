@@ -45,6 +45,8 @@
       </p>
     </div>
   </div>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
 
   <p-carousel [value]="actors" styleClass="custom-carousel" [numVisible]="8" [numScroll]="3" [circular]="true"
     [autoplayInterval]="3000">
@@ -70,9 +72,11 @@
     </ng-template>
   </p-carousel>
 
-  <span *ngFor="let v of videos">
-    <iframe [title]="v.name" [src]="v.safeUrl" width="300" height="200"></iframe>
-  </span>
+  <div class="video-container">
+    <span *ngFor="let v of videos">
+      <iframe [title]="v.name" [src]="v.safeUrl" width="300" height="200"></iframe>
+    </span>
+  </div>
 
   <myapp-review [idFilm]="filmSelected?.id"></myapp-review>
 </ng-container>
