@@ -17,11 +17,11 @@
       <div class="statistics">
 
         <div class="card"><span class="label">Notes totales</span>
-          <span class="value">{{statistics?.get('ratings')}}</span>
+          <span class="value">{{ratings?.length}}</span>
         </div>
 
         <div class="card"><span class="label">Favoris</span>
-          <span class="value">{{statistics?.get('favorites')}}</span>
+          <span class="value">{{favorites?.length}}</span>
         </div>
 
         <!-- <div class="card"><span class="label">Notes totales :</span>
@@ -36,6 +36,11 @@
       <div class="top">
         <span class="title">Reviews</span>
 
+        <ul *ngFor="let review of reviews">
+          <li>{{review.review}}</li>
+
+          <button (click)="deleteReview(review.id)">delete</button>
+        </ul>
       </div>
     </div>
 

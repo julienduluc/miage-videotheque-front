@@ -3,6 +3,7 @@ import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '@shared/services/account.service';
 import { ReviewService } from '@shared/services/review.service';
+import { SessionStorageService } from 'ngx-webstorage';
 
 import { ProfilService } from './profil.service';
 
@@ -23,13 +24,12 @@ export class ProfilComponent implements OnInit, AfterViewInit {
   favorites: any[];
   reviews: any[];
 
-  statistics: Map<string, number> = new Map();
-
   constructor(
     private accountService: AccountService,
     private profilService: ProfilService,
     private route: ActivatedRoute,
-    private reviewService: ReviewService
+    private reviewService: ReviewService,
+    private sessionStorage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +38,7 @@ export class ProfilComponent implements OnInit, AfterViewInit {
 
     this.accountDetails();
     this.getAccountMultiples();
+    this.getReviews();
   }
 
   ngAfterViewInit(): void {
@@ -64,17 +65,17 @@ export class ProfilComponent implements OnInit, AfterViewInit {
       this.favorites = results[1].results;
       this.lists = results[2].results;
       this.watchlist = results[3].results;
-
-      this.statistics.set('ratings', results[0].total_results);
-      this.statistics.set('favorites', results[1].total_results);
-      this.statistics.set('lists', results[2].total_results);
-      this.statistics.set('watchlist', results[3].total_results);
     });
   }
 
   getReviews() {
-    this.reviewService.getReviewsByUser().subscribe((reviews) => {
+    this.reviewService.getReviewsByUser(this.sessionStorage.retrieve('sessionId')).subscribe((reviews) => {
       this.reviews = reviews;
     });
+  }
+
+  deleteReview(idReview: number) {
+
+    this.reviewService.deleteReview(idReview).subscribe();
   }
 }

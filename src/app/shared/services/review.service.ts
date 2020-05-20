@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -8,13 +7,12 @@ export class ReviewService {
 
 
   constructor(
-    private http: HttpClient,
-    private localStorage: LocalStorageService
+    private http: HttpClient
   ) { }
 
 
   addReview(review: any): Observable<any> {
-    return this.http.post<any>('api/review/add', JSON.stringify(review));
+    return this.http.post<any>('api/review/add', review);
   }
 
   getReviewsByUser(idUser: string): Observable<any> {
@@ -25,5 +23,7 @@ export class ReviewService {
     return this.http.get<any>('api/reviews/film/' + idFilm);
   }
 
-
+  deleteReview(id: number): Observable<any> {
+    return this.http.delete<any>('api/review/delete/' + id);
+  }
 }
