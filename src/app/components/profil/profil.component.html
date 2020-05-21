@@ -34,14 +34,35 @@
       </div>
 
       <div class="top">
-        <span class="title">Reviews</span>
-
-        <ul *ngFor="let review of reviews">
-          <li>{{review.review}}</li>
-
-          <button (click)="deleteReview(review.id)">delete</button>
-        </ul>
+        <span class="title">Revues ({{reviews?.length}})</span>
       </div>
+      <myapp-account-lists-view *ngFor="let review of reviews">
+        <span image>
+          <img (click)="goToFilm(review?.id)"
+            src="https://image.tmdb.org/t/p/w154/{{review?.details_film?.poster_path}}"
+            style="cursor: pointer; height: 100%;">
+        </span>
+
+        <span title (click)="goToFilm(review?.id)" class="link">
+          {{review?.details_film?.title}}
+        </span>
+        <span releaseDate>
+          Sorti le : {{review?.details_film?.release_date | date: 'longDate'}}
+        </span>
+
+        <span overview>
+          {{review?.review}}
+        </span>
+
+        <span actions>
+          <button mat-mini-fab color="warn">
+            <fa-icon icon="times"></fa-icon>
+          </button>
+        </span>
+        <span actions-txt style="cursor:pointer" (click)="deleteReview(review?.id)">Supprimer la revue</span>
+
+      </myapp-account-lists-view>
+
     </div>
 
   </mat-tab>

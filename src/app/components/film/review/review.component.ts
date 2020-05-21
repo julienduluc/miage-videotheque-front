@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 import { ReviewService } from '@shared/services/review.service';
 import { SessionStorageService } from 'ngx-webstorage';
@@ -21,7 +22,8 @@ export class ReviewComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private filmService: FilmsService,
     private reviewService: ReviewService,
-    private localStorage: SessionStorageService
+    private localStorage: SessionStorageService,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
@@ -32,11 +34,13 @@ export class ReviewComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
+
+    const userConnected = await this.accountService.getAccountDetails().toPromise();
     const data = {
       review: this.form.get('review').value,
       id_film: this.idFilm,
-      id_user: this.localStorage.retrieve('sessionid')
+      id_user: userConnected.id
     };
 
     this.reviewService.addReview(data).subscribe();

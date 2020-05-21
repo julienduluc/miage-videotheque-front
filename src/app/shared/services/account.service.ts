@@ -81,4 +81,17 @@ export class AccountService {
     return forkJoin([this.getAccountRatings('desc'), this.getAccountFavorite('desc'),
     this.getAccountLists('desc'), this.getAccountWatchlist('desc')]);
   }
+
+
+  /**
+   * Get all of the lists created by an account
+   * @param accountId
+   */
+  getCreatedLists(accountId?: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('session_id', this.sessionStorage.retrieve('sessionId'))
+      .append('language', 'fr-FR');
+
+    return this.http.get<any>(API + this.url + '/' + accountId + '/lists', { params: queryParams });
+  }
 }
