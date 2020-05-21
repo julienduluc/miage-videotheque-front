@@ -1,81 +1,102 @@
 <ng-container *ngIf="filmSelected; else noData">
 
-  <div class="top">
-    <div class="title">
-      {{filmSelected?.title}} ({{filmSelected?.release_date | date: 'yyyy'}})
-    </div>
+  <div class="row">
+    <div class="col-md-3">
 
-    <div class="rates">
-      <fa-icon icon="star" class="icon-star"></fa-icon>
-      {{filmSelected?.vote_average}}/10
-      ({{filmSelected?.vote_count}} votes)
-    </div>
-
-    <div class="logos">
-      <button (click)="addToFavorite()">mark as fav</button>
-    </div>
-  </div>
-  <div class="film-container">
-    <div class="poster">
       <img src="https://image.tmdb.org/t/p/w342/{{filmSelected?.poster_path}}">
+
+      <button class="favorite"(click)="addToFavorite()">Ajouter aux favoris</button>
+
+      <div class="details_film">
+        <h3>Détails du Film</h3>
+        <ul>
+          <li><b>Date de sortie : </b> {{filmSelected?.release_date | date: 'yyyy'}}</li>
+          <li><b>Durée : </b><span *ngIf="filmSelected?.runtime > 60"> {{ (filmSelected?.runtime / 60).toFixed(0) }}h{{filmSelected?.runtime % 60}}</span></li>
+          <li><b>Genre : </b> <span *ngFor="let genre of filmSelected?.genres">{{ genre.name + ',' }}</span></li>
+          <li><b>Réalisateur : </b> <span *ngFor="let person of director"> <span *ngIf="person.job == 'Director'">{{ person.name }}</span></span></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="header-title">
+          <img src="/assets/images/film/trailer.png">
+          <h3>Casting</h3>
+        </div>
+
+        <p-carousel [value]="actors" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true">
+          <ng-template let-actor pTemplate="item">
+
+            <img src="https://image.tmdb.org/t/p/w342{{actor?.profile_path}}" />
+            <div class="actor_details">
+              <b>{{actor?.name}}</b> <br>
+              <b>{{actor?.character}}</b>
+            </div>
+
+          </ng-template>
+        </p-carousel>
+
+      </div>
+
+
+
     </div>
 
-    <div class="right">
-      <p class="title">Synopsis</p>
-      <p class="overview">
-        {{filmSelected?.overview}}
-      </p>
-      <p class="overview">Date de sortie : {{filmSelected?.release_date | date: 'longDate'}} </p>
-      <p class="overview">Durée :
-        <span *ngIf="filmSelected?.runtime > 60">
-          {{ (filmSelected?.runtime / 60).toFixed(0) }}h{{filmSelected?.runtime % 60}} </span>
-      </p>
+    <div class="col-md-8">
 
-      <p class="overview">Genres :
-        <span *ngFor="let genre of filmSelected?.genres">
-          {{ genre.name + ',' }}
-        </span>
-      </p>
-      <p class="overview">Réalisateur :
-        <span *ngFor="let person of director">
-          <span *ngIf="person.job == 'Director'">
-            {{ person.name }}
-          </span>
-        </span>
-      </p>
+      <div class="main-details">
+        <h1>{{filmSelected?.title}}  ({{filmSelected?.release_date | date: 'yyyy'}})</h1>
+
+        <div class="note">
+          <div *ngFor="let item of [].constructor(note); let i = index">
+            <fa-icon icon="star" class="icon-star"></fa-icon>
+          </div>
+          <span class="note_details"> {{filmSelected?.vote_average}}/10 ({{filmSelected?.vote_count}} votes) </span>
+        </div>
+
+      </div>
+
+      <div class="section">
+        <div class="header-title">
+          <img src="/assets/images/film/resume.png">
+          <h3>Synopsis</h3>
+        </div>
+
+        <p class="synopsis">
+          {{filmSelected?.overview}}
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="header-title">
+          <img src="/assets/images/film/trailer.png">
+          <h3>Bande Annonce</h3>
+        </div>
+
+        <div class="video-container">
+            <iframe [title]="videos[0].name" [src]="videos[0].safeUrl"></iframe>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="header-title">
+          <img src="/assets/images/film/similar.png">
+          <h3>Films Similaires</h3>
+        </div>
+
+        <p-carousel [value]="similarFilms" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+          <ng-template let-similarFilm pTemplate="item">
+            <div *ngIf="similarFilms" class="movie-item">
+                <div class="mv-img">
+                  <img src="https://image.tmdb.org/t/p/w342{{ similarFilm?.poster_path }}" alt="" width="285" height="437">
+                </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+
+      </div>
+
     </div>
-  </div>
-  <td>&nbsp;</td>
-  <td>&nbsp;</td>
 
-  <p-carousel [value]="actors" styleClass="custom-carousel" [numVisible]="8" [numScroll]="3" [circular]="true"
-    [autoplayInterval]="3000">
-    <p-header>
-      <h3>Les acteurs</h3>
-    </p-header>
-    <ng-template let-actor pTemplate="item">
-      <img src="https://image.tmdb.org/t/p/w92{{actor?.profile_path}}" />
-      <div>{{actor?.name}}</div>
-      <div>{{actor?.character}}</div>
-    </ng-template>
-  </p-carousel>
-
-  <p-carousel [value]="similarFilms" styleClass="custom-carousel" [numVisible]="8" [numScroll]="3" [circular]="true"
-    [autoplayInterval]="3000">
-    <p-header>
-      <h3>Les films similaires</h3>
-    </p-header>
-    <ng-template let-similarFilm pTemplate="item">
-      <img src="https://image.tmdb.org/t/p/w92{{similarFilm?.poster_path}}" />
-      <div>{{similarFilm?.title}}</div>
-      <div>{{similarFilm?.release_date}}</div>
-    </ng-template>
-  </p-carousel>
-
-  <div class="video-container">
-    <span *ngFor="let v of videos">
-      <iframe [title]="v.name" [src]="v.safeUrl" width="300" height="200"></iframe>
-    </span>
   </div>
 
   <myapp-review [idFilm]="filmSelected?.id"></myapp-review>

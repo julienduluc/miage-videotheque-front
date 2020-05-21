@@ -58,5 +58,5 @@ export function vendors(library: any) {
     faWrench, faClock, faCloud, faSignOutAlt, faSignInAlt,
     faCalendarAlt, faSearch, faTrashAlt, faAsterisk,
     faLock, faEyeSlash, faEyeDropper, faFolder, faEdit, faStar,
-    faAtom, faDatabase, faUserCircle, faExclamationCircle);
+    faAtom, faDatabase, faUserCircle, faExclamationCircle,);
 }

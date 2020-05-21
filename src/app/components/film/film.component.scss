@@ -2,6 +2,133 @@
 @import "font.scss";
 @import "components.scss";
 @import "size.scss";
+@import "bootstrap-grid.scss";
+@import "../home/tools/card/card.component.scss";
+
+
+img {
+  width: 100%;
+}
+
+h3 {
+  font-weight: 500;
+  font-style: normal;
+  color: #000;
+  font-size: 24px;
+}
+
+.icon-star {
+  font-size: 22px;
+  color: $secondary-yellow;
+}
+
+.ui-carousel-dots-container{
+  display: none !important;
+}
+
+.note {
+  display: flex;
+  width: auto;
+}
+
+.note_details {
+  font-size: 18px;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.main-details {
+  margin-bottom: 31px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.details_film {
+
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-size: 16px;
+
+  ul {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  b {
+    font-weight: 700;
+  }
+
+
+}
+
+.favorite {
+  margin-top: 20px;
+  background-color: #ffffff;
+  color: black;
+  font-size: 20px;
+  border: 1px solid #d6d2d2;
+  padding: 5px;
+  width: 100%;
+  font-weight: 400;
+  border-radius: 20px;
+}
+
+.header-title {
+
+  display: flex;
+  margin-bottom: 15px;
+
+  img {
+    width : 50px;
+    margin-right: 15px;
+  };
+
+  h3 {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.synopsis {
+  margin-top: 20px;
+  font-size: 19px;
+}
+
+.video-container {
+  iframe {
+    margin: auto;
+    width: 100%;
+    height: 500px;
+    border: unset;
+    margin-top: 25px;
+  }
+}
+
+button.ui-carousel-prev {
+  display: none !important;
+}
+
+.actor_details {
+  margin-top:10px;
+  text-align: center;
+}
+
+
+
+
+
 
 .top {
   height: 70px;
@@ -57,3 +184,9 @@ font-size: $size4;
 
   }
 }
+
+
+.ui-carousel-dots-container.ui-helper-reset {
+  display: none !important;
+}
+

@@ -26,6 +26,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   keywords: Array<any>[];
   safeUrl: SafeResourceUrl;
   request_token: any;
+  note: number;
 
   videos: Array<Video>;
 
@@ -55,6 +56,7 @@ export class FilmComponent implements OnInit, OnDestroy {
     this.filmsService.getFilmById(this.id).subscribe((film) => {
       if (film) {
         this.filmSelected = film;
+        this.note = Math.trunc(film.vote_average);
       }
     });
 
@@ -62,6 +64,7 @@ export class FilmComponent implements OnInit, OnDestroy {
     this.filmsService.getCreditsByFilmId(this.id).subscribe((res) => {
       this.director = res.crew;
       this.actors = res.cast;
+      this.actors = this.actors.slice(0,7);
     });
 
     // Récupère les films similaires au film sélectionné
@@ -76,6 +79,9 @@ export class FilmComponent implements OnInit, OnDestroy {
         v.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + v.key);
       });
     });
+
+
+
   }
 
 
