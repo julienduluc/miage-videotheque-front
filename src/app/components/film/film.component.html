@@ -3,17 +3,25 @@
   <div class="row">
     <div class="col-md-3">
 
-      <img src="https://image.tmdb.org/t/p/w342/{{filmSelected?.poster_path}}">
+      <img src="https://image.tmdb.org/t/p/w342/{{filmSelected?.poster_path}}" />
 
-      <button class="favorite"(click)="addToFavorite()">Ajouter aux favoris</button>
+      <ng-container *ngIf="isFavorite; else markFav">
+        <button class="favorite" (click)="addToFavorite()">Supprimer des favoris</button>
+      </ng-container>
+      <ng-template #markFav>
+        <button class="favorite" (click)="addToFavorite()">Ajouter aux favoris</button>
+      </ng-template>
+
 
       <div class="details_film">
         <h3>Détails du Film</h3>
         <ul>
           <li><b>Date de sortie : </b> {{filmSelected?.release_date | date: 'yyyy'}}</li>
-          <li><b>Durée : </b><span *ngIf="filmSelected?.runtime > 60"> {{ (filmSelected?.runtime / 60).toFixed(0) }}h{{filmSelected?.runtime % 60}}</span></li>
+          <li><b>Durée : </b><span *ngIf="filmSelected?.runtime > 60">
+              {{ (filmSelected?.runtime / 60).toFixed(0) }}h{{filmSelected?.runtime % 60}}</span></li>
           <li><b>Genre : </b> <span *ngFor="let genre of filmSelected?.genres">{{ genre.name + ',' }}</span></li>
-          <li><b>Réalisateur : </b> <span *ngFor="let person of director"> <span *ngIf="person.job == 'Director'">{{ person.name }}</span></span></li>
+          <li><b>Réalisateur : </b> <span *ngFor="let person of director"> <span
+                *ngIf="person.job == 'Director'">{{ person.name }}</span></span></li>
         </ul>
       </div>
 
@@ -44,7 +52,7 @@
     <div class="col-md-8">
 
       <div class="main-details">
-        <h1>{{filmSelected?.title}}  ({{filmSelected?.release_date | date: 'yyyy'}})</h1>
+        <h1>{{filmSelected?.title}} ({{filmSelected?.release_date | date: 'yyyy'}})</h1>
 
         <div class="note">
           <div *ngFor="let item of [].constructor(note); let i = index">
@@ -73,7 +81,7 @@
         </div>
 
         <div class="video-container">
-            <iframe [title]="videos[0].name" [src]="videos[0].safeUrl"></iframe>
+          <iframe [title]="videos[0].name" [src]="videos[0].safeUrl"></iframe>
         </div>
       </div>
 
@@ -83,23 +91,53 @@
           <h3>Films Similaires</h3>
         </div>
 
-        <p-carousel [value]="similarFilms" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+        <p-carousel [value]="similarFilms" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+          [circular]="true" [autoplayInterval]="3000">
           <ng-template let-similarFilm pTemplate="item">
             <div *ngIf="similarFilms" class="movie-item">
-                <div class="mv-img">
-                  <img src="https://image.tmdb.org/t/p/w342{{ similarFilm?.poster_path }}" alt="" width="285" height="437">
-                </div>
+              <div class="mv-img" (click)="goToFilm(similarFilm)" style="cursor: pointer;">
+                <img src="https://image.tmdb.org/t/p/w342{{ similarFilm?.poster_path }}" alt="" width="285"
+                  height="437">
+              </div>
             </div>
           </ng-template>
         </p-carousel>
+      </div>
 
+      <div class="section">
+        <div class="header-title">
+          <img src="/assets/images/film/resume.png">
+          <h3>Revues</h3>
+        </div>
+        <myapp-review [idFilm]="filmSelected?.id"></myapp-review>
+
+      </div>
+
+      <div class="section">
+        <myapp-account-lists-view *ngFor="let review of reviews">
+          <span image>
+
+          </span>
+
+          <span title>
+            {{review?.username}}
+          </span>
+          <span releaseDate>
+            Ajouté le : {{review?.created_at | date: 'longDate'}}
+          </span>
+
+          <span overview>
+            {{review?.review}}
+          </span>
+
+        </myapp-account-lists-view>
       </div>
 
     </div>
 
   </div>
 
-  <myapp-review [idFilm]="filmSelected?.id"></myapp-review>
+
 </ng-container>
 
 <ng-template #noData>

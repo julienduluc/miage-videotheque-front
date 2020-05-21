@@ -1,6 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="reviewForm">
-    <div>
-        <textarea placeholder="Merci d'écrire un commentaire..." formControlName="review"></textarea>
-    </div>
-    <button type="submit">Envoyer</button>
+
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Revue</mat-label>
+    <textarea matInput formControlName="review" placeholder="Merci d'écrire un commentaire..."></textarea>
+  </mat-form-field>
+
+  <button class="review-submit" type="submit" [disabled]="!form.valid">Envoyer</button>
 </form>

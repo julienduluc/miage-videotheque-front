@@ -38,12 +38,12 @@
       </div>
       <myapp-account-lists-view *ngFor="let review of reviews">
         <span image>
-          <img (click)="goToFilm(review?.id)"
+          <img (click)="goToFilm(review?.details_film?.id)"
             src="https://image.tmdb.org/t/p/w154/{{review?.details_film?.poster_path}}"
             style="cursor: pointer; height: 100%;">
         </span>
 
-        <span title (click)="goToFilm(review?.id)" class="link">
+        <span title (click)="goToFilm(review?.details_film?.id)" class="link">
           {{review?.details_film?.title}}
         </span>
         <span releaseDate>

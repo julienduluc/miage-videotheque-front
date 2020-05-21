@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { API } from '@core/constants/app.constant';
 import { SessionStorageService } from 'ngx-webstorage';
 import { forkJoin, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const httpOptions = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
@@ -93,5 +94,16 @@ export class AccountService {
       .append('language', 'fr-FR');
 
     return this.http.get<any>(API + this.url + '/' + accountId + '/lists', { params: queryParams });
+  }
+
+  isFilmFavorite(idFilm: number, order?: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('session_id', this.sessionStorage.retrieve('sessionId'))
+      .append('sort_by', 'created_at.' + order)
+      .append('language', 'fr-FR');
+
+    return this.http.get<any>(API + this.url + '/null/favorite/movies', { params: queryParams }).pipe(map(
+      (x) => x.results.filter((y: any) => (y.id === idFilm))
+    ));
   }
 }

@@ -83,6 +83,10 @@ h3 {
   width: 100%;
   font-weight: 400;
   border-radius: 20px;
+
+  &:hover {
+    background-color: $videotheque-green;
+  }
 }
 
 .header-title {

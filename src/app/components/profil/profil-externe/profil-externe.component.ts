@@ -15,6 +15,7 @@ export class ProfilExterneComponent implements OnInit {
   id: string;
   reviews: Array<any>;
   lists: Array<any>;
+  username = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -34,10 +35,12 @@ export class ProfilExterneComponent implements OnInit {
   getReviews(): void {
     this.reviewService.getReviewsByUser(this.id).subscribe((reviews) => {
       this.reviews = reviews;
+      this.username = reviews[0].username;
 
       this.reviews.forEach(review => {
         this.getFilm(review.id_film).then((res) => {
-          review.details_film = res; console.log('details_film', review);
+          review.details_film = res;
+
         });
 
       });

@@ -28,22 +28,26 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = this.fb.group({
-      review: [null, [Validators.required, Validators.minLength(100)]],
-      // idUser: [11],
-      // idFilm: [this.idFilm]
+      review: [null, [Validators.required]]
     });
   }
 
   async onSubmit() {
 
-    const userConnected = await this.accountService.getAccountDetails().toPromise();
-    const data = {
-      review: this.form.get('review').value,
-      id_film: this.idFilm,
-      id_user: userConnected.id
-    };
+    if (this.form.valid) {
+      const userConnected = await this.accountService.getAccountDetails().toPromise();
+      const data = {
+        review: this.form.get('review').value,
+        id_film: this.idFilm,
+        id_user: userConnected.id,
+        username: userConnected.username
+      };
 
-    this.reviewService.addReview(data).subscribe();
+      this.reviewService.addReview(data).subscribe(() => {
+        this.form.reset();
+      });
+    }
+
   }
 
 
