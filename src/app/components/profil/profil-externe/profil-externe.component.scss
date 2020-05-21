@@ -41,3 +41,23 @@
   }
 
 }
+
+.icon-container {
+  height: 100%;
+  width: 153px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  background-color: lightslategrey;
+  color: $white;
+}
+
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-weight: bold;
+  font-size: $size5;
+}

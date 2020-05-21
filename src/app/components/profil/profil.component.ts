@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Film } from '@shared/models/film.model';
 import { AccountService } from '@shared/services/account.service';
+import { FilmsService } from '@shared/services/films.service';
 import { ReviewService } from '@shared/services/review.service';
 import { SessionStorageService } from 'ngx-webstorage';
 
@@ -29,7 +31,9 @@ export class ProfilComponent implements OnInit, AfterViewInit {
     private profilService: ProfilService,
     private route: ActivatedRoute,
     private reviewService: ReviewService,
-    private sessionStorage: SessionStorageService
+    private sessionStorage: SessionStorageService,
+    private filmService: FilmsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -68,14 +72,36 @@ export class ProfilComponent implements OnInit, AfterViewInit {
     });
   }
 
-  getReviews() {
-    this.reviewService.getReviewsByUser(this.sessionStorage.retrieve('sessionId')).subscribe((reviews) => {
+  async getReviews() {
+    const userConnected = await this.accountService.getAccountDetails().toPromise();
+    this.reviewService.getReviewsByUser(userConnected.id).subscribe((reviews) => {
       this.reviews = reviews;
+
+
+      this.reviews.forEach(review => {
+        this.getFilm(review.id_film).then((res) => {
+          review.details_film = res; console.log('details_film', review);
+        });
+
+      });
     });
   }
 
-  deleteReview(idReview: number) {
-
-    this.reviewService.deleteReview(idReview).subscribe();
+  async getFilm(idFilm: number): Promise<any> {
+    const a = await this.filmService.getFilmById(idFilm).toPromise();
+    const film = new Film(a);
+    return film;
   }
+
+  deleteReview(id: number) {
+    this.reviewService.deleteReview(id).subscribe(() => {
+      const a = this.reviews.findIndex(x => x.id === id);
+      this.reviews.splice(a, 1);
+    });
+  }
+
+  goToFilm(id: number) {
+    this.router.navigate(['film/' + id]);
+  }
+
 }
