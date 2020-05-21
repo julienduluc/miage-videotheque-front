@@ -1,6 +1,6 @@
-<div class="home-content">
+<div class="home-content ">
   <h2 class="title">Actuellement en salle</h2>
-  <div class="movies_list">
+  <div class="movies_list movie-items">
     <myapp-card *ngFor="let movie of latest_movies" [movie]='movie'></myapp-card>
   </div>
   <h2 class="title">Mieux notés</h2>
@@ -15,11 +15,11 @@
     <div></div>
     <div></div>
   </div>
-  <h2 class="title">films populaires</h2>
+  <h2 class="title">Films populaires</h2>
   <div class="movies_list">
     <myapp-card *ngFor="let movie of popular_movies" [movie]='movie'></myapp-card>
   </div>
-  <h2 class="title">films a venir</h2>
+  <h2 class="title">Films a venir</h2>
   <div class="movies_list">
     <myapp-card *ngFor="let movie of upcoming_movies" [movie]='movie'></myapp-card>
   </div>

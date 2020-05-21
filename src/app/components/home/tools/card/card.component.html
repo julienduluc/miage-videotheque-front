@@ -1,4 +1,4 @@
-<div *ngIf="movie" class="card">
+<!--<div *ngIf="movie" class="card">
     <p class="movie_rate">
         <fa-icon icon="star"></fa-icon> {{ movie.rate }} / 10
     </p>
@@ -8,4 +8,17 @@
         <a href="film/{{movie.id}}">{{ movie.title }}</a>
     </p>
     <p class="movie_release_date">{{ movie.release_date | date: movie.date_format }}</p>
+</div>-->
+
+<div *ngIf="movie" class="movie-item">
+  <div class="mv-img">
+    <a href="film/{{movie.id}}"><img src="{{ movie.image_url }}" alt="" width="285" height="437"></a>
+  </div>
+  <div class="title-in">
+<!--    <div class="cate">-->
+<!--      <span class="blue"><a href="#">Sci-fi</a></span>-->
+<!--    </div>-->
+    <h6><a href="#">{{ movie.title }}</a></h6>
+    <p><fa-icon class="star" icon="star"></fa-icon><span>{{ movie.rate }}</span> /10</p>
+  </div>
 </div>
