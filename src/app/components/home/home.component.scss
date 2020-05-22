@@ -17,11 +17,11 @@
 	}
 }
 
-.toptop {
-  background: url(../../../assets/images/background-home.png) center center no-repeat;
+.background-searchbar {
+  background: url(../../../assets/images/background-home.jpg) center center no-repeat;
   background-size: cover;
   height: 300px;
-  margin: -40px -40px 0 -40px;
+  margin: -40px (-$marginContent) 0 (-$marginContent);
   display: flex;
   align-items: center;
   justify-content: center;

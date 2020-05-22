@@ -43,7 +43,6 @@ export class AppComponent implements OnInit, OnDestroy {
       } else if (event instanceof NavigationEnd) {
         this.languageHelper.updateTitle(this.languageHelper.getPageTitle(this.router.routerState.snapshot.root));
         this.ngxLoadingService.stopLoader('main');
-        console.log('eve', event);
         if (event.url === '/home' || event.url === '/') {
           this.showBarHeader = false;
         } else {

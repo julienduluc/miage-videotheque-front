@@ -13,3 +13,7 @@
   padding: 0 40px;
   margin: 0 -40px;
 }
+
+.ui-autocomplete-panel .ui-autocomplete-items .ui-autocomplete-list-item.ui-state-highlight {
+  background-color: $videotheque-green !important;
+}

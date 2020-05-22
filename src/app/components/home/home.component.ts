@@ -33,13 +33,28 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   filmName: string;
   films: Film[];
-  icon = 'pi pi-search';
 
   constructor(
     private authService: AuthService,
     private home_service: HomeService,
     private filmsService: FilmsService,
     private router: Router) { }
+
+  ngOnInit() {
+    this.load_latest_movies();
+    this.load_top_rated_movies();
+    this.load_popular_movies();
+    this.load_upcoming_movies();
+    this.load_latest_movie();
+
+    this.authService._isAuthenticated.pipe(takeUntil(this.unsubscribe$)).subscribe((res) => {
+      if (res) {
+        this.title = 'Connecté';
+      } else {
+        this.title = 'Non connecté';
+      }
+    });
+  }
 
   load_latest_movies() {
     this.home_service.get_latest_movies('fr-FR').then((response) => {
@@ -132,21 +147,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
-    this.load_latest_movies();
-    this.load_top_rated_movies();
-    this.load_popular_movies();
-    this.load_upcoming_movies();
-    this.load_latest_movie();
 
-    this.authService._isAuthenticated.pipe(takeUntil(this.unsubscribe$)).subscribe((res) => {
-      if (res) {
-        this.title = 'Connecté';
-      } else {
-        this.title = 'Non connecté';
-      }
-    });
-  }
 
   /**
      * Peuple la liste déroulante en fonction de la recherche

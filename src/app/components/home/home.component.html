@@ -1,9 +1,9 @@
-<div class="toptop">
+<div class="background-searchbar">
   <div style="width: 100%;">
     <p-autoComplete class="home-autocomplete" [(ngModel)]="filmName" [suggestions]="films"
       (completeMethod)="search($event)" field="title release_date" placeholder="Rechercher un film ..."
-      [dropdown]="false" [dropdownIcon]="icon" (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000"
-      [minLength]="3" [size]="100" inputStyleClass="yeah" (onDropdownClick)="onDropdownClick($event)">
+      [dropdown]="false" (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000" [minLength]="3"
+      [size]="100">
 
       <ng-template let-film pTemplate="item">
         <div id="ici" class="ui-helper-clearfix item items-container">
