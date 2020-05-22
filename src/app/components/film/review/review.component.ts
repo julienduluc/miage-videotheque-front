@@ -1,9 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessagesService } from '@core/messages/messages.service';
 import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 import { ReviewService } from '@shared/services/review.service';
-import { SessionStorageService } from 'ngx-webstorage';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -17,12 +17,13 @@ export class ReviewComponent implements OnInit, OnDestroy {
   form: FormGroup;
   @Input() idFilm: number;
   idUser: number;
+  @Output() newReview = new EventEmitter<any>();
 
   constructor(
     private fb: FormBuilder,
     private filmService: FilmsService,
     private reviewService: ReviewService,
-    private localStorage: SessionStorageService,
+    private msgService: MessagesService,
     private accountService: AccountService
   ) { }
 
@@ -45,6 +46,9 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
       this.reviewService.addReview(data).subscribe(() => {
         this.form.reset();
+        this.form.get('review').setErrors(null);
+        this.newReview.emit(true);
+        this.msgService.showSuccess('Revue ajoutée');
       });
     }
 

@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessagesService } from '@core/messages/messages.service';
 import { Film } from '@shared/models/film.model';
 import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 import { ReviewService } from '@shared/services/review.service';
-import { SessionStorageService } from 'ngx-webstorage';
 
 import { ProfilService } from './profil.service';
 
@@ -31,7 +31,7 @@ export class ProfilComponent implements OnInit, AfterViewInit {
     private profilService: ProfilService,
     private route: ActivatedRoute,
     private reviewService: ReviewService,
-    private sessionStorage: SessionStorageService,
+    private mgService: MessagesService,
     private filmService: FilmsService,
     private router: Router
   ) { }
@@ -97,6 +97,7 @@ export class ProfilComponent implements OnInit, AfterViewInit {
     this.reviewService.deleteReview(id).subscribe(() => {
       const a = this.reviews.findIndex(x => x.id === id);
       this.reviews.splice(a, 1);
+      this.mgService.showSuccess('Revue supprimée');
     });
   }
 

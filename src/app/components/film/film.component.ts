@@ -93,9 +93,11 @@ export class FilmComponent implements OnInit, OnDestroy {
 
     this.filmsService.getVideosByFilmId(this.id).subscribe((res) => {
       this.videos = res.results;
-      this.videos.forEach(v => {
-        v.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + v.key);
-      });
+      if (this.videos.length > 0) {
+        this.videos.forEach(v => {
+          v.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + v.key);
+        });
+      }
     });
     this.getReviews();
   }
@@ -103,6 +105,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   getReviews() {
     this.reviewService.getReviewsByFilm(this.id).subscribe((reviews) => {
       this.reviews = reviews;
+      this.reviews.reverse();
     });
   }
 
@@ -110,7 +113,9 @@ export class FilmComponent implements OnInit, OnDestroy {
     if (this.authService.isAuthenticated) {
       this.accountService.editFavorite(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
         this.isFavorite = !this.isFavorite;
-        //  this.msgService.showSuccess('{title: \'ok\', content: \'super\'}');
+
+        const msg = this.isFavorite ? 'Film ajouté aux favoris' : 'Film retiré des favoris';
+        this.msgService.showSuccess(msg);
       });
     }
   }
@@ -131,6 +136,11 @@ export class FilmComponent implements OnInit, OnDestroy {
   goToFilm(film: any) {
     this.filmsService.setCurrentFilm(film);
     this.router.navigate(['film/' + film.id]);
+  }
+
+
+  goToProfilExt(id: number) {
+    this.router.navigate(['profil/ext/' + id]);
   }
 
   ngOnDestroy() {

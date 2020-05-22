@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessagesService } from '@core/messages/messages.service';
 import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
 
@@ -16,7 +17,8 @@ export class ProfilRatingsComponent implements OnInit, OnChanges {
   constructor(
     private accountService: AccountService,
     private filmService: FilmsService,
-    private router: Router
+    private router: Router,
+    private msgService: MessagesService
   ) { }
 
   ngOnInit(): void { }
@@ -34,6 +36,7 @@ export class ProfilRatingsComponent implements OnInit, OnChanges {
     this.filmService.deleteRate(id).subscribe((res) => {
       const a = this.ratings.findIndex(x => x.id === id);
       this.ratings.splice(a, 1);
+      this.msgService.showSuccess('Note supprimée');
     });
   }
 

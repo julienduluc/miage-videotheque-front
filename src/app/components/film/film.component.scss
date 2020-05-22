@@ -163,32 +163,22 @@ button.ui-carousel-prev {
   .video-container {
     margin: 0 auto;
   }
-
-
-
-  .poster {
-
-  }
-
-  .right {
-
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
-
-
-    .title {
-font-size: $size4;
-    }
-
-    .overview {
-      font-size: $size3;
-    }
-
-
-  }
 }
 
+.username-review {
+  color: $videotheque-green;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.title {
+  font-size: $size4;
+}
+
+.overview {
+  font-size: $size3;
+}
 
 .ui-carousel-dots-container.ui-helper-reset {
   display: none !important;

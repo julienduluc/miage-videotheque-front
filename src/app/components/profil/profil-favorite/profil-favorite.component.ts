@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessagesService } from '@core/messages/messages.service';
 import { AccountService } from '@shared/services/account.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class ProfilFavoriteComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private msgService: MessagesService
   ) { }
 
   ngOnInit(): void { }
@@ -34,6 +36,7 @@ export class ProfilFavoriteComponent implements OnInit {
     this.accountService.editFavorite(id, false).subscribe((res) => {
       const a = this.favorites.findIndex(x => x.id === id);
       this.favorites.splice(a, 1);
+      this.msgService.showSuccess('Favori retiré');
     });
   }
 

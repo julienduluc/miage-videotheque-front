@@ -80,8 +80,8 @@
           <h3>Bande Annonce</h3>
         </div>
 
-        <div class="video-container">
-          <iframe [title]="videos[0].name" [src]="videos[0].safeUrl"></iframe>
+        <div class="video-container" *ngIf="videos?.length > 0">
+          <iframe [title]="videos[0]?.name" [src]="videos[0]?.safeUrl"></iframe>
         </div>
       </div>
 
@@ -109,7 +109,7 @@
           <img src="/assets/images/film/resume.png">
           <h3>Revues</h3>
         </div>
-        <myapp-review [idFilm]="filmSelected?.id"></myapp-review>
+        <myapp-review [idFilm]="filmSelected?.id" (newReview)="getReviews()"></myapp-review>
 
       </div>
 
@@ -120,7 +120,7 @@
           </span>
 
           <span title>
-            {{review?.username}}
+            Par <span class="username-review" (click)="goToProfilExt(review?.id_user)">{{review?.username}}</span>
           </span>
           <span releaseDate>
             Ajouté le : {{review?.created_at | date: 'longDate'}}

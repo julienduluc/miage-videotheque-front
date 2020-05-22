@@ -15,83 +15,14 @@ export class MessagesService {
     private injector: Injector
   ) { }
 
-  /**
-   * Green toast
-   * Take one parameter that is an i18n string on this format :
-   * {
-   *  title: '',
-   *  content: ''
-   * }
-   */
+
   showSuccess(msg: string) {
-    this.translateService = this.injector.get(TranslateService);
-    this.translateService.get(msg).subscribe((translation) => {
-      this.toastrService.success(translation.CONTENT, translation.TITLE, { closeButton: true, timeOut: 5000 });
-    });
+    this.toastrService.success(msg, 'Succès', { closeButton: true, timeOut: 5000 });
   }
 
-  /**
-   * Green toast
-   */
-  showSuccessParam(title: string, content: string, param: any) {
-    this.translateService = this.injector.get(TranslateService);
-    this.translateService.get(title).subscribe((titleTranslated) => {
-      this.translateService.get(content, param).subscribe((res) => {
-        this.toastrService.success(res, titleTranslated, { closeButton: true, timeOut: 5000 });
-      });
-    });
-  }
-
-  /**
-   * Red Toast
-   * Take one parameter that is an i18n string on this format :
-   * {
-   *  content: '',
-   *  title: ''
-   * }
-   */
   showError(msg: string) {
-    this.translateService = this.injector.get(TranslateService);
-    this.translateService.get(msg).subscribe((translation) => {
-      this.toastrService.error(translation.CONTENT, translation.TITLE, { closeButton: true, timeOut: 5000 });
-    });
+    this.toastrService.error(msg, 'Échec', { closeButton: true, timeOut: 5000 });
   }
 
-  /**
-   * Red toast
-   */
-  showErrorParam(title: string, content: string, param: any) {
-    this.translateService = this.injector.get(TranslateService);
-    this.translateService.get(title).subscribe((titleTranslated) => {
-      this.translateService.get(content, param).subscribe((res) => {
-        this.toastrService.error(res, titleTranslated, { closeButton: true, timeOut: 5000 });
-      });
-    });
-  }
 
-  /**
-   * Red Toast with message without translation.
-   */
-  showErrorNoTranslate(msg: string) {
-    this.translateService = this.injector.get(TranslateService);
-    this.translateService.get('ERRORS.TITLE').subscribe((titleTranslated) => {
-      this.toastrService.error(msg, titleTranslated, { closeButton: true, timeOut: 5000 });
-    });
-  }
-
-  /**
-   * Green toast
-   * Take one parameter that is an i18n string on this format :
-   * {
-   *  title: '',
-   *  content: ''
-   * }
-   */
-  showWarning(msg: string) {
-    this.translateService = this.injector.get(TranslateService);
-    this.translateService.get(msg).subscribe((translation) => {
-      this.toastrService.error(translation.CONTENT, translation.TITLE,
-        { closeButton: true, timeOut: 5000 });
-    });
-  }
 }

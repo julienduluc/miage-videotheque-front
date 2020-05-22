@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MessagesService } from '@core/messages/messages.service';
 import { AccountService } from '@shared/services/account.service';
 
 import { ProfilListsService } from './profil-lists.service';
@@ -18,7 +19,8 @@ export class ProfilListsComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private listsService: ProfilListsService
+    private listsService: ProfilListsService,
+    private msgService: MessagesService
   ) { }
 
   ngOnInit(): void { }
@@ -57,6 +59,7 @@ export class ProfilListsComponent implements OnInit {
       const a = this.lists.findIndex(x => x.id === idList);
       this.lists.splice(a, 1);
       this.lists = [...this.lists];
+      this.msgService.showSuccess('Liste supprimée');
     });
   }
 }

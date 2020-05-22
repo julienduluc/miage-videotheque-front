@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessagesService } from '@core/messages/messages.service';
 import { AccountService } from '@shared/services/account.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class ProfilWatchlistComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private msgService: MessagesService
   ) { }
 
   ngOnInit(): void { }
@@ -31,6 +33,7 @@ export class ProfilWatchlistComponent implements OnInit {
     this.accountService.editWatchlist(id, false).subscribe((res) => {
       const a = this.watchlist.findIndex(x => x.id === id);
       this.watchlist.splice(a, 1);
+      this.msgService.showSuccess('Suivi retiré');
     });
   }
 
