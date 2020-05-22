@@ -44,6 +44,7 @@ img {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  cursor: pointer;
 
   .mv-img {
     position: relative;
@@ -81,7 +82,7 @@ img {
     left: 0;
     position: absolute;
 
-    h6 a {
+    h6 {
       font-family: Dosis, sans-serif;
       font-size: 21px;
       color: #fff;

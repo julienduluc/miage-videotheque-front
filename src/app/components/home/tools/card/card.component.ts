@@ -1,23 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Movie {
-	id: number;
-	rate: number;
-	image_url: string;
-	title: string;
-	release_date: string;
-	date_format: string;
+  id: number;
+  rate: number;
+  image_url: string;
+  title: string;
+  release_date: string;
+  date_format: string;
 }
 
 @Component({
-	selector: 'myapp-card',
-	templateUrl: './card.component.html',
-	styleUrls: [ './card.component.scss' ]
+  selector: 'myapp-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-	@Input() movie: Movie;
+  @Input() movie: Movie;
 
-	constructor() {}
+  constructor(
+    private router: Router
+  ) { }
 
-	ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  goToFilm(id: number) {
+    this.router.navigate(['film/' + id]);
+  }
 }
