@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
 import { Account } from '@shared/models/account.model';
@@ -15,6 +15,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  @Input() showBarHeader: boolean;
   languages: string[];
   filmName: string;
   films: Film[];
@@ -44,8 +45,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
             this.accountConnected = account;
             this.label = account.username[0].toUpperCase();
           });
+
         }
       });
+
   }
 
   login(): void {

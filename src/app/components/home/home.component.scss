@@ -17,3 +17,69 @@
 	}
 }
 
+.toptop {
+  background: url(../../../assets/images/background-home.png) center center no-repeat;
+  background-size: cover;
+  height: 300px;
+  margin: -40px -40px 0 -40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.search {
+  font-size: 16px;
+  position: relative;
+  right: 35px;
+  color: $videotheque-green;
+}
+::ng-deep.home-autocomplete {
+
+  .ui-autocomplete {
+   // width: 100%;
+  }
+
+  .ui-autocomplete .ui-autocomplete-input {
+    border-radius: 20px;
+    height: 45px;
+   // width: 90%;
+    padding-left: 2em;
+  }
+
+  .ui-autocomplete-dd .ui-autocomplete-dropdown.ui-corner-all {
+    height: 45px;
+    background: none;
+    color: $videotheque-green;
+    border: none;
+    position: relative;
+    right: 40px;
+  }
+
+  .ui-inputtext:enabled:focus:not(.ui-state-error) {
+    box-shadow: 0 0 0 0.2em  $videotheque-green;
+  }
+
+  .items-container {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-left: 16px;
+  margin-bottom: 8px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.noimg {
+  width: 32px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+
+}
+

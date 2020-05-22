@@ -1,3 +1,33 @@
+<div class="toptop">
+  <div style="width: 100%;">
+    <p-autoComplete class="home-autocomplete" [(ngModel)]="filmName" [suggestions]="films"
+      (completeMethod)="search($event)" field="title release_date" placeholder="Rechercher un film ..."
+      [dropdown]="false" [dropdownIcon]="icon" (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000"
+      [minLength]="3" [size]="100" inputStyleClass="yeah" (onDropdownClick)="onDropdownClick($event)">
+
+      <ng-template let-film pTemplate="item">
+        <div id="ici" class="ui-helper-clearfix item items-container">
+          <div style="width:32px;margin:5px 0 2px 5px;min-height: 48px;">
+            <img *ngIf="film?.poster_path; else noImg" src="https://image.tmdb.org/t/p/w92/{{film?.poster_path}}"
+              style="width:32px;" />
+            <ng-template #noImg>
+              <div class="noimg">
+                <fa-icon icon="film"></fa-icon>
+              </div>
+
+            </ng-template>
+          </div>
+
+          <div style=" font-size:16px;margin-left:10px">
+            {{film?.title}} ({{film?.release_date | date:'yyyy'}})
+          </div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+    <fa-icon class="search" icon="search"></fa-icon>
+  </div>
+</div>
+
 <div class="home-content ">
   <h2 class="title">Actuellement en salle</h2>
   <div class="movies_list movie-items">

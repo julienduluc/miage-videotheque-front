@@ -5,7 +5,7 @@
     </div>
   </a>
   <div>
-    <p-autoComplete #auto class="autocomplete" [(ngModel)]="filmName" [suggestions]="films"
+    <p-autoComplete *ngIf="showBarHeader" #auto class="autocomplete" [(ngModel)]="filmName" [suggestions]="films"
       (completeMethod)="search($event)" field="title release_date" placeholder="Rechercher un film ..."
       (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000" [minLength]="3" [size]="60">
 

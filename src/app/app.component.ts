@@ -17,6 +17,7 @@ import { vendors } from './app.vendor';
 export class AppComponent implements OnInit, OnDestroy {
 
   isLoading = false;
+  showBarHeader: boolean;
 
   private unsubscribe$ = new Subject();
 
@@ -35,11 +36,19 @@ export class AppComponent implements OnInit, OnDestroy {
     vendors(this.library);
 
     this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
+
+
       if (event instanceof NavigationStart) {
         this.ngxLoadingService.startLoader('main');
       } else if (event instanceof NavigationEnd) {
         this.languageHelper.updateTitle(this.languageHelper.getPageTitle(this.router.routerState.snapshot.root));
         this.ngxLoadingService.stopLoader('main');
+        console.log('eve', event);
+        if (event.url === '/home' || event.url === '/') {
+          this.showBarHeader = false;
+        } else {
+          this.showBarHeader = true;
+        }
       } else if (event instanceof NavigationError) {
         //  this.messagesService.showError('NAVIGATION.FAIL');
         this.ngxLoadingService.stopLoader('main');

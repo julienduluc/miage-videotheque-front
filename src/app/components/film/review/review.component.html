@@ -1,10 +1,16 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="reviewForm">
+<ng-container *ngIf="isAuthenticated; else noAuthent">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="reviewForm">
 
 
-  <mat-form-field appearance="outline" style="width: 100%;">
-    <mat-label>Revue</mat-label>
-    <textarea matInput formControlName="review" placeholder="Merci d'écrire un commentaire..."></textarea>
-  </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Revue</mat-label>
+      <textarea matInput formControlName="review" placeholder="Merci d'écrire un commentaire..."></textarea>
+    </mat-form-field>
 
-  <button class="review-submit" type="submit" [disabled]="!form.valid">Envoyer</button>
-</form>
+    <button class="review-submit" type="submit" [disabled]="!form.valid">Envoyer</button>
+  </form>
+</ng-container>
+<ng-template #noAuthent>
+  <span class="no-authent">Connectez-vous pour écrire une revue.</span>
+</ng-template>

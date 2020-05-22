@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '@core/auth/auth.service';
 import { MessagesService } from '@core/messages/messages.service';
 import { AccountService } from '@shared/services/account.service';
 import { FilmsService } from '@shared/services/films.service';
@@ -18,19 +19,23 @@ export class ReviewComponent implements OnInit, OnDestroy {
   @Input() idFilm: number;
   idUser: number;
   @Output() newReview = new EventEmitter<any>();
+  isAuthenticated: boolean;
 
   constructor(
     private fb: FormBuilder,
     private filmService: FilmsService,
     private reviewService: ReviewService,
     private msgService: MessagesService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       review: [null, [Validators.required]]
     });
+
+    this.isAuthenticated = this.authService.isAuthenticated;
   }
 
   async onSubmit() {
