@@ -24,33 +24,68 @@
         </div>
       </ng-template>
     </p-autoComplete>
-    <fa-icon class="search" icon="search"></fa-icon>
+    <fa-icon class="icon-search" icon="search"></fa-icon>
   </div>
 </div>
 
-<div class="home-content ">
-  <h2 class="title">Actuellement en salle</h2>
-  <div class="movies_list movie-items">
-    <myapp-card *ngFor="let movie of latest_movies" [movie]='movie'></myapp-card>
+<div class="home-content">
+
+  <div class="bloc-most-popular">
+    <div class="bloc-left">
+      <h2 class="title">Le plus populaire</h2>
+      <iframe *ngIf="trailerPopularMovie" title="Trailer" [src]="trailerPopularMovie" width="100%"
+        height="500"></iframe>
+    </div>
+    <div class="bloc-right">
+      <h2 class="title">{{mostPopular?.title}}</h2>
+
+      <myapp-card [movie]='mostPopular'></myapp-card>
+
+    </div>
   </div>
-  <h2 class="title">Mieux notés</h2>
-  <div class="movies_list">
-    <myapp-card *ngFor="let movie of top_rated_movies" [movie]='movie'></myapp-card>
+
+  <div class="bloc-others">
+    <div class="bloc-left">
+      <h2 class="title">Films populaires</h2>
+      <div class="movies-list-6">
+        <myapp-card *ngFor="let movie of popular_movies" [movie]='movie'></myapp-card>
+      </div>
+    </div>
+    <div class="bloc-right">
+      <h2 class="title">Nouveauté du jour</h2>
+      <myapp-card [movie]='dayTrending'></myapp-card>
+    </div>
   </div>
-  <h2 class="title">Nouveau Film</h2>
-  <div class="movies_list">
-    <div></div>
-    <div></div>
-    <myapp-card [movie]='latest_movie'></myapp-card>
-    <div></div>
-    <div></div>
+
+  <div class="bloc-others">
+    <div class="bloc-left">
+      <h2 class="title">Mieux notés</h2>
+      <div class="movies-list-6">
+        <myapp-card *ngFor="let movie of top_rated_movies" [movie]='movie'></myapp-card>
+      </div>
+
+    </div>
+    <div class="bloc-right">
+      <h2 class="title">Le plus voté</h2>
+      <myapp-card [movie]='mostRated'></myapp-card>
+    </div>
+
   </div>
-  <h2 class="title">Films populaires</h2>
-  <div class="movies_list">
-    <myapp-card *ngFor="let movie of popular_movies" [movie]='movie'></myapp-card>
+
+  <div class="bloc-others">
+    <div class="bloc-w100">
+      <h2 class="title">Actuellement au cinéma</h2>
+      <div class="movies-list-4">
+        <myapp-card *ngFor="let movie of latest_movies" [movie]='movie'></myapp-card>
+      </div>
+    </div>
   </div>
-  <h2 class="title">Films a venir</h2>
-  <div class="movies_list">
-    <myapp-card *ngFor="let movie of upcoming_movies" [movie]='movie'></myapp-card>
+  <div class="bloc-others">
+    <div class="bloc-w100">
+      <h2 class="title">Films a venir</h2>
+      <div class="movies-list-4">
+        <myapp-card *ngFor="let movie of upcoming_movies" [movie]='movie'></myapp-card>
+      </div>
+    </div>
   </div>
 </div>

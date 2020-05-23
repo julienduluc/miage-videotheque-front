@@ -1,6 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API } from '@core/constants/app.constant';
 import axios from 'axios';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class HomeService {
@@ -45,5 +48,20 @@ export class HomeService {
         ? ''
         : `language=${language}`}`
     );
+  }
+
+  getDayTrending(): Observable<any> {
+    return this.http.get<any>(API + 'trending/movie/day');
+  }
+
+  getMostRated(): Observable<any> {
+    const queryParam = new HttpParams().append('sort_by', 'vote_count.desc');
+    return this.http.get<any>(API + 'discover/movie', { params: queryParam });
+  }
+
+  getTrailerByFilmId(id: number): Observable<any> {
+    return this.http.get<any>(API + 'movie/' + id + '/videos').pipe(map(
+      (x) => x.results.filter((y: any) => (y.type === 'Trailer'))
+    ));
   }
 }

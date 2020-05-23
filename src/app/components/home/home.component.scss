@@ -6,43 +6,72 @@
 .home {
 	&-content {
 		.title {
-			color: #3b3c3d;
+			color: $videotheque-green;
 			margin: 1em 0 1em;
+      padding-left: 10px;
+      border-left: 3px solid $videotheque-green;
 		}
 
-		.movies_list {
-			display: grid;
-			grid-template-columns: repeat(5, 1fr);
+    .bloc-most-popular {
+      display: flex;
+      justify-content: space-between;
+      background: black;
+      margin: 0 -100px;
+      padding: 20px 100px;
+      height: 620px;
+    }
+
+    .bloc-others {
+      display: flex;
+      justify-content: space-between;
+      background: $footer-color;
+      margin: 0 -100px;
+      padding: 20px 100px;
+
+    }
+
+		.bloc-left {
+      width: 75%;
 		}
-	}
+
+    .bloc-w100 {
+      width: 100%;
+		}
+
+    .bloc-right {
+      width: 20%
+    }
+
+    .movies-list-6 {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
+    .movies-list-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 }
+/* ===========================
+========= SEARCH BAR =========
+=========================== */
 
 .background-searchbar {
   background: url(../../../assets/images/background-home.jpg) center center no-repeat;
   background-size: cover;
-  height: 300px;
+  height: 400px;
   margin: -40px (-$marginContent) 0 (-$marginContent);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-.search {
-  font-size: 16px;
-  position: relative;
-  right: 35px;
-  color: $videotheque-green;
-}
-::ng-deep.home-autocomplete {
 
-  .ui-autocomplete {
-   // width: 100%;
-  }
+::ng-deep.home-autocomplete {
 
   .ui-autocomplete .ui-autocomplete-input {
     border-radius: 20px;
     height: 45px;
-   // width: 90%;
     padding-left: 2em;
   }
 
@@ -60,26 +89,25 @@
   }
 
   .items-container {
-  display: flex;
-  align-items: center;
-}
+    display: flex;
+    align-items: center;
+  }
 
-.username {
-  margin-left: 16px;
-  margin-bottom: 8px;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.noimg {
-  width: 32px;
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-}
+  .noimg {
+    width: 32px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
 
 
 }
 
+.icon-search {
+  font-size: 16px;
+  position: relative;
+  right: 35px;
+  color: $videotheque-green;
+}
