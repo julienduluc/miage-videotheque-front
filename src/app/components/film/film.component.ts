@@ -33,6 +33,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   reviews: Array<any>;
 
   isFavorite: boolean;
+  isWatchlist: boolean;
 
   videos: Array<Video>;
   createdLists: Array<any>;
@@ -152,8 +153,18 @@ export class FilmComponent implements OnInit, OnDestroy {
           this.listsService.removeMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film supprimé de la liste'));
         } else {
           this.listsService.addMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film ajouté à la liste'));
-
         }
+      });
+    }
+  }
+
+  addToWatchlist() {
+    if (this.authService.isAuthenticated) {
+      this.accountService.editWatchlist(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
+        this.isWatchlist = !this.isWatchlist;
+
+        const msg = this.isWatchlist ? 'Film ajouté aux à la liste de suivi' : 'Film retiré de la liste de suivi';
+        this.msgService.showSuccess(msg);
       });
     }
   }
@@ -167,6 +178,19 @@ export class FilmComponent implements OnInit, OnDestroy {
       });
     } else {
       this.isFavorite = false;
+      return false;
+    }
+  }
+
+  isWatchList(): boolean {
+    if (this.authService.isAuthenticated) {
+      this.accountService.isFilmWatchlist(this.filmSelected.id).subscribe((res) => {
+        const isWatch = res.length > 0 ? true : false;
+        this.isWatchlist = isWatch;
+        return isWatch;
+      });
+    } else {
+      this.isWatchlist = false;
       return false;
     }
   }

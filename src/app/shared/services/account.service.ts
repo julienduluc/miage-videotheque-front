@@ -106,4 +106,15 @@ export class AccountService {
       (x) => x.results.filter((y: any) => (y.id === idFilm))
     ));
   }
+
+  isFilmWatchlist(idFilm: number, order?: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('session_id', this.sessionStorage.retrieve('sessionId'))
+      .append('sort_by', 'created_at.' + order)
+      .append('language', 'fr-FR');
+
+    return this.http.get<any>(API + this.url + '/null/watchlist/movies', { params: queryParams }).pipe(map(
+      (x) => x.results.filter((y: any) => (y.id === idFilm))
+    ));
+  }
 }
