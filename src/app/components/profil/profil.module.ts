@@ -5,6 +5,7 @@ import { LanguageService } from '@core/language/language.service';
 import { SharedModule } from '@shared/shared.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
+import { ProfilExterneComponent } from './profil-externe/profil-externe.component';
 import { ProfilFavoriteComponent } from './profil-favorite/profil-favorite.component';
 import { ProfilListsModalComponent } from './profil-lists/profil-lists-modal/profil-lists-modal.component';
 import { ProfilListsComponent } from './profil-lists/profil-lists.component';
@@ -14,7 +15,6 @@ import { ProfilWatchlistComponent } from './profil-watchlist/profil-watchlist.co
 import { ProfilComponent } from './profil.component';
 import { profilRouting } from './profil.routing';
 import { ProfilService } from './profil.service';
-import { ProfilExterneComponent } from './profil-externe/profil-externe.component';
 
 @NgModule({
   declarations: [

@@ -55,6 +55,23 @@
         <h1>{{filmSelected?.title}} ({{filmSelected?.release_date | date: 'yyyy'}})</h1>
 
         <div class="note">
+          <ng-container>
+            <button class="favorite" (click)="getCreatedLists()">Ajouter à une liste</button>
+            <p-dialog header="Ajouter {{filmSelected?.title}} à une de mes listes" [(visible)]="displayLists"
+              [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+              <p>
+                <p-listbox [options]="createdLists" [(ngModel)]="selectedCreatedLists" [multiple]="true"
+                  [checkbox]="true" [filter]="true" styleClass="listbox-created-lists" optionLabel="name">
+                </p-listbox>
+              </p>
+              <p-footer>
+                <button type="button" (click)="addToCreatedList(); displayLists=false"> Valider </button>
+                <button type="button" (click)="displayLists=false"> Annuler </button>
+              </p-footer>
+            </p-dialog>
+
+
+          </ng-container>
           <div *ngFor="let item of [].constructor(note); let i = index">
             <fa-icon icon="star" class="icon-star"></fa-icon>
           </div>

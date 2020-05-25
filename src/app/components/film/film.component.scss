@@ -108,6 +108,7 @@ h3 {
 .synopsis {
   margin-top: 20px;
   font-size: 19px;
+  text-align: justify;
 }
 
 .video-container {
@@ -184,3 +185,30 @@ button.ui-carousel-prev {
   display: none !important;
 }
 
+::ng-deep .listbox-created-lists {
+  width: 100%;
+  .ui-listbox-header {
+    background: lightgrey !important;
+  }
+
+  .ui-listbox-filter-icon {
+    color: $videotheque-green !important;
+  }
+
+  .ui-listbox-item.ui-state-highlight {
+    background-color: $videotheque-green  !important;
+  }
+
+  .ui-chkbox-box.ui-state-active {
+    background-color: $videotheque-green  !important;
+    border-color: $videotheque-green !important;
+  }
+
+  .ui-inputtext:enabled:focus:not(.ui-state-error) {
+    box-shadow: 0 0 0 0.2em $videotheque-green !important;
+  }
+
+  .ui-listbox-item:focus {
+    box-shadow: none !important;
+  }
+}

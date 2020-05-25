@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProfilListsService } from '@components/profil/profil-lists/profil-lists.service';
 import { AuthService } from '@core/auth/auth.service';
 import { MessagesService } from '@core/messages/messages.service';
 import { Actor } from '@shared/models/actor.model';
@@ -34,6 +35,9 @@ export class FilmComponent implements OnInit, OnDestroy {
   isFavorite: boolean;
 
   videos: Array<Video>;
+  createdLists: Array<any>;
+  displayLists = false;
+  selectedCreatedLists = [];
 
 
   constructor(
@@ -44,7 +48,8 @@ export class FilmComponent implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer,
     private msgService: MessagesService,
     private router: Router,
-    private reviewService: ReviewService
+    private reviewService: ReviewService,
+    private listsService: ProfilListsService
   ) { }
 
   ngOnInit(): void {
@@ -116,6 +121,39 @@ export class FilmComponent implements OnInit, OnDestroy {
 
         const msg = this.isFavorite ? 'Film ajouté aux favoris' : 'Film retiré des favoris';
         this.msgService.showSuccess(msg);
+      });
+    }
+  }
+
+  getCreatedLists() {
+    if (this.authService.isAuthenticated) {
+
+      this.accountService.getCreatedLists().subscribe((lists) => {
+        this.createdLists = lists.results;
+        lists.results.forEach((list) => {
+          this.listsService.isMovieInList(list.id, this.filmSelected.id + '').subscribe(res => {
+            if (res.item_present) {
+              list.item_present = true;
+              this.selectedCreatedLists.push(list);
+            }
+          });
+        });
+        this.displayLists = true;
+      });
+    }
+  }
+
+  addToCreatedList() {
+    if (this.authService.isAuthenticated) {
+      this.selectedCreatedLists.forEach((selection) => {
+        const body = { media_id: this.filmSelected.id };
+        console.log('list', selection);
+        if (selection.item_present) {
+          this.listsService.removeMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film supprimé de la liste'));
+        } else {
+          this.listsService.addMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film ajouté à la liste'));
+
+        }
       });
     }
   }

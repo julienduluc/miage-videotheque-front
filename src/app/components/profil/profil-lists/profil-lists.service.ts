@@ -7,9 +7,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ProfilListsService {
 
-  url = 'list';
-  queryParams: any;
-
 
   constructor(
     private http: HttpClient,
@@ -17,6 +14,11 @@ export class ProfilListsService {
   ) {
     this.queryParams = new HttpParams().append('session_id', this.sessionStorage.retrieve('sessionId'));
   }
+
+  url = 'list';
+  queryParams: any;
+
+  check;
 
   createList(body: any): Observable<any> {
     return this.http.post<any>(API + this.url, body, { params: this.queryParams });
@@ -36,5 +38,10 @@ export class ProfilListsService {
 
   removeMovie(idList: number, body: any) {
     return this.http.post<any>(API + this.url + '/' + idList + '/remove_item', body, { params: this.queryParams });
+  }
+
+  isMovieInList(idList: number, idMovie: string) {
+    const queryParams = new HttpParams().append('movie_id', idMovie);
+    return this.http.get<any>(API + this.url + '/' + idList + '/item_status', { params: queryParams });
   }
 }
