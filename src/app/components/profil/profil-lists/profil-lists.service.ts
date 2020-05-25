@@ -44,4 +44,8 @@ export class ProfilListsService {
     const queryParams = new HttpParams().append('movie_id', idMovie);
     return this.http.get<any>(API + this.url + '/' + idList + '/item_status', { params: queryParams });
   }
+
+  getListbyId(idList: number) {
+    return this.http.get<any>(API + this.url + '/' + idList);
+  }
 }

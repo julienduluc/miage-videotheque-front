@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ProfilExterneComponent } from './profil-externe/profil-externe.component';
+import { ProfiListsDetailsComponent } from './profil-lists/profi-lists-details/profi-lists-details.component';
 import { ProfilComponent } from './profil.component';
 
 const routes: Routes = [
@@ -31,6 +32,12 @@ const routes: Routes = [
         component: ProfilComponent,
         canActivate: [],
         data: { pageTitle: 'Listes', tab: 3 }
+      },
+      {
+        path: 'lists/:id',
+        component: ProfiListsDetailsComponent,
+        canActivate: [],
+        data: { pageTitle: 'Détails Liste' }
       },
       {
         path: 'watchlist',

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessagesService } from '@core/messages/messages.service';
 import { AccountService } from '@shared/services/account.service';
 
@@ -20,7 +21,8 @@ export class ProfilListsComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private listsService: ProfilListsService,
-    private msgService: MessagesService
+    private msgService: MessagesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void { }
@@ -61,5 +63,9 @@ export class ProfilListsComponent implements OnInit {
       this.lists = [...this.lists];
       this.msgService.showSuccess('Liste supprimée');
     });
+  }
+
+  goToList(id: number) {
+    this.router.navigate(['profil/lists/' + id]);
   }
 }

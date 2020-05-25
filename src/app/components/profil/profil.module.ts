@@ -15,6 +15,7 @@ import { ProfilWatchlistComponent } from './profil-watchlist/profil-watchlist.co
 import { ProfilComponent } from './profil.component';
 import { profilRouting } from './profil.routing';
 import { ProfilService } from './profil.service';
+import { ProfiListsDetailsComponent } from './profil-lists/profi-lists-details/profi-lists-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfilService } from './profil.service';
     ProfilFavoriteComponent,
     ProfilWatchlistComponent,
     ProfilListsModalComponent,
-    ProfilExterneComponent
+    ProfilExterneComponent,
+    ProfiListsDetailsComponent
   ],
   imports: [
     CoreModule,

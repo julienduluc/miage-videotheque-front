@@ -68,12 +68,18 @@
               [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
               <p>
                 <p-listbox [options]="createdLists" [(ngModel)]="selectedCreatedLists" [multiple]="true"
-                  [checkbox]="true" [filter]="true" styleClass="listbox-created-lists" optionLabel="name">
-                </p-listbox>
+                  [checkbox]="true" [filter]="true" styleClass="listbox-created-lists" [showToggleAll]="false"
+                  optionLabel="name"></p-listbox>
+              </p>
+              <p *ngIf="hasList && createdLists.length === 0">
+                Ce film appartient déjà à toutes vos listes.
+              </p>
+              <p *ngIf="!hasList">
+                Aucune liste.
               </p>
               <p-footer>
                 <button type="button" (click)="addToCreatedList(); displayLists=false"> Valider </button>
-                <button type="button" (click)="displayLists=false"> Annuler </button>
+                <button type="button" (click)="displayLists=false;"> Annuler </button>
               </p-footer>
             </p-dialog>
 

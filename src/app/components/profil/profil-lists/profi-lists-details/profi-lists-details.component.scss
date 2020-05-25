@@ -1,0 +1,21 @@
+@import "color.scss";
+@import "font.scss";
+@import "components.scss";
+@import "size.scss";
+
+.profil-container {
+  font-size: $size6;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+  margin: -40px (-$marginContent) 0 (-$marginContent);
+  background-color: lightgray;
+
+
+  .username {
+    margin-left: 20px;
+  }
+}
