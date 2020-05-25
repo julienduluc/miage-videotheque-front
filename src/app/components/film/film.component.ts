@@ -32,6 +32,7 @@ export class FilmComponent implements OnInit, OnDestroy {
   reviews: Array<any>;
 
   isFavorite: boolean;
+  isWatchlist: boolean;
 
   videos: Array<Video>;
 
@@ -120,6 +121,17 @@ export class FilmComponent implements OnInit, OnDestroy {
     }
   }
 
+  addToWatchlist() {
+    if (this.authService.isAuthenticated) {
+      this.accountService.editWatchlist(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
+        this.isWatchlist = !this.isWatchlist;
+
+        const msg = this.isWatchlist ? 'Film ajouté aux à la liste de suivi' : 'Film retiré de la liste de suivi';
+        this.msgService.showSuccess(msg);
+      });
+    }
+  }
+
   isFilmFavorite(): boolean {
     if (this.authService.isAuthenticated) {
       this.accountService.isFilmFavorite(this.filmSelected.id).subscribe((res) => {
@@ -129,6 +141,19 @@ export class FilmComponent implements OnInit, OnDestroy {
       });
     } else {
       this.isFavorite = false;
+      return false;
+    }
+  }
+
+  isWatchList(): boolean {
+    if (this.authService.isAuthenticated) {
+      this.accountService.isFilmWatchlist(this.filmSelected.id).subscribe((res) => {
+        const isWatch = res.length > 0 ? true : false;
+        this.isWatchlist = isWatch;
+        return isWatch;
+      });
+    } else {
+      this.isWatchlist = false;
       return false;
     }
   }

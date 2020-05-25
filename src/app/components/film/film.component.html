@@ -12,6 +12,13 @@
         <button class="favorite" (click)="addToFavorite()">Ajouter aux favoris</button>
       </ng-template>
 
+      <ng-container *ngIf="isWatchlist; else markWatch">
+        <button class="favorite" (click)="addToWatchlist()">Supprimer de la liste de suivi</button>
+      </ng-container>
+      <ng-template #markWatch>
+        <button class="favorite" (click)="addToWatchlist()">Ajouter à la liste de suivi</button>
+      </ng-template>
+
 
       <div class="details_film">
         <h3>Détails du Film</h3>
