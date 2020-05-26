@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProfilListsService } from '@components/profil/profil-lists/profil-lists.service';
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
@@ -20,7 +21,8 @@ import { DialogComponent } from './tools/dialog/dialog.component';
     {
       provide: LanguageService,
       useClass: LanguageService
-    }
+    },
+    ProfilListsService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

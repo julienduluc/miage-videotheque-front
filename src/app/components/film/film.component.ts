@@ -214,7 +214,10 @@ export class FilmComponent implements OnInit, OnDestroy {
     if (this.authService.isAuthenticated) {
       this.selectedCreatedLists.forEach((selection) => {
         const body = { media_id: this.filmSelected.id };
-        this.listsService.addMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film ajouté à la liste'));
+        this.listsService.addMovie(selection.id, body).subscribe(() => {
+          this.createdLists = [];
+          this.msgService.showSuccess('Film ajouté à la liste');
+        });
       });
     }
   }
