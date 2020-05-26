@@ -19,6 +19,25 @@
         <button class="favorite" (click)="addToWatchlist()">Ajouter à la liste de suivi</button>
       </ng-template>
 
+      <button class="favorite" (click)="getCreatedLists()">Ajouter à une liste</button>
+      <p-dialog header="Ajouter {{filmSelected?.title}} à une de mes listes" [(visible)]="displayLists" [modal]="true"
+        [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+        <p>
+          <p-listbox [options]="createdLists" [(ngModel)]="selectedCreatedLists" [multiple]="true" [checkbox]="true"
+            [filter]="true" styleClass="listbox-created-lists" [showToggleAll]="false" optionLabel="name"></p-listbox>
+        </p>
+        <p *ngIf="hasList && createdLists.length === 0" style="margin-top: 5px;">
+          Ce film appartient déjà à toutes vos listes.
+        </p>
+        <p *ngIf="!hasList">
+          Aucune liste.
+        </p>
+        <p-footer>
+          <button type="button" (click)="addToCreatedList(); displayLists=false"> Valider </button>
+          <button type="button" (click)="displayLists=false;"> Annuler </button>
+        </p-footer>
+      </p-dialog>
+
 
       <div class="details_film">
         <h3>Détails du Film</h3>

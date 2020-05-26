@@ -60,13 +60,13 @@ export class AccountService {
     return this.http.get<any>(API + this.url + '/null/favorite/movies', { params: queryParams });
   }
 
-  getAccountLists(order?: string): Observable<any> {
+  getAccountLists(order?: string, accountId?: number): Observable<any> {
     const queryParams = new HttpParams()
       .append('session_id', this.sessionStorage.retrieve('sessionId'))
       .append('sort_by', 'created_at.' + order)
       .append('language', 'fr-FR');
 
-    return this.http.get<any>(API + this.url + '/null/lists', { params: queryParams });
+    return this.http.get<any>(API + this.url + '/' + accountId + '/lists', { params: queryParams });
   }
 
   getAccountWatchlist(order?: string): Observable<any> {

@@ -14,11 +14,12 @@
 
   <myapp-account-lists-view *ngFor="let review of reviews">
     <span image>
-      <img (click)="goToFilm(review?.id)" src="https://image.tmdb.org/t/p/w154/{{review?.details_film?.poster_path}}"
+      <img (click)="goToFilm(review?.details_film?.id)"
+        src="https://image.tmdb.org/t/p/w154/{{review?.details_film?.poster_path}}"
         style="cursor: pointer; height: 100%;">
     </span>
 
-    <span title (click)="goToFilm(review?.id)" class="link">
+    <span title (click)="goToFilm(review?.details_film?.id)" class="link">
       {{review?.details_film?.title}}
     </span>
     <span releaseDate>
@@ -32,7 +33,7 @@
   </myapp-account-lists-view>
 </div>
 
-<div class="top">
+<!-- <div class="top">
   <span class="title">Listes ({{lists?.length}})</span>
   <span>
 
@@ -50,7 +51,8 @@
     </span>
 
     <span title>
-      {{list?.name}} &nbsp;&nbsp; ({{list?.item_count}} élément<span *ngIf="list?.item_count > 1">s</span>)
+      <span class="link" (click)="goToList(list?.id)">{{list?.name}}</span> &nbsp;&nbsp; ({{list?.item_count}}
+      élément<span *ngIf="list?.item_count > 1">s</span>)
     </span>
 
     <span overview>
@@ -64,4 +66,4 @@
   <div class="no-data">
     Aucune liste
   </div>
-</ng-template>
+</ng-template> -->

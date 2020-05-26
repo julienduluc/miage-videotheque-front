@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProfilListsService } from '@components/profil/profil-lists/profil-lists.service';
 import { AuthService } from '@core/auth/auth.service';
 import { MessagesService } from '@core/messages/messages.service';
 import { Actor } from '@shared/models/actor.model';
@@ -37,6 +38,11 @@ export class FilmComponent implements OnInit, OnDestroy {
   isWatchlist: boolean;
 
   videos: Array<Video>;
+  createdLists = [];
+  displayLists = false;
+  selectedCreatedLists = [];
+  hasList: boolean;
+
 
   constructor(
     private filmsService: FilmsService,
@@ -47,7 +53,8 @@ export class FilmComponent implements OnInit, OnDestroy {
     private msgService: MessagesService,
     private router: Router,
     private reviewService: ReviewService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private listsService: ProfilListsService
   ) { }
 
   ngOnInit(): void {
@@ -55,20 +62,24 @@ export class FilmComponent implements OnInit, OnDestroy {
     this.id = +this.route.snapshot.paramMap.get('id');
 
     // Détection : changement de film dans la barre de recherche
-    this.filmsService.currentFilm$.pipe(takeUntil(this.unsubscribe$)).subscribe((film) => {
-      if (film) {
-        this.id = film.id;
-        this.filmSelected = film;
-        this.isFilmFavorite();
-        this.getFilmsDetails();
-      }
-    });
+    this.filmsService.currentFilm$.pipe(takeUntil(this.unsubscribe$)).subscribe(
+      (film) => {
+        if (film) {
+          this.id = film.id;
+          this.filmSelected = film;
+          this.isFilmFavorite();
+          this.isFilmWatchList();
+          this.getFilmsDetails();
+
+        }
+      });
 
     // Récupère les infos du film sélectionné
     this.filmsService.getFilmById(this.id).subscribe((film) => {
       if (film) {
         this.filmSelected = film;
         this.isFilmFavorite();
+        this.isFilmWatchList();
         this.note = Math.trunc(film.vote_average);
         this.getFilmsDetails();
       }
@@ -78,6 +89,14 @@ export class FilmComponent implements OnInit, OnDestroy {
   openDialog() {
     this.dialog.open(DialogComponent, { data: { id: this.id } });
   }
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  /* ====================================================================
+  ================================  Détails Film ========================
+  ===================================================================== */
 
   getFilmsDetails() {
     // Récupère le réalisateur et les acteurs du film sélectionné
@@ -103,11 +122,30 @@ export class FilmComponent implements OnInit, OnDestroy {
     this.getReviews();
   }
 
+  /* ====================================================================
+  ================================  Reviews ========================
+  ===================================================================== */
+
   getReviews() {
     this.reviewService.getReviewsByFilm(this.id).subscribe((reviews) => {
       this.reviews = reviews;
       this.reviews.reverse();
     });
+  }
+
+  /* ====================================================================
+  ================================  Favoris ========================
+  ===================================================================== */
+
+  isFilmFavorite(): void {
+    if (this.authService.isAuthenticated) {
+      this.accountService.isFilmFavorite(this.filmSelected.id).subscribe((res) => {
+        const isFav = res.length > 0 ? true : false;
+        this.isFavorite = isFav;
+      });
+    } else {
+      this.isFavorite = false;
+    }
   }
 
   addToFavorite() {
@@ -121,9 +159,24 @@ export class FilmComponent implements OnInit, OnDestroy {
     }
   }
 
+  /* ====================================================================
+  ================================  Suivis ========================
+  ===================================================================== */
+
+  isFilmWatchList(): void {
+    if (this.authService.isAuthenticated) {
+      this.accountService.isFilmWatchlist(this.filmSelected.id).subscribe((res) => {
+        const isWatch = res.length > 0 ? true : false;
+        this.isWatchlist = isWatch;
+      });
+    } else {
+      this.isWatchlist = false;
+    }
+  }
+
   addToWatchlist() {
     if (this.authService.isAuthenticated) {
-      this.accountService.editWatchlist(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
+      this.accountService.editWatchlist(this.filmSelected.id, !this.isWatchlist).subscribe((res) => {
         this.isWatchlist = !this.isWatchlist;
 
         const msg = this.isWatchlist
@@ -134,31 +187,41 @@ export class FilmComponent implements OnInit, OnDestroy {
     }
   }
 
-  isFilmFavorite(): boolean {
+  /* ====================================================================
+  ================================  Listes perso ========================
+  ===================================================================== */
+
+  getCreatedLists() {
     if (this.authService.isAuthenticated) {
-      this.accountService.isFilmFavorite(this.filmSelected.id).subscribe((res) => {
-        const isFav = res.length > 0 ? true : false;
-        this.isFavorite = isFav;
-        return isFav;
+
+      this.accountService.getCreatedLists().subscribe((lists) => {
+        this.hasList = lists.results.length > 0 ? true : false;
+        lists.results.forEach((list) => {
+          this.listsService.isMovieInList(list.id, this.filmSelected.id + '').subscribe(res => {
+            if (res.item_present === false) {
+              this.createdLists = [];
+              this.createdLists.push(list);
+              this.createdLists = [...this.createdLists];
+            }
+          });
+        });
+        this.displayLists = true;
       });
-    } else {
-      this.isFavorite = false;
-      return false;
     }
   }
 
-  isWatchList(): boolean {
+  addToCreatedList() {
     if (this.authService.isAuthenticated) {
-      this.accountService.isFilmWatchlist(this.filmSelected.id).subscribe((res) => {
-        const isWatch = res.length > 0 ? true : false;
-        this.isWatchlist = isWatch;
-        return isWatch;
+      this.selectedCreatedLists.forEach((selection) => {
+        const body = { media_id: this.filmSelected.id };
+        this.listsService.addMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film ajouté à la liste'));
       });
-    } else {
-      this.isWatchlist = false;
-      return false;
     }
   }
+
+  /* ====================================================================
+  ================================  Naigation ========================
+  ===================================================================== */
 
   goToFilm(film: any) {
     this.filmsService.setCurrentFilm(film);
@@ -167,10 +230,5 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   goToProfilExt(id: number) {
     this.router.navigate(['profil/ext/' + id]);
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 }

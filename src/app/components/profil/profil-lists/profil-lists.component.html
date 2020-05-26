@@ -22,7 +22,8 @@
     </span>
 
     <span title>
-      {{list?.name}} &nbsp;&nbsp; ({{list?.item_count}} élément<span *ngIf="list?.item_count > 1">s</span>)
+      <span class="link" (click)="goToList(list?.id)">{{list?.name}}</span> &nbsp;&nbsp; ({{list?.item_count}}
+      élément<span *ngIf="list?.item_count > 1">s</span>)
     </span>
 
     <span overview>

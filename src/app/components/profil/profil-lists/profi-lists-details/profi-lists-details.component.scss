@@ -5,23 +5,51 @@
 
 .profil-container {
   font-size: $size6;
-  text-align: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 40px;
+  justify-content: space-between;
+  padding: 40px 120px;
   margin: -40px (-$marginContent) 0 (-$marginContent);
   background-color: lightgray;
-  background: url(../../../assets/images/test.jpg) center center no-repeat;
-  background-size: cover;
-  height: 200px;
-  color: whitesmoke;
 
-  .username {
-    margin-left: 20px;
-    font-weight: 400;
+
+  .left {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+
+    &-name {
+      font-weight: bold;
+    }
+
+    &-created {
+      font-style: italic;
+      font-size: $size3;
+      .createdby {
+        color: $videotheque-green;
+        font-weight: bold;
+      }
+    }
+
+    &-description {
+      font-size: $size3;
+    }
   }
+
+
+}
+
+::ng-deep.right {
+  .mat-raised-button {
+    color: $videotheque-green;
+
+  }
+  .mat-button-wrapper {
+    font-weight: bold !important;
+  }
+}
+
+.tabs-container {
+  margin-top: 30px;
 }
 
 .top {
@@ -42,36 +70,6 @@
     color: $videotheque-green;
     font-size: $size3;
   }
-
-}
-
-
-.statistics {
-  display: flex;
-  font-size: $size6;
-  margin: 20px 20px;
-
-  .card {
-    width: 50%;
-    text-align: center;
-  }
-
-  .middle {
-    margin: 0 10px;
-  }
-
-  .label {
-    font-weight: 400;
-  }
-
-  .value {
-    color: $videotheque-green;
-    font-size: 80px;
-  }
-}
-
-.tabs-container {
-  margin-top: 30px;
 }
 
 .link {
@@ -81,7 +79,6 @@
     cursor: pointer;
   }
 }
-
 .no-data {
   display: flex;
   justify-content: center;

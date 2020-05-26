@@ -24,8 +24,9 @@ export class ProfilListsService {
     return this.http.post<any>(API + this.url, body, { params: this.queryParams });
   }
 
-  clearList(idList: number, body: any) {
-    return this.http.post<any>(API + this.url + '/' + idList + '/clear', body, { params: this.queryParams });
+  clearList(idList: number) {
+    this.queryParams = this.queryParams.append('confirm', 'true');
+    return this.http.post<any>(API + this.url + '/' + idList + '/clear', null, { params: this.queryParams });
   }
 
   deleteList(idList: number) {
@@ -43,5 +44,9 @@ export class ProfilListsService {
   isMovieInList(idList: number, idMovie: string) {
     const queryParams = new HttpParams().append('movie_id', idMovie);
     return this.http.get<any>(API + this.url + '/' + idList + '/item_status', { params: queryParams });
+  }
+
+  getListbyId(idList: number) {
+    return this.http.get<any>(API + this.url + '/' + idList);
   }
 }
