@@ -12,164 +12,165 @@ import { ReviewService } from '@shared/services/review.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './tools/dialog/dialog.component';
+
 @Component({
-  selector: 'myapp-film',
-  templateUrl: './film.component.html',
-  styleUrls: ['./film.component.scss']
+	selector: 'myapp-film',
+	templateUrl: './film.component.html',
+	styleUrls: [ './film.component.scss' ]
 })
 export class FilmComponent implements OnInit, OnDestroy {
+	private unsubscribe$ = new Subject();
+	filmSelected: Film;
+	id: number;
+	director: Array<any>;
+	actors: Array<Actor>;
+	similarFilms: Array<Film>;
+	keywords: Array<any>;
+	safeUrl: SafeResourceUrl;
+	request_token: any;
+	note: number;
+	reviews: Array<any>;
 
-  private unsubscribe$ = new Subject();
-  filmSelected: Film;
-  id: number;
-  director: Array<any>;
-  actors: Array<Actor>;
-  similarFilms: Array<Film>;
-  keywords: Array<any>;
-  safeUrl: SafeResourceUrl;
-  request_token: any;
-  note: number;
-  reviews: Array<any>;
+	isFavorite: boolean;
+	isWatchlist: boolean;
 
-  isFavorite: boolean;
-  isWatchlist: boolean;
+	videos: Array<Video>;
 
-  videos: Array<Video>;
+	constructor(
+		private filmsService: FilmsService,
+		private accountService: AccountService,
+		private route: ActivatedRoute,
+		private authService: AuthService,
+		private sanitizer: DomSanitizer,
+		private msgService: MessagesService,
+		private router: Router,
+		private reviewService: ReviewService,
+		private dialog: MatDialog
+	) {}
 
+	ngOnInit(): void {
+		// Récupère l'id du film dans l'URL
+		this.id = +this.route.snapshot.paramMap.get('id');
 
-  constructor(
-    private filmsService: FilmsService,
-    private accountService: AccountService,
-    private route: ActivatedRoute,
-    private authService: AuthService,
-    private sanitizer: DomSanitizer,
-    private msgService: MessagesService,
-    private router: Router,
-    private reviewService: ReviewService
-  ) { }
+		// Détection : changement de film dans la barre de recherche
+		this.filmsService.currentFilm$.pipe(takeUntil(this.unsubscribe$)).subscribe((film) => {
+			if (film) {
+				this.id = film.id;
+				this.filmSelected = film;
+				this.isFilmFavorite();
+				this.getFilmsDetails();
+			}
+		});
 
-  ngOnInit(): void {
+		// Récupère les infos du film sélectionné
+		this.filmsService.getFilmById(this.id).subscribe((film) => {
+			if (film) {
+				this.filmSelected = film;
+				this.isFilmFavorite();
+				this.note = Math.trunc(film.vote_average);
+				this.getFilmsDetails();
+			}
+		});
+	}
 
-    // Récupère l'id du film dans l'URL
-    this.id = +this.route.snapshot.paramMap.get('id');
+	openDialog() {
+		this.dialog.open(DialogComponent, { data: { id: this.id } });
+	}
 
-    // Détection : changement de film dans la barre de recherche
-    this.filmsService.currentFilm$.pipe(takeUntil(this.unsubscribe$)).subscribe(
-      (film) => {
-        if (film) {
-          this.id = film.id;
-          this.filmSelected = film;
-          this.isFilmFavorite();
-          this.getFilmsDetails();
+	getFilmsDetails() {
+		// Récupère le réalisateur et les acteurs du film sélectionné
+		this.filmsService.getCreditsByFilmId(this.id).subscribe((res) => {
+			this.director = res.crew;
+			this.actors = res.cast;
+			this.actors = this.actors.slice(0, 7);
+		});
 
-        }
-      });
+		// Récupère les films similaires au film sélectionné
+		this.filmsService.getSimilarFilmsByFilmId(this.id).subscribe((films) => {
+			this.similarFilms = films.results;
+		});
 
-    // Récupère les infos du film sélectionné
-    this.filmsService.getFilmById(this.id).subscribe((film) => {
-      if (film) {
-        this.filmSelected = film;
-        this.isFilmFavorite();
-        this.note = Math.trunc(film.vote_average);
-        this.getFilmsDetails();
-      }
-    });
+		this.filmsService.getVideosByFilmId(this.id).subscribe((res) => {
+			this.videos = res.results;
+			if (this.videos.length > 0) {
+				this.videos.forEach((v) => {
+					v.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + v.key);
+				});
+			}
+		});
+		this.getReviews();
+	}
 
+	getReviews() {
+		this.reviewService.getReviewsByFilm(this.id).subscribe((reviews) => {
+			this.reviews = reviews;
+			this.reviews.reverse();
+		});
+	}
 
-  }
+	addToFavorite() {
+		if (this.authService.isAuthenticated) {
+			this.accountService.editFavorite(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
+				this.isFavorite = !this.isFavorite;
 
-  getFilmsDetails() {
-    // Récupère le réalisateur et les acteurs du film sélectionné
-    this.filmsService.getCreditsByFilmId(this.id).subscribe((res) => {
-      this.director = res.crew;
-      this.actors = res.cast;
-      this.actors = this.actors.slice(0, 7);
-    });
+				const msg = this.isFavorite ? 'Film ajouté aux favoris' : 'Film retiré des favoris';
+				this.msgService.showSuccess(msg);
+			});
+		}
+	}
 
-    // Récupère les films similaires au film sélectionné
-    this.filmsService.getSimilarFilmsByFilmId(this.id).subscribe((films) => {
-      this.similarFilms = films.results;
-    });
+	addToWatchlist() {
+		if (this.authService.isAuthenticated) {
+			this.accountService.editWatchlist(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
+				this.isWatchlist = !this.isWatchlist;
 
+				const msg = this.isWatchlist
+					? 'Film ajouté aux à la liste de suivi'
+					: 'Film retiré de la liste de suivi';
+				this.msgService.showSuccess(msg);
+			});
+		}
+	}
 
-    this.filmsService.getVideosByFilmId(this.id).subscribe((res) => {
-      this.videos = res.results;
-      if (this.videos.length > 0) {
-        this.videos.forEach(v => {
-          v.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + v.key);
-        });
-      }
-    });
-    this.getReviews();
-  }
+	isFilmFavorite(): boolean {
+		if (this.authService.isAuthenticated) {
+			this.accountService.isFilmFavorite(this.filmSelected.id).subscribe((res) => {
+				const isFav = res.length > 0 ? true : false;
+				this.isFavorite = isFav;
+				return isFav;
+			});
+		} else {
+			this.isFavorite = false;
+			return false;
+		}
+	}
 
-  getReviews() {
-    this.reviewService.getReviewsByFilm(this.id).subscribe((reviews) => {
-      this.reviews = reviews;
-      this.reviews.reverse();
-    });
-  }
+	isWatchList(): boolean {
+		if (this.authService.isAuthenticated) {
+			this.accountService.isFilmWatchlist(this.filmSelected.id).subscribe((res) => {
+				const isWatch = res.length > 0 ? true : false;
+				this.isWatchlist = isWatch;
+				return isWatch;
+			});
+		} else {
+			this.isWatchlist = false;
+			return false;
+		}
+	}
 
-  addToFavorite() {
-    if (this.authService.isAuthenticated) {
-      this.accountService.editFavorite(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
-        this.isFavorite = !this.isFavorite;
+	goToFilm(film: any) {
+		this.filmsService.setCurrentFilm(film);
+		this.router.navigate([ 'film/' + film.id ]);
+	}
 
-        const msg = this.isFavorite ? 'Film ajouté aux favoris' : 'Film retiré des favoris';
-        this.msgService.showSuccess(msg);
-      });
-    }
-  }
+	goToProfilExt(id: number) {
+		this.router.navigate([ 'profil/ext/' + id ]);
+	}
 
-  addToWatchlist() {
-    if (this.authService.isAuthenticated) {
-      this.accountService.editWatchlist(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
-        this.isWatchlist = !this.isWatchlist;
-
-        const msg = this.isWatchlist ? 'Film ajouté aux à la liste de suivi' : 'Film retiré de la liste de suivi';
-        this.msgService.showSuccess(msg);
-      });
-    }
-  }
-
-  isFilmFavorite(): boolean {
-    if (this.authService.isAuthenticated) {
-      this.accountService.isFilmFavorite(this.filmSelected.id).subscribe((res) => {
-        const isFav = res.length > 0 ? true : false;
-        this.isFavorite = isFav;
-        return isFav;
-      });
-    } else {
-      this.isFavorite = false;
-      return false;
-    }
-  }
-
-  isWatchList(): boolean {
-    if (this.authService.isAuthenticated) {
-      this.accountService.isFilmWatchlist(this.filmSelected.id).subscribe((res) => {
-        const isWatch = res.length > 0 ? true : false;
-        this.isWatchlist = isWatch;
-        return isWatch;
-      });
-    } else {
-      this.isWatchlist = false;
-      return false;
-    }
-  }
-
-  goToFilm(film: any) {
-    this.filmsService.setCurrentFilm(film);
-    this.router.navigate(['film/' + film.id]);
-  }
-
-
-  goToProfilExt(id: number) {
-    this.router.navigate(['profil/ext/' + id]);
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
+	ngOnDestroy() {
+		this.unsubscribe$.next();
+		this.unsubscribe$.complete();
+	}
 }

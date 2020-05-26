@@ -66,6 +66,9 @@
             <fa-icon icon="star" class="icon-star"></fa-icon>
           </div>
           <span class="note_details"> {{filmSelected?.vote_average}}/10 ({{filmSelected?.vote_count}} votes) </span>
+          <div class="note_cta" (click)="openDialog()">
+            <i class="fa fa-star-o"></i>
+          </div>
         </div>
 
       </div>

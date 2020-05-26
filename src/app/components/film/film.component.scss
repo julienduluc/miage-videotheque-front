@@ -5,182 +5,185 @@
 @import "bootstrap-grid.scss";
 @import "../home/tools/card/card.component.scss";
 
-
 img {
-  width: 100%;
+	width: 100%;
 }
 
 h3 {
-  font-weight: 500;
-  font-style: normal;
-  color: #000;
-  font-size: 24px;
+	font-weight: 500;
+	font-style: normal;
+	color: #000;
+	font-size: 24px;
 }
 
 .icon-star {
-  font-size: 22px;
-  color: $secondary-yellow;
+	font-size: 22px;
+	color: $secondary-yellow;
 }
 
-.ui-carousel-dots-container{
-  display: none !important;
+.ui-carousel-dots-container {
+	display: none !important;
 }
 
 .note {
-  display: flex;
-  width: auto;
+	display: flex;
+	width: auto;
 }
 
 .note_details {
-  font-size: 18px;
-  margin-left: 15px;
-  margin-top: auto;
-  margin-bottom: auto;
+	font-size: 18px;
+	margin-left: 15px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.note_cta {
+	height: fit-content;
+	margin-top: .3em;
+	margin-left: 1em;
+	border: 2px solid #4d91ca;
+	padding: .5em .6em .4em;
+	border-radius: 50%;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	& i {
+		font-size: 2em;
+		color: #4d91ca;
+	}
 }
 
 .main-details {
-  margin-bottom: 31px;
+	margin-bottom: 31px;
 }
 
 .section {
-  margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 .details_film {
+	margin-top: 30px;
+	margin-bottom: 50px;
+	font-size: 16px;
 
-  margin-top: 30px;
-  margin-bottom: 50px;
-  font-size: 16px;
+	ul {
+		margin-top: 20px;
+		list-style: none;
+		padding: 0px;
+	}
 
-  ul {
-    margin-top: 20px;
-    list-style: none;
-    padding: 0px;
-  }
+	li {
+		margin-bottom: 10px;
+	}
 
-  li {
-    margin-bottom: 10px;
-  }
+	h3 {
+		font-size: 24px;
+	}
 
-  h3 {
-    font-size: 24px;
-  }
-
-  b {
-    font-weight: 700;
-  }
-
-
+	b {
+		font-weight: 700;
+	}
 }
 
 .favorite {
-  margin-top: 20px;
-  background-color: #ffffff;
-  color: black;
-  font-size: 20px;
-  border: 1px solid #d6d2d2;
-  padding: 5px;
-  width: 100%;
-  font-weight: 400;
-  border-radius: 20px;
+	margin-top: 20px;
+	background-color: #ffffff;
+	color: black;
+	font-size: 20px;
+	border: 1px solid #d6d2d2;
+	padding: 5px;
+	width: 100%;
+	font-weight: 400;
+	border-radius: 20px;
 
-  &:hover {
-    background-color: $videotheque-green;
-  }
+	&:hover {
+		background-color: $videotheque-green;
+	}
 }
 
 .header-title {
+	display: flex;
+	margin-bottom: 15px;
 
-  display: flex;
-  margin-bottom: 15px;
+	img {
+		width: 50px;
+		margin-right: 15px;
+	}
 
-  img {
-    width : 50px;
-    margin-right: 15px;
-  };
-
-  h3 {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+	h3 {
+		margin-top: auto;
+		margin-bottom: auto;
+	}
 }
 
 .synopsis {
-  margin-top: 20px;
-  font-size: 19px;
+	margin-top: 20px;
+	font-size: 19px;
 }
 
 .video-container {
-  iframe {
-    margin: auto;
-    width: 100%;
-    height: 500px;
-    border: unset;
-    margin-top: 25px;
-  }
+	iframe {
+		margin: auto;
+		width: 100%;
+		height: 500px;
+		border: unset;
+		margin-top: 25px;
+	}
 }
 
 button.ui-carousel-prev {
-  display: none !important;
+	display: none !important;
 }
 
 .actor_details {
-  margin-top:10px;
-  text-align: center;
+	margin-top: 10px;
+	text-align: center;
 }
 
-
-
-
-
-
 .top {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: $size4;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: $size4;
 
+	.title {
+		font-weight: bold;
+	}
 
-
-  .title {
-    font-weight: bold;
-
-  }
-
-  .icon-star {
-    font-size: $size6;
-    color: $secondary-yellow;
-  }
+	.icon-star {
+		font-size: $size6;
+		color: $secondary-yellow;
+	}
 }
 
 .film-container {
-  display: flex;
-  background:#2F2F2E;
-  color: white;
-  padding: 30px 30px 30px 30px;
+	display: flex;
+	background: #2f2f2e;
+	color: white;
+	padding: 30px 30px 30px 30px;
 
-  .video-container {
-    margin: 0 auto;
-  }
+	.video-container {
+		margin: 0 auto;
+	}
 }
 
 .username-review {
-  color: $videotheque-green;
-  font-weight: bold;
-  cursor: pointer;
+	color: $videotheque-green;
+	font-weight: bold;
+	cursor: pointer;
 }
 
-
 .title {
-  font-size: $size4;
+	font-size: $size4;
 }
 
 .overview {
-  font-size: $size3;
+	font-size: $size3;
 }
 
 .ui-carousel-dots-container.ui-helper-reset {
-  display: none !important;
+	display: none !important;
 }
-
