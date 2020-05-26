@@ -59,12 +59,25 @@
 .background-searchbar {
   background: url(../../../assets/images/background-home.jpg) center center no-repeat;
   background-size: cover;
-  height: 400px;
+  height: 450px;
   margin: -40px (-$marginContent) 0 (-$marginContent);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
+
+  .slogan {
+    color: white;
+    text-align: left;
+    font-size: $size6;
+    font-weight: bolder;
+    padding-bottom: 10px;
+    .green {
+      color: $videotheque-green;
+      font-weight: bolder;
+    }
+  }
 }
 
 ::ng-deep.home-autocomplete {

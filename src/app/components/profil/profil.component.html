@@ -16,19 +16,19 @@
       </div>
       <div class="statistics">
 
-        <div class="card"><span class="label">Notes totales</span>
+        <div class="card"><span class="label">Notes</span>
           <span class="value">{{ratings?.length}}</span>
         </div>
 
-        <div class="card"><span class="label">Favoris</span>
+        <div class="card middle"><span class="label">Favoris</span>
           <span class="value">{{favorites?.length}}</span>
         </div>
 
-        <!-- <div class="card"><span class="label">Notes totales :</span>
-        <span class="value">{{statistics?.get('ratings')}}</span>
-      </div>
+        <div class="card"><span class="label">Listes</span>
+          <span class="value">{{lists?.length}}</span>
+        </div>
 
-      <div class="card"><span class="label">Favoris totales :</span>
+        <!-- <div class="card"><span class="label">Favoris totales :</span>
         <span class="value">{{statistics?.get('ratings')}}</span>
       </div> -->
       </div>
@@ -36,33 +36,41 @@
       <div class="top">
         <span class="title">Revues ({{reviews?.length}})</span>
       </div>
-      <myapp-account-lists-view *ngFor="let review of reviews">
-        <span image>
-          <img (click)="goToFilm(review?.details_film?.id)"
-            src="https://image.tmdb.org/t/p/w154/{{review?.details_film?.poster_path}}"
-            style="cursor: pointer; height: 100%;">
-        </span>
 
-        <span title (click)="goToFilm(review?.details_film?.id)" class="link">
-          {{review?.details_film?.title}}
-        </span>
-        <span releaseDate>
-          Sorti le : {{review?.details_film?.release_date | date: 'longDate'}}
-        </span>
+      <ng-container *ngIf="reviews?.length > 0; else noData">
+        <myapp-account-lists-view *ngFor="let review of reviews">
+          <span image>
+            <img (click)="goToFilm(review?.details_film?.id)"
+              src="https://image.tmdb.org/t/p/w154/{{review?.details_film?.poster_path}}"
+              style="cursor: pointer; height: 100%;">
+          </span>
 
-        <span overview>
-          {{review?.review}}
-        </span>
+          <span title (click)="goToFilm(review?.details_film?.id)" class="link">
+            {{review?.details_film?.title}}
+          </span>
+          <span releaseDate>
+            Sorti le : {{review?.details_film?.release_date | date: 'longDate'}}
+          </span>
 
-        <span actions>
-          <button mat-mini-fab color="warn" (click)="deleteReview(review?.id)">
-            <fa-icon icon="times"></fa-icon>
-          </button>
-        </span>
-        <span actions-txt style="cursor:pointer" (click)="deleteReview(review?.id)">Supprimer la revue</span>
+          <span overview>
+            {{review?.review}}
+          </span>
 
-      </myapp-account-lists-view>
+          <span actions>
+            <button mat-mini-fab color="warn" (click)="deleteReview(review?.id)">
+              <fa-icon icon="times"></fa-icon>
+            </button>
+          </span>
+          <span actions-txt style="cursor:pointer" (click)="deleteReview(review?.id)">Supprimer la revue</span>
 
+        </myapp-account-lists-view>
+      </ng-container>
+
+      <ng-template #noData>
+        <div class="no-data">
+          Aucune revue
+        </div>
+      </ng-template>
     </div>
 
   </mat-tab>

@@ -11,15 +11,15 @@
 </div>-->
 <div *ngIf="movie" class="movie-item" (click)="goToFilm(movie?.id)">
   <div class="mv-img">
-    <img src="{{ movie?.image_url }}" alt="" width="285" height="437">
+    <img src="{{ movie?.image_url }}" alt="" width="285" height="437" />
   </div>
   <div class="title-in">
     <!--    <div class="cate">-->
     <!--      <span class="blue"><a href="#">Sci-fi</a></span>-->
     <!--    </div>-->
-    <h6>{{ movie.title }}</h6>
-    <p>
+    <!-- <h6></h6>-->
+    <span>
       <fa-icon class="star" icon="star"></fa-icon><span>{{ movie.rate }}</span> /10
-    </p>
+    </span>
   </div>
 </div>

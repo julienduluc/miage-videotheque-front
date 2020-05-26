@@ -1,33 +1,38 @@
 <div class="background-searchbar">
-  <div style="width: 100%;">
-    <p-autoComplete class="home-autocomplete" [(ngModel)]="filmName" [suggestions]="films"
-      (completeMethod)="search($event)" field="title release_date" placeholder="Rechercher un film ..."
-      [dropdown]="false" (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000" [minLength]="3"
-      [size]="100">
+  <div>
+    <div class="slogan">
+      Bienvenue.<br />
+      Des millions de <span class="green">films</span> à découvrir ou à redécouvrir...
+    </div>
+    <div style="width: 100%;">
+      <p-autoComplete class="home-autocomplete" [(ngModel)]="filmName" [suggestions]="films"
+        (completeMethod)="search($event)" field="title release_date" placeholder="Rechercher un film ..."
+        [dropdown]="false" (onSelect)="onSelect($event)" [forceSelection]="true" [delay]="1000" [minLength]="3"
+        [size]="120">
 
-      <ng-template let-film pTemplate="item">
-        <div id="ici" class="ui-helper-clearfix item items-container">
-          <div style="width:32px;margin:5px 0 2px 5px;min-height: 48px;">
-            <img *ngIf="film?.poster_path; else noImg" src="https://image.tmdb.org/t/p/w92/{{film?.poster_path}}"
-              style="width:32px;" />
-            <ng-template #noImg>
-              <div class="noimg">
-                <fa-icon icon="film"></fa-icon>
-              </div>
+        <ng-template let-film pTemplate="item">
+          <div id="ici" class="ui-helper-clearfix item items-container">
+            <div style="width:32px;margin:5px 0 2px 5px;min-height: 48px;">
+              <img *ngIf="film?.poster_path; else noImg" src="https://image.tmdb.org/t/p/w92/{{film?.poster_path}}"
+                style="width:32px;" />
+              <ng-template #noImg>
+                <div class="noimg">
+                  <fa-icon icon="film"></fa-icon>
+                </div>
 
-            </ng-template>
+              </ng-template>
+            </div>
+
+            <div style=" font-size:16px;margin-left:10px">
+              {{film?.title}} ({{film?.release_date | date:'yyyy'}})
+            </div>
           </div>
-
-          <div style=" font-size:16px;margin-left:10px">
-            {{film?.title}} ({{film?.release_date | date:'yyyy'}})
-          </div>
-        </div>
-      </ng-template>
-    </p-autoComplete>
-    <fa-icon class="icon-search" icon="search"></fa-icon>
+        </ng-template>
+      </p-autoComplete>
+      <fa-icon class="icon-search" icon="search"></fa-icon>
+    </div>
   </div>
 </div>
-
 <div class="home-content">
 
   <div class="bloc-most-popular">

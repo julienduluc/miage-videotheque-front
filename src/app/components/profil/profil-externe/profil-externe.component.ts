@@ -23,13 +23,12 @@ export class ProfilExterneComponent implements OnInit {
     private filmService: FilmsService,
     private accountService: AccountService,
     private router: Router
-
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getReviews();
-    this.getLists();
+    // this.getLists();
   }
 
   getReviews(): void {
@@ -60,13 +59,18 @@ export class ProfilExterneComponent implements OnInit {
     });
   }
 
-  getLists(): void {
-    this.accountService.getCreatedLists(this.id).subscribe((lists) => {
+  /*getLists(): void {
+    this.accountService.getAccountLists('desc', +this.id).subscribe((lists) => {
+      console.log('lists', lists);
       this.lists = lists.results;
     });
-  }
+  }*/
 
   goToFilm(id: number) {
     this.router.navigate(['film/' + id]);
   }
+
+  /*goToList(id: number) {
+    this.router.navigate(['profil/lists/' + id]);
+  }*/
 }

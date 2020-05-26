@@ -11,13 +11,18 @@
   justify-content: center;
 
   padding: 40px 40px 0 40px;
-  margin: -40px -40px 0 -40px;
+  margin: -40px -100px 0 -100px;
   padding-bottom: 50px;
   background-color: lightgray;
-
+  background: url(../../../../assets/images/test.jpg) center center no-repeat;
+  background-size: cover;
+  color: whitesmoke;
+  height: 200px;
+  margin-bottom: 30px;
 
   .username {
     margin-left: 20px;
+    font-weight: 400;
   }
 }
 
@@ -40,6 +45,14 @@
     font-size: $size3;
   }
 
+}
+
+.link {
+  font-weight: 400;
+  &:hover {
+    color: $videotheque-green;
+    cursor: pointer;
+  }
 }
 
 .icon-container {

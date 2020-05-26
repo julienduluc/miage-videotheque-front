@@ -5,17 +5,86 @@
 
 .profil-container {
   font-size: $size6;
-  text-align: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 40px;
+  justify-content: space-between;
+  padding: 40px 120px;
   margin: -40px (-$marginContent) 0 (-$marginContent);
   background-color: lightgray;
 
 
-  .username {
-    margin-left: 20px;
+  .left {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+
+    &-name {
+      font-weight: bold;
+    }
+
+    &-created {
+      font-style: italic;
+      font-size: $size3;
+      .createdby {
+        color: $videotheque-green;
+        font-weight: bold;
+      }
+    }
+
+    &-description {
+      font-size: $size3;
+    }
   }
+
+
+}
+
+::ng-deep.right {
+  .mat-raised-button {
+    color: $videotheque-green;
+
+  }
+  .mat-button-wrapper {
+    font-weight: bold !important;
+  }
+}
+
+.tabs-container {
+  margin-top: 30px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+
+  .title {
+    font-size: $size6;
+    font-weight: bold;
+  }
+
+  .tri-title {
+    font-size: $size3;
+  }
+  .tri {
+    color: $videotheque-green;
+    font-size: $size3;
+  }
+}
+
+.link {
+  font-weight: 400;
+  &:hover {
+    color: $videotheque-green;
+    cursor: pointer;
+  }
+}
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-weight: bold;
+  font-size: $size5;
+  margin: 50px 0;
 }

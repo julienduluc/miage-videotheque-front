@@ -1,6 +1,64 @@
 <div class="profil-container">
 
   <!-- <img src="https://secure.gravatar.com/avatar/{{account?.avatar.gravatar.hash}}"> -->
-  <span class="username">
-    {{list?.name}}</span>
+  <div class="left">
+    <p class="left-name">{{list?.name}}</p>
+    <p class="left-created">Créée par <span class="createdby">{{list?.created_by}}</span></p>
+    <p class="left-description"><span
+        *ngIf="list?.description?.length > 0; else noDescription">{{list?.description}}</span>
+      <ng-template #noDescription>Aucune description saisie.</ng-template>
+    </p>
+  </div>
+
+  <div class="right">
+    <button mat-raised-button (click)="clearList()">Vider la liste</button>
+    <button mat-raised-button (click)="deleteList()" style="margin-left: 10px;">Supprimer la liste</button>
+  </div>
+
+</div>
+
+<div class="tabs-container">
+
+  <div class="top">
+    <span class="title">Films ({{list?.items?.length}})</span>
+    <span>
+    </span>
+  </div>
+
+  <div>
+    <ng-container *ngIf="list?.items?.length > 0; else noData">
+
+      <myapp-account-lists-view *ngFor="let item of list?.items">
+        <span image>
+          <img (click)="goToFilm(item?.id)" src="https://image.tmdb.org/t/p/w154/{{item?.poster_path}}"
+            style="cursor: pointer; height: 100%;">
+        </span>
+
+        <span title (click)="goToFilm(item?.id)" class="link">
+          {{item?.title}}
+        </span>
+        <span releaseDate>
+          Sorti le : {{item?.release_date | date: 'longDate'}}
+        </span>
+
+        <span overview>
+          {{item?.overview}}
+        </span>
+
+        <span actions>
+          <button mat-mini-fab color="warn" (click)="removeItem(item?.id)">
+            <fa-icon icon="times"></fa-icon>
+          </button>
+        </span>
+        <span actions-txt (click)="removeItem(item?.id)" style="cursor:pointer">Retirer de la liste</span>
+
+      </myapp-account-lists-view>
+    </ng-container>
+
+    <ng-template #noData>
+      <div class="no-data">
+        Aucun film
+      </div>
+    </ng-template>
+  </div>
 </div>

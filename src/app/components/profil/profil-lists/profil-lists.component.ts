@@ -48,6 +48,7 @@ export class ProfilListsComponent implements OnInit {
       this.listsService.createList(form.value).subscribe(() => {
         this.getLists();
         this.lists = [...this.lists];
+        this.msgService.showSuccess('Liste créée');
       });
     }
     this.displayModal = false;

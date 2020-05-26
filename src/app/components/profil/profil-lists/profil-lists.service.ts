@@ -24,8 +24,9 @@ export class ProfilListsService {
     return this.http.post<any>(API + this.url, body, { params: this.queryParams });
   }
 
-  clearList(idList: number, body: any) {
-    return this.http.post<any>(API + this.url + '/' + idList + '/clear', body, { params: this.queryParams });
+  clearList(idList: number) {
+    this.queryParams = this.queryParams.append('confirm', 'true');
+    return this.http.post<any>(API + this.url + '/' + idList + '/clear', null, { params: this.queryParams });
   }
 
   deleteList(idList: number) {
