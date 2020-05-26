@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { ProfilListsService } from '@components/profil/profil-lists/profil-lists.service';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
@@ -9,25 +9,18 @@ import { LanguageService } from 'src/app/core/language/language.service';
 import { FilmComponent } from './film.component';
 import { filmRouting } from './film.routing';
 import { ReviewComponent } from './review/review.component';
+import { DialogComponent } from './tools/dialog/dialog.component';
 
 @NgModule({
-  declarations: [
-    FilmComponent,
-    ReviewComponent
-  ],
-  imports: [
-    CoreModule,
-    SharedModule,
-    NgxPermissionsModule.forChild(),
-    filmRouting
-  ],
+  declarations: [FilmComponent, ReviewComponent, DialogComponent],
+  imports: [CoreModule, SharedModule, NgxPermissionsModule.forChild(), filmRouting, MatDialogModule],
+  entryComponents: [DialogComponent],
   exports: [],
   providers: [
     {
       provide: LanguageService,
       useClass: LanguageService
-    },
-    ProfilListsService
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

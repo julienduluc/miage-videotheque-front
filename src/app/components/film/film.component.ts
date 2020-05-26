@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProfilListsService } from '@components/profil/profil-lists/profil-lists.service';
 import { AuthService } from '@core/auth/auth.service';
 import { MessagesService } from '@core/messages/messages.service';
 import { Actor } from '@shared/models/actor.model';
@@ -13,13 +13,14 @@ import { ReviewService } from '@shared/services/review.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { DialogComponent } from './tools/dialog/dialog.component';
+
 @Component({
   selector: 'myapp-film',
   templateUrl: './film.component.html',
   styleUrls: ['./film.component.scss']
 })
 export class FilmComponent implements OnInit, OnDestroy {
-
   private unsubscribe$ = new Subject();
   filmSelected: Film;
   id: number;
@@ -36,10 +37,6 @@ export class FilmComponent implements OnInit, OnDestroy {
   isWatchlist: boolean;
 
   videos: Array<Video>;
-  createdLists: Array<any>;
-  displayLists = false;
-  selectedCreatedLists = [];
-
 
   constructor(
     private filmsService: FilmsService,
@@ -50,25 +47,22 @@ export class FilmComponent implements OnInit, OnDestroy {
     private msgService: MessagesService,
     private router: Router,
     private reviewService: ReviewService,
-    private listsService: ProfilListsService
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-
     // Récupère l'id du film dans l'URL
     this.id = +this.route.snapshot.paramMap.get('id');
 
     // Détection : changement de film dans la barre de recherche
-    this.filmsService.currentFilm$.pipe(takeUntil(this.unsubscribe$)).subscribe(
-      (film) => {
-        if (film) {
-          this.id = film.id;
-          this.filmSelected = film;
-          this.isFilmFavorite();
-          this.getFilmsDetails();
-
-        }
-      });
+    this.filmsService.currentFilm$.pipe(takeUntil(this.unsubscribe$)).subscribe((film) => {
+      if (film) {
+        this.id = film.id;
+        this.filmSelected = film;
+        this.isFilmFavorite();
+        this.getFilmsDetails();
+      }
+    });
 
     // Récupère les infos du film sélectionné
     this.filmsService.getFilmById(this.id).subscribe((film) => {
@@ -79,8 +73,10 @@ export class FilmComponent implements OnInit, OnDestroy {
         this.getFilmsDetails();
       }
     });
+  }
 
-
+  openDialog() {
+    this.dialog.open(DialogComponent, { data: { id: this.id } });
   }
 
   getFilmsDetails() {
@@ -96,11 +92,10 @@ export class FilmComponent implements OnInit, OnDestroy {
       this.similarFilms = films.results;
     });
 
-
     this.filmsService.getVideosByFilmId(this.id).subscribe((res) => {
       this.videos = res.results;
       if (this.videos.length > 0) {
-        this.videos.forEach(v => {
+        this.videos.forEach((v) => {
           v.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + v.key);
         });
       }
@@ -126,44 +121,14 @@ export class FilmComponent implements OnInit, OnDestroy {
     }
   }
 
-  getCreatedLists() {
-    if (this.authService.isAuthenticated) {
-
-      this.accountService.getCreatedLists().subscribe((lists) => {
-        this.createdLists = lists.results;
-        lists.results.forEach((list) => {
-          this.listsService.isMovieInList(list.id, this.filmSelected.id + '').subscribe(res => {
-            if (res.item_present) {
-              list.item_present = true;
-              this.selectedCreatedLists.push(list);
-            }
-          });
-        });
-        this.displayLists = true;
-      });
-    }
-  }
-
-  addToCreatedList() {
-    if (this.authService.isAuthenticated) {
-      this.selectedCreatedLists.forEach((selection) => {
-        const body = { media_id: this.filmSelected.id };
-        console.log('list', selection);
-        if (selection.item_present) {
-          this.listsService.removeMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film supprimé de la liste'));
-        } else {
-          this.listsService.addMovie(selection.id, body).subscribe(() => this.msgService.showSuccess('Film ajouté à la liste'));
-        }
-      });
-    }
-  }
-
   addToWatchlist() {
     if (this.authService.isAuthenticated) {
       this.accountService.editWatchlist(this.filmSelected.id, !this.isFavorite).subscribe((res) => {
         this.isWatchlist = !this.isWatchlist;
 
-        const msg = this.isWatchlist ? 'Film ajouté aux à la liste de suivi' : 'Film retiré de la liste de suivi';
+        const msg = this.isWatchlist
+          ? 'Film ajouté aux à la liste de suivi'
+          : 'Film retiré de la liste de suivi';
         this.msgService.showSuccess(msg);
       });
     }
@@ -199,7 +164,6 @@ export class FilmComponent implements OnInit, OnDestroy {
     this.filmsService.setCurrentFilm(film);
     this.router.navigate(['film/' + film.id]);
   }
-
 
   goToProfilExt(id: number) {
     this.router.navigate(['profil/ext/' + id]);
