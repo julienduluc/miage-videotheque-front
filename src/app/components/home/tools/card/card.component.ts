@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Film } from '@shared/models/film.model';
 import { FilmsService } from '@shared/services/films.service';
 
 interface Movie {
@@ -27,7 +26,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  goToFilm(film: Film) {
+  goToFilm(film: any) {
     this.filmsService.setCurrentFilm(film);
     this.router.navigate(['film/' + film.id]);
   }
