@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HomeService } from '@components/home/home.service';
+import { Film } from '@shared/models/film.model';
+import { FilmsService } from '@shared/services/films.service';
 
 interface Movie {
   id: number;
@@ -21,13 +22,13 @@ export class CardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private homeService: HomeService
+    private filmsService: FilmsService
   ) { }
 
   ngOnInit(): void { }
 
-  goToFilm(id: number) {
-    this.router.navigate(['film/' + id]);
-    // this.homeService.set
+  goToFilm(film: Film) {
+    this.filmsService.setCurrentFilm(film);
+    this.router.navigate(['film/' + film.id]);
   }
 }

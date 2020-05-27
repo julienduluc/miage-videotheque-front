@@ -121,6 +121,7 @@ h3 {
 .synopsis {
 	margin-top: 20px;
 	font-size: 19px;
+  text-align: justify;
 }
 
 .video-container {
@@ -129,7 +130,8 @@ h3 {
 		width: 100%;
 		height: 500px;
 		border: unset;
-		margin-top: 25px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    border: 2px solid black;
 	}
 }
 
@@ -168,6 +170,9 @@ button.ui-carousel-prev {
 	.video-container {
 		margin: 0 auto;
 	}
+}
+.poster {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .username-review {

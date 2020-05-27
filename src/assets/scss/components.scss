@@ -17,3 +17,45 @@
 .ui-autocomplete-panel .ui-autocomplete-items .ui-autocomplete-list-item.ui-state-highlight {
   background-color: $videotheque-green !important;
 }
+
+.ui-carousel-content {
+  padding: 0;
+}
+
+.ui-carousel .ui-carousel-content .ui-carousel-item .carousel-details > .p-grid {
+    border: 2px solid black;
+    border-radius: 3px;
+    margin: 0.3em;
+    text-align: center;
+    padding: 0 0 2.25em 0;
+    color: white;
+    background-color: black;
+}
+.ui-carousel .ui-carousel-content .ui-carousel-item .actor-title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 24px;
+}
+.ui-carousel .ui-carousel-content .ui-carousel-item .actor-subtitle {
+    margin: 0.25em 0 2em 0;
+}
+
+.ui-carousel .ui-carousel-content .ui-carousel-item .car-data button:first-child {
+    margin-left: 0;
+}
+.ui-carousel.custom-carousel .ui-carousel-dot-icon {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50%;
+}
+.ui-carousel .ui-carousel-content .ui-carousel-next,
+.ui-carousel .ui-carousel-content .ui-carousel-prev {
+  border: none !important;
+}
+/*  .ui-carousel.ui-carousel-horizontal .ui-carousel-content .ui-carousel-item.ui-carousel-item-start .car-details > .p-grid {
+    margin-left: 0.6em;
+}
+.ui-carousel.ui-carousel-horizontal .ui-carousel-content .ui-carousel-item.ui-carousel-item-end .car-details > .p-grid {
+    margin-right: 0.6em;
+}
+*/

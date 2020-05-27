@@ -9,7 +9,7 @@
     </p>
     <p class="movie_release_date">{{ movie.release_date | date: movie.date_format }}</p>
 </div>-->
-<div *ngIf="movie" class="movie-item" (click)="goToFilm(movie?.id)">
+<div *ngIf="movie" class="movie-item" (click)="goToFilm(movie)">
   <div class="mv-img">
     <img src="{{ movie?.image_url }}" alt="" width="285" height="437" />
   </div>

@@ -217,6 +217,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   onSelect(filmSelected: Film) {
     this.filmsService.setCurrentFilm(filmSelected);
+    console.log('filp', filmSelected);
     this.filmName = '';
     this.router.navigate(['film/' + filmSelected.id]);
   }
