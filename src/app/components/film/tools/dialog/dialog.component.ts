@@ -14,5 +14,8 @@ export class DialogComponent implements OnInit {
 
 	onChange(value): void {
 		this.film_service.AddRate(this.data.id, parseInt(value));
+		setTimeout(function() {
+			window.location.reload();
+		}, 1000);
 	}
 }

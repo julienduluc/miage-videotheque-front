@@ -92,6 +92,11 @@
           </div>
         </div>
 
+        <span class="user_note_block" *ngIf="user_note_exist">
+          <span class="username">{{ account_name }} : </span>
+          <fa-icon icon="star" class="icon-star"></fa-icon>
+          <span class="usernote">{{ account_rate }}</span> /10
+        </span>
       </div>
 
       <div class="section">

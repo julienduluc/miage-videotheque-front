@@ -55,6 +55,18 @@ h3 {
 	}
 }
 
+.user_note_block {
+	& .username {
+		font-size: 1.5rem;
+	}
+
+	& .usernote {
+		padding-left: .3em;
+		font-size: 1.8rem;
+		font-weight: bold;
+	}
+}
+
 .main-details {
 	margin-bottom: 31px;
 }
@@ -121,7 +133,7 @@ h3 {
 .synopsis {
 	margin-top: 20px;
 	font-size: 19px;
-  text-align: justify;
+	text-align: justify;
 }
 
 .video-container {
@@ -130,8 +142,9 @@ h3 {
 		width: 100%;
 		height: 500px;
 		border: unset;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-    border: 2px solid black;
+		box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+			0 3px 14px 2px rgba(0, 0, 0, 0.12);
+		border: 2px solid black;
 	}
 }
 
@@ -172,7 +185,8 @@ button.ui-carousel-prev {
 	}
 }
 .poster {
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+	box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+		0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .username-review {
@@ -190,37 +204,37 @@ button.ui-carousel-prev {
 }
 
 .ui-carousel-dots-container.ui-helper-reset {
-  display: none !important;
+	display: none !important;
 }
 
 ::ng-deep .listbox-created-lists {
-  width: 100%;
-  .ui-listbox-header {
-    background: lightgrey !important;
-  }
+	width: 100%;
+	.ui-listbox-header {
+		background: lightgrey !important;
+	}
 
-  .ui-listbox-filter-icon {
-    color: $videotheque-green !important;
-  }
+	.ui-listbox-filter-icon {
+		color: $videotheque-green !important;
+	}
 
-  .ui-listbox-item.ui-state-highlight {
-    background-color: $videotheque-green  !important;
-  }
+	.ui-listbox-item.ui-state-highlight {
+		background-color: $videotheque-green !important;
+	}
 
-  .ui-chkbox-box.ui-state-active {
-    background-color: $videotheque-green  !important;
-    border-color: $videotheque-green !important;
-  }
+	.ui-chkbox-box.ui-state-active {
+		background-color: $videotheque-green !important;
+		border-color: $videotheque-green !important;
+	}
 
-  .ui-inputtext:enabled:focus:not(.ui-state-error) {
-    box-shadow: 0 0 0 0.2em $videotheque-green !important;
-  }
+	.ui-inputtext:enabled:focus:not(.ui-state-error) {
+		box-shadow: 0 0 0 0.2em $videotheque-green !important;
+	}
 
-  .ui-listbox-item:focus {
-    box-shadow: none !important;
-  }
+	.ui-listbox-item:focus {
+		box-shadow: none !important;
+	}
 
-  .ui-listbox-filter-container {
-    width: 100% !important;
-  }
+	.ui-listbox-filter-container {
+		width: 100% !important;
+	}
 }
