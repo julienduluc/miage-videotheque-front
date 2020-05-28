@@ -91,7 +91,7 @@
           <span *ngIf="isAuthentified()" class="user_note_block" (click)="openDialog()"
             style="cursor: pointer; margin-left: 20px;">
             <fa-icon icon="star" class="icon-star"></fa-icon>
-            <span *ngIf="user_note !== -1; else noRate"><span class="usernote">{{ user_note }}</span> /10</span>
+            <span *ngIf="user_note; else noRate"><span class="usernote">{{ user_note }}</span> /10</span>
             <ng-template #noRate>Non noté</ng-template>
           </span>
         </div>

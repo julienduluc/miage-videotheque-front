@@ -124,7 +124,7 @@ export class FilmComponent implements OnInit, OnDestroy {
 
   getRate() {
     this.filmsService.getAccountState(this.id).subscribe((res) => {
-      this.user_note = res.rated ? res.rated.value : -1;
+      this.user_note = res.rated ? res.rated.value : null;
     });
   }
 
