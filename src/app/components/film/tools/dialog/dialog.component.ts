@@ -1,21 +1,26 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FilmsService } from '@shared/services/films.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-	selector: 'myapp-dialog',
-	templateUrl: './dialog.component.html',
-	styleUrls: [ './dialog.component.scss' ]
+  selector: 'myapp-dialog',
+  templateUrl: './dialog.component.html',
+  styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
-	constructor(private film_service: FilmsService, @Inject(MAT_DIALOG_DATA) public data: any) {}
+  rate: number;
 
-	ngOnInit(): void {}
+  constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-	onChange(value): void {
-		this.film_service.AddRate(this.data.id, parseInt(value));
-		setTimeout(function() {
-			window.location.reload();
-		}, 1000);
-	}
+  ngOnInit(): void {
+
+    this.rate = this.data.rate;
+  }
+
+  onRate(event: any): void {
+    // this.film_service.AddRate(this.data.id, parseInt(value));
+    this.dialogRef.close(event.value);
+  }
+
+
+
 }

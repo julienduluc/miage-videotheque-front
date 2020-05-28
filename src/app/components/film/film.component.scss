@@ -19,6 +19,11 @@ h3 {
 .icon-star {
 	font-size: 22px;
 	color: $secondary-yellow;
+
+}
+.icon-star-average {
+  font-size: 22px;
+  color: $videotheque-green;
 }
 
 .ui-carousel-dots-container {
@@ -166,11 +171,6 @@ button.ui-carousel-prev {
 
 	.title {
 		font-weight: bold;
-	}
-
-	.icon-star {
-		font-size: $size6;
-		color: $secondary-yellow;
 	}
 }
 

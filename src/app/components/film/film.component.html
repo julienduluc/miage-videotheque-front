@@ -83,20 +83,18 @@
         <h1>{{filmSelected?.title}} ({{filmSelected?.release_date | date: 'yyyy'}})</h1>
 
         <div class="note">
-          <div *ngFor="let item of [].constructor(note); let i = index">
-            <fa-icon icon="star" class="icon-star"></fa-icon>
-          </div>
-          <span class="note_details"> {{filmSelected?.vote_average}}/10 ({{filmSelected?.vote_count}} votes) </span>
-          <div class="note_cta" (click)="openDialog()">
-            <i class="fa fa-star-o"></i>
-          </div>
-        </div>
+          <fa-icon icon="star" class="icon-star-average"></fa-icon>
+          <span class="user_note_block"><span class="usernote">{{filmSelected?.vote_average}}</span> /10
+            ({{filmSelected?.vote_count}} votes) </span>
 
-        <span class="user_note_block" *ngIf="user_note_exist">
-          <span class="username">{{ account_name }} : </span>
-          <fa-icon icon="star" class="icon-star"></fa-icon>
-          <span class="usernote">{{ account_rate }}</span> /10
-        </span>
+
+          <span *ngIf="isAuthentified()" class="user_note_block" (click)="openDialog()"
+            style="cursor: pointer; margin-left: 20px;">
+            <fa-icon icon="star" class="icon-star"></fa-icon>
+            <span *ngIf="user_note !== -1; else noRate"><span class="usernote">{{ user_note }}</span> /10</span>
+            <ng-template #noRate>Non noté</ng-template>
+          </span>
+        </div>
       </div>
 
       <div class="section">

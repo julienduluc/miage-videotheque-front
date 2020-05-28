@@ -34,6 +34,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CarouselModule } from 'primeng/carousel';
 import { DialogModule } from 'primeng/dialog';
 import { ListboxModule } from 'primeng/listbox';
+import { RatingModule } from 'primeng/rating';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   pbColor: '#50ba92',
@@ -84,7 +85,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatChipsModule,
     MatBadgeModule,
     DialogModule,
-    ListboxModule
+    ListboxModule,
+    RatingModule
   ],
   declarations: [],
   providers: [],
@@ -125,7 +127,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatChipsModule,
     MatBadgeModule,
     DialogModule,
-    ListboxModule
+    ListboxModule,
+    RatingModule
   ],
 })
 export class SharedLibsModule {
